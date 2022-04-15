@@ -22,15 +22,13 @@ class RedirectIfAuthenticated
     {
         $guards = empty($guards) ? [null] : $guards;
 
-//dd($guards);
-
         foreach ($guards as $guard) {
             if (Auth::guard($guard)->check()) {
                 return redirect(RouteServiceProvider::HOME);
-                dd('passou pelo auth');
+        
             }
         }
-dd('aqui',$request,$next);
+
         return $next($request);
     }
 }
