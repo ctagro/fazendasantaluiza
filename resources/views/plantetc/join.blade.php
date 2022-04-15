@@ -6,7 +6,7 @@
     @foreach($diseasesAScrop as $disease)
        <p> {{$disease->name}} </P>
     @endforeach
-    </p>
+       </p>
 
              <div class="card">
             <div class="card-header d-flex justify-content-between">
