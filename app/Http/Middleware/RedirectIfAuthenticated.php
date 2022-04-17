@@ -20,17 +20,20 @@ class RedirectIfAuthenticated
      */
     public function handle(Request $request, Closure $next, ...$guards)
     {
+        $veio = $request;
+        
+        dd('aqui',$_REQUEST,$request, $_SERVER['PATH_INFO']);
+        
         $guards = empty($guards) ? [null] : $guards;
 
         foreach ($guards as $guard) {
             if (Auth::guard($guard)->check()) {
+                dd($guard);
                 return redirect(RouteServiceProvider::HOME);
-        
+             
             }
         }
 
-        return redirect(RouteServiceProvider::HOME);
-
-       // return $next($request);
+       return $next($request);
     }
 }
