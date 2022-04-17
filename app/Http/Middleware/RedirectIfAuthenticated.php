@@ -6,7 +6,7 @@ use App\Providers\RouteServiceProvider;
 use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Redirect;
+
 
 class RedirectIfAuthenticated
 {
@@ -20,11 +20,13 @@ class RedirectIfAuthenticated
      */
     public function handle(Request $request, Closure $next, ...$guards)
     {
-        $veio = $request;
+      //  $veio = $request;
         
-        dd('aqui',$_REQUEST,$request, $_SERVER['PATH_INFO']);
+     //   dd('aqui',$_REQUEST,$request, $_SERVER['PATH_INFO'],$guards,$next,empty($guards));
         
         $guards = empty($guards) ? [null] : $guards;
+
+     //   dd('aqui',$_REQUEST,$request, $_SERVER['PATH_INFO'],$guards,$next,empty($guards));
 
         foreach ($guards as $guard) {
             if (Auth::guard($guard)->check()) {
@@ -33,6 +35,9 @@ class RedirectIfAuthenticated
              
             }
         }
+    //  dd($guards,'passou',$next,$request,$next($request));
+
+     // return view('plantetc.dashboards.dashboard');
 
        return $next($request);
     }
