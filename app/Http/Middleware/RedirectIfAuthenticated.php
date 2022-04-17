@@ -35,7 +35,7 @@ class RedirectIfAuthenticated
              
             }
         }
-   //  dd($guards,'passou',$next,$request,$next($request));
+  dd($guards,'passou',$next,$request,$next($request));
 
      // return view('plantetc.dashboards.dashboard');
 

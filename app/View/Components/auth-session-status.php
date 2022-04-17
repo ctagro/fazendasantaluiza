@@ -17,7 +17,7 @@ class authsessionstatus extends Component
     {
        $this -> status = $status; //
     }
-
+       
     /**
      * Get the view / contents that represent the component.
      *
