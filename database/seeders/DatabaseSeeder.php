@@ -39,7 +39,7 @@ class DatabaseSeeder extends Seeder
         $this->call(DiseaseSeeder::class);
         $this->call(PesticideSeeder::class);
         $this->call(Price_ceasa_bhSeeder::class);
-         $this->call(CropDiseaseSeeder::class);
+        $this->call(CropDiseaseSeeder::class);
   
      
   

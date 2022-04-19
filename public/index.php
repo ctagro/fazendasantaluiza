@@ -51,7 +51,7 @@ $app = require_once __DIR__.'/../bootstrap/app.php';
 
 // Cria a nova instância do aplicativo laravel que está no '/../bootstrap/app.php'
 
-// O tapmétodo passa a coleção para o retorno de chamada fornecido, 
+// O tap método passa a coleção para o retorno de chamada fornecido, 
 // permitindo que você "toque" na coleção em um ponto específico e faça 
 // algo com os itens, sem afetar a coleção em si.
 
