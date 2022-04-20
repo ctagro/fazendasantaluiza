@@ -16,14 +16,16 @@
             <span class="item-name">Home</span>
         </a>
     </li>
------------------------
+---------------------------
     <ul class="navbar-nav iq-main-menu"  id="sidebar">
         <li class="nav-item static-item">
             <a class="nav-link static-item disabled" href="#" tabindex="-1">
-                <span class="default-icon">Plantetc</span>
+                <span class="default-icon">Fazenda Santa Luiza</span>
                 <span class="mini-icon">-</span>
             </a>
         </li>
+
+        <!--
  -----------------------
  <li class="nav-item">
     <a class="nav-link" data-bs-toggle="collapse" href="#horizontal-menu" role="button" aria-expanded="false" aria-controls="horizontal-menu">
@@ -44,7 +46,7 @@
     </a>
     <ul class="sub-nav collapse" id="horizontal-menu" data-bs-parent="#sidebar">
         <li class="nav-item ">
-            <a class="nav-link" href="{{route('ceasa.import')}}">
+            <a class="nav-link" href="{route('ceasa.import')}}">
               <i class="icon">
                     <svg xmlns="http://www.w3.org/2000/svg" width="10" viewBox="0 0 24 24" fill="currentColor">
                         <g>
@@ -57,7 +59,7 @@
             </a>
         </li>
         <li class=" nav-item ">
-            <a class="nav-link " href="{{route('ceasa_research.consult')}}">
+            <a class="nav-link " href="{route('ceasa_research.consult')}}">
                 <i class="icon">
                     <svg xmlns="http://www.w3.org/2000/svg" width="10" viewBox="0 0 24 24" fill="currentColor">
                         <g>
@@ -70,7 +72,7 @@
             </a>
         </li>
         <li class=" nav-item ">
-            <a class="nav-link" href="{{route('ceasa_charts_research.consult')}}">
+            <a class="nav-link" href="{route('ceasa_charts_research.consult')}}">
                 <i class="icon svg-icon">
                     <svg xmlns="http://www.w3.org/2000/svg" width="10" viewBox="0 0 24 24" fill="currentColor">
                         <g>
@@ -97,8 +99,8 @@
             </a>
         </li>
     </ul>
-
-------
+-->
+---------------------------
 <li class="nav-item">
     <a class="nav-link" data-bs-toggle="collapse" href="#horizontal-menu" role="button" aria-expanded="false" aria-controls="horizontal-menu">
         <i class="icon">
@@ -159,7 +161,7 @@
 </ul>
 
 
-
+<!--
 
 ------
 
@@ -236,6 +238,8 @@
         </li>
     </ul>
 </li>
+
+-->
 
 <!-- 
 
@@ -350,6 +354,8 @@
     </li>
 
 -->
+
+<!--
     <li class="nav-item">
         <a class="nav-link" data-bs-toggle="collapse" href="#sidebar-special-pages" role="button"  aria-expanded="false" aria-controls="sidebar-special-pages">
             <i class="icon">
@@ -923,3 +929,5 @@
         </ul>
     </li>
 </ul>
+
+-->
