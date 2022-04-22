@@ -36,7 +36,7 @@ class Crop_varietyController extends Controller
 
  //   $crop_varieties = auth()->user()->crop_variety()->get();
 
-
+  //  dd($crop_varieties);
 
     // $crop_varieties = Crop::all();
 
@@ -83,6 +83,8 @@ class Crop_varietyController extends Controller
 
         $data = $this->validateRequest();
 
+     //.   dd($data,$request->file('image'));
+
         $crop_variety_entry = Crop_variety::where('name', '=', $data['name'])->get()->count();
 
     //    dd($crop_variety_entry);
@@ -102,7 +104,8 @@ class Crop_varietyController extends Controller
 
         if ($request->file('image') === null){
             $data['image'] = 'crop_variety_avatar.png';
-            }
+         //   dd('avatar',$data['image']);
+            }          
         else{
             if ($request->file('image')->isValid() && $request->file('image')->isValid()) {
           
@@ -111,17 +114,18 @@ class Crop_varietyController extends Controller
                 $extenstion = $request->image->extension(); // reguperar a extensao do arquivo de imagem
                 $nameFile = "{$name}.{$extenstion}"; // concatenando
                 $data['image'] = $nameFile;
-               
-               $upload = $request->file('image')->storeAs('public/crop_varieties', $nameFile);
+          //   dd('imagem escolhida',$nameFile);  
+               $upload = $request->file('image')->move(public_path('storage/crop_varieties'),$nameFile);
+            //   $upload = $request->file('image')->storeAs('storage/crop_varieties/', $nameFile);
             }
         }
 
-
+        
         $crop_variety = new crop_variety();
 
         
 
-   //     dd($data);
+   // dd($data);
 
        
 
@@ -186,6 +190,7 @@ class Crop_varietyController extends Controller
      $crops = Crop::all();
 
 
+
         return view('auxiliaries.crop_variety.edit',['crop_variety' => $crop_variety, 'crops' => $crops]);
     }
 
@@ -221,8 +226,8 @@ class Crop_varietyController extends Controller
                 $crop_variety['image'] = $nameFile;
           //      dd($nameFile);
             }
-   
-            $upload = $request->file('image')->storeAs('public/crop_varieties', $nameFile);
+            $upload = $request->file('image')->move(public_path('storage/crop_varieties'),$nameFile);
+       //     $upload = $request->file('image')->storeAs('public/crop_varieties', $nameFile);
         }
 
         $data['name']               = $dataRequest['name'];
@@ -255,12 +260,17 @@ class Crop_varietyController extends Controller
      */
     public function destroy(Crop_variety $crop_variety)
     {  
-        $path = 'public/crop_varieties/'.$crop_variety['image'];
+        $path = 'public/storage/crop_varieties/'.$crop_variety['image'];
 
-      if($path != "public/crop_varieties/crop_variety_avatar.png")
+     //  dd($path);
 
-            Storage::delete($path);
+      if($path != "public/storage/crop_varieties/crop_variety_avatar.png")
+        {
+          $deleteImage =  Storage::delete([$path]);
+          dd($deleteImage);
+        }
 
+        dd('passou');
         $destroy = $crop_variety->delete();
 
         if ($destroy)
@@ -289,6 +299,7 @@ class Crop_varietyController extends Controller
             'crop_id'       => 'required',
             'in_use'        => 'required',
             'note'          => 'required',
+            'image'         => 'required'      
     
 
     

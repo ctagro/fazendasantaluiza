@@ -16,6 +16,10 @@ class CreateActivePrinciplesTable extends Migration
         Schema::create('active_principles', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->text('name',200);
+            $table->unsignedBigInteger('agronomicClass_id')->nullable(); // Classe agronômica
+            $table->text('name',200);
+            $table->longtext('note');
+            $table->enum('in_use',['S','N'])->default("S");
             $table->timestamps();
         });
     }

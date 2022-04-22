@@ -15,8 +15,12 @@ class CreatePesticidesTable extends Migration
     {
         Schema::create('pesticides', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->text('name',200);
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->text('name',50);
+            $table->enum('in_use',['S','N'])->default("S");
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

@@ -21,7 +21,7 @@ class CropVarietySeeder extends Seeder
             'crop_id'       => 1,
             'description'   => 'Tomate italiano',  
             'in_use'        => 'S', 
-            'image'         => 'Tomate italiano',  
+            'image'         => 'crop_variety_avatar.png',  
             'note'          => 'Tomate italiano',
           
         ]);
@@ -33,7 +33,7 @@ class CropVarietySeeder extends Seeder
             'crop_id'       => 1,
             'description'   => 'Tomate grape',  
             'in_use'        => 'S', 
-            'image'         => '',  
+            'image'         => 'crop_variety_avatar.png',  
             'note'          => 'Tomate grape',
            
         ]);
@@ -46,7 +46,7 @@ class CropVarietySeeder extends Seeder
             'crop_id'       => 1,
             'description'   => 'Tomate cereja',  
             'in_use'        => 'S', 
-            'image'         => '',  
+            'image'         => 'crop_variety_avatar.png',  
             'note'          => 'Tomate cereja'
       
        ]);
@@ -58,7 +58,7 @@ class CropVarietySeeder extends Seeder
             'crop_id'       => 1,
             'description'   => 'Tomate cereja',  
             'in_use'        => 'S', 
-            'image'         => '',  
+            'image'         => 'crop_variety_avatar.png',  
             'note'          => 'Tomate cereja',
       
        ]);
@@ -71,7 +71,7 @@ class CropVarietySeeder extends Seeder
            'crop_id'       => 2,
            'description'   => 'Pimentão Amarelo',  
            'in_use'        => 'S', 
-           'image'         => '',  
+           'image'         => 'crop_variety_avatar.png',  
            'note'          => 'Pimentão Amarelo',
       
        ]);
@@ -83,7 +83,7 @@ class CropVarietySeeder extends Seeder
             'crop_id'       => 2,
             'description'   => 'Pimentão Vermelho',  
             'in_use'        => 'S', 
-            'image'         => '',  
+            'image'         => 'crop_variety_avatar.png',  
             'note'          => 'Pimentão Vermelho',
    
     ]);
@@ -95,7 +95,7 @@ class CropVarietySeeder extends Seeder
             'crop_id'       => 2,
             'description'   => 'Pimentão Verde',  
             'in_use'        => 'S', 
-            'image'         => '',  
+            'image'         => 'crop_variety_avatar.png',  
             'note'          => 'Pimentão Verde',
 
 ]); 
