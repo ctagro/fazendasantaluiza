@@ -31,14 +31,14 @@ class DatabaseSeeder extends Seeder
 
     
   
-        $this->call(UserSeeder::class);
-    //    $this->call(ActivePrincipleSeeder::class);
+        $this->call(UserSeeder::class); 
         $this->call(CeasaProductSeeder::class);
         $this->call(CropSeeder::class);
         $this->call(CropVarietySeeder::class);
         $this->call(DiseaseSeeder::class);
-        $this->call(PesticideSeeder::class);
         $this->call(Price_ceasa_bhSeeder::class);
+        //      $this->call(PesticideSeeder::class);
+    //    $this->call(ActivePrincipleSeeder::class);
      //   $this->call(CropDiseaseSeeder::class);
   
      
