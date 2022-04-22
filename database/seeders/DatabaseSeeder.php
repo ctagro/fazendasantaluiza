@@ -32,7 +32,7 @@ class DatabaseSeeder extends Seeder
     
   
         $this->call(UserSeeder::class);
-        $this->call(ActivePrincipleSeeder::class);
+    //    $this->call(ActivePrincipleSeeder::class);
         $this->call(CeasaProductSeeder::class);
         $this->call(CropSeeder::class);
         $this->call(CropVarietySeeder::class);

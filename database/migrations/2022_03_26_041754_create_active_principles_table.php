@@ -17,7 +17,6 @@ class CreateActivePrinciplesTable extends Migration
             $table->bigIncrements('id');
             $table->text('name',200);
             $table->unsignedBigInteger('agronomicClass_id')->nullable(); // Classe agronômica
-            $table->text('name',200);
             $table->longtext('note');
             $table->enum('in_use',['S','N'])->default("S");
             $table->timestamps();
