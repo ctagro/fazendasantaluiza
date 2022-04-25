@@ -423,6 +423,7 @@ $crops = $request;
     public function destroy(Pesticide $pesticide)
     {
 
+    //  dd($pesticide);
       $pesticide_name  = $pesticide->name;
        
         $destroy = $pesticide->delete();

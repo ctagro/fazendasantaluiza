@@ -25,7 +25,7 @@ class ChemicalGroupController extends Controller
     public function index()
     {
 
-   $chemicalGroups = auth()->user()->chemicalGroup()->get();
+   $chemicalGroups = ChemicalGroup::get();
   
         return view('auxiliaries.chemicalGroup.index', ['chemicalGroups' => $chemicalGroups]);
     }

@@ -25,7 +25,7 @@ class ToxicologicalClassController extends Controller
     public function index()
     {
 
-   $toxicologicalClasses = auth()->user()->toxicologicalClass()->get();
+   $toxicologicalClasses = ToxicologicalClass::get();
   
         return view('auxiliaries.toxicologicalClass.index', ['toxicologicalClasses' => $toxicologicalClasses]);
     }

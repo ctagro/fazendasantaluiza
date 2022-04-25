@@ -25,9 +25,9 @@ class ManufacturerController extends Controller
     public function index()
     {
 
-   $manufacturers = auth()->user()->manufacturer()->get();
+   $manufactureres = Manufacturer::get();
   
-        return view('auxiliaries.manufacturer.index', ['manufacturers' => $manufacturers]);
+        return view('auxiliaries.manufacturer.index', ['manufactureres' => $manufactureres]);
     }
 
     /**

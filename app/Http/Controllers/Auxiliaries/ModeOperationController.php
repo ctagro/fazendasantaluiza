@@ -25,7 +25,7 @@ class ModeOperationController extends Controller
     public function index()
     {
 
-   $modeOperations = auth()->user()->modeOperation()->get();
+   $modeOperations = ModeOperation::get();
   
         return view('auxiliaries.modeOperation.index', ['modeOperations' => $modeOperations]);
     }

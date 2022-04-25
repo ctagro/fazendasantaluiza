@@ -25,7 +25,7 @@ class ActuationMechanismController extends Controller
     public function index()
     {
 
-   $actuationMechanisms = auth()->user()->actuationMechanism()->get();
+   $actuationMechanisms = ActuationMechanism::get();
   
         return view('auxiliaries.actuationMechanism.index', ['actuationMechanisms' => $actuationMechanisms]);
     }

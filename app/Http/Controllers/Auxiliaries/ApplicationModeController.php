@@ -25,7 +25,7 @@ class ApplicationModeController extends Controller
     public function index()
     {
 
-   $applicationModes = auth()->user()->applicationMode()->get();
+   $applicationModes = ApplicationMode::get();
   
         return view('auxiliaries.applicationMode.index', ['applicationModes' => $applicationModes]);
     }

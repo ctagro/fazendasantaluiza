@@ -25,7 +25,7 @@ class AgronomicClassController extends Controller
     public function index()
     {
 
-   $agronomicClasses = auth()->user()->agronomicClass()->get();
+   $agronomicClasses = AgronomicClass::get();
   
         return view('auxiliaries.agronomicClass.index', ['agronomicClasses' => $agronomicClasses]);
     }

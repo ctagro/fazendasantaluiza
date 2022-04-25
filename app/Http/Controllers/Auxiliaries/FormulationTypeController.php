@@ -25,7 +25,7 @@ class FormulationTypeController extends Controller
     public function index()
     {
 
-   $formulationTypees = auth()->user()->formulationType()->get();
+   $formulationTypees = FormulationType::get();
   
         return view('auxiliaries.formulationType.index', ['formulationTypees' => $formulationTypees]);
     }

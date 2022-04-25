@@ -25,7 +25,7 @@ class ActionSiteController extends Controller
     public function index()
     {
 
-   $actionSites = auth()->user()->actionSite()->get();
+   $actionSites = ActionSite::get();
   
         return view('auxiliaries.actionSite.index', ['actionSites' => $actionSites]);
     }
