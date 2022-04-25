@@ -44,6 +44,11 @@ class DatabaseSeeder extends Seeder
          $this->call(AgronomicClassSeeder::class);
           $this->call(FormulationTypeSeeder::class);
           $this->call(ManufacturerSeeder::class);
-          $this->call(ApplicationModeSeeder::class);   
+          $this->call(ApplicationModeSeeder::class);
+          $this->call(ChemicalGroupSeeder::class); 
+          $this->call(ToxicologicalClassSeeder::class);
+          $this->call(ActionSiteSeeder::class);  
+          $this->call(ModeOperationSeeder::class); 
+          $this->call(ActuationMechanismSeeder::class); 
     }
 }

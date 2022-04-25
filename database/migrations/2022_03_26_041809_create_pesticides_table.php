@@ -28,7 +28,7 @@ class CreatePesticidesTable extends Migration
             $table->unsignedBigInteger('chemicalGroup_id')->nullable(); //  Grupo Químico
             $table->unsignedBigInteger('actionSite_id')->nullable(); //  Sítio de Ação
             $table->unsignedBigInteger('modeOperation_id')->nullable(); //  Modo de Atuação
-            $table->text('actuationMechanism',200)->nullable(); // Mecanismo de Atuação
+            $table->unsignedBigInteger('actuationMechanism_id')->nullable(); // Mecanismo de Atuação
             $table->integer('applicationRange')->nullable(); // Intervalo de Aplicações em dias
             $table->integer('numberApplications')->nullable(); // Número de Aplicações 
             $table->longtext('note');

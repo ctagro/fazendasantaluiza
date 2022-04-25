@@ -16,6 +16,12 @@ use App\Models\Auxiliaries\AgronomicClass;
 use App\Models\Auxiliaries\FormulationType;
 use App\Models\Auxiliaries\Manufacturer;
 use App\Models\Auxiliaries\ApplicationMode;
+use App\Models\Auxiliaries\ChemicalGroup;
+use App\Models\Auxiliaries\ToxicologicalClass;
+use App\Models\Auxiliaries\ActionSite;
+use App\Models\Auxiliaries\ModeOperation;
+use App\Models\Auxiliaries\ActuationMechanism;
+
 use Redirect;
 
 class PesticideController extends Controller
@@ -34,12 +40,11 @@ class PesticideController extends Controller
 
     {
 
-   //     $agronomicClasses = AgronomicClass::all();
-        $pesticides = Pesticide::all();
+      $fabricantes = Manufacturer::all();
 
-      //  dd($pesticides);
+      $pesticides = Pesticide::get();
 
-        return view('plantetc.pesticide.index', ['pesticides' => $pesticides]);
+          return view('plantetc.pesticide.index', ['pesticides' => $pesticides, 'fabricantes' => $fabricantes]);
     }
 
     /**
@@ -50,10 +55,15 @@ class PesticideController extends Controller
     public function create()
     {
 
-      $agronomicClasses = AgronomicClass::all();
-      $formulationTypes = FormulationType::all();
-      $manufacturers    = Manufacturer::all();
-      $applicationModes = ApplicationMode::all();
+      $agronomicClasses         = AgronomicClass::all();
+      $formulationTypes         = FormulationType::all();
+      $manufacturers            = Manufacturer::all();
+      $applicationModes         = ApplicationMode::all();
+      $chemicalGroups           = ChemicalGroup::all();
+      $toxicologicalClasses     = ToxicologicalClass::all();
+      $actionSites              = ActionSite::all();
+      $modeOperations           = ModeOperation::all();
+      $actuationMechanisms      = ActuationMechanism::all();
 
 
         $user = auth()->user();
@@ -75,9 +85,10 @@ class PesticideController extends Controller
 
        // return view('plantetc.crop.create',compact('crop')); // definitivo
        return view('plantetc.pesticide.create',compact('pesticide','crops','count_crops','diseases',
-                                                        'count_diseases','active_principles','count_active_principles'
-                                                        ,'agronomicClasses','formulationTypes','manufacturers',
-                                                        'applicationModes')); 
+                                                        'count_diseases','active_principles','count_active_principles',
+                                                        'agronomicClasses','formulationTypes','manufacturers',
+                                                        'applicationModes','chemicalGroups','toxicologicalClasses',
+                                                        'actionSites','modeOperations','actuationMechanisms')); 
        
     }
 
@@ -95,7 +106,7 @@ class PesticideController extends Controller
         $request['note'] = "...";
      }
 
-     
+   //  dd($request);
 
         // Capturando os dados da Cultura    
         $data = $this->validateRequest(); 
@@ -455,7 +466,7 @@ $crops = $request;
             'chemicalGroup_id'        => 'required',
             'actionSite_id'           => 'required',
             'modeOperation_id'        => 'required',
-            'actuationMechanism'      => 'required',
+            'actuationMechanism_id'      => 'required',
             'applicationRange'        => 'required',
             'numberApplications'      => 'required',
             'note'                    => 'required',

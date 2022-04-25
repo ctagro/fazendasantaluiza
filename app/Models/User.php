@@ -13,6 +13,11 @@ use App\Models\Auxiliaries\AgronomicClass;
 use App\Models\Auxiliaries\FormulationType;
 use App\Models\Auxiliaries\Manufacturer;
 use App\Models\Auxiliaries\ApplicationMode;
+use App\Models\Auxiliaries\ChemicalGroup;
+use App\Models\Auxiliaries\ToxicologicalClass;
+use App\Models\Auxiliaries\ActionSite;
+use App\Models\Auxiliaries\ModeOperation;
+use App\Models\Auxiliaries\ActuationMechanism;
 
 class User extends Authenticatable
 {
@@ -79,12 +84,37 @@ class User extends Authenticatable
 
     public function manufacturer()
     {
-        return $this->hasMany(Manufacturer ::class);
+        return $this->hasMany(Manufacturer::class);
     }
 
     public function applicationMode()
     {
-        return $this->hasMany(ApplicationMode ::class);
+        return $this->hasMany(ApplicationMode::class);
+    }
+
+    public function chemicalGroup()
+    {
+        return $this->hasMany(ChemicalGroup::class);
+    }
+
+    public function toxicologicalClass()
+    {
+        return $this->hasMany(ToxicologicalClass::class);
+    }
+
+    public function actionSite()
+    {
+        return $this->hasMany(ActionSite::class);
+    }
+
+    public function modeOperation()
+    {
+        return $this->hasMany(ModeOperation::class);
+    }
+
+    public function actuationMechanism()
+    {
+        return $this->hasMany(ActuationMechanism::class);
     }
 
 

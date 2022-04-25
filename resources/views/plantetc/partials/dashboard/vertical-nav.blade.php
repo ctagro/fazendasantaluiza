@@ -16,7 +16,7 @@
             <span class="item-name">Home</span>
         </a>
     </li>
----------------------------
+<!---------------------------
     <ul class="navbar-nav iq-main-menu"  id="sidebar">
         <li class="nav-item static-item">
             <a class="nav-link static-item disabled" href="#" tabindex="-1">
@@ -24,7 +24,7 @@
                 <span class="mini-icon">-</span>
             </a>
         </li>
-
+    -->
         <!--
  -----------------------
  <li class="nav-item">
@@ -245,7 +245,7 @@
             </svg>
         </i>
       <i class="sidenav-mini-icon"> H </i>
-      <span class="item-name"> Fornecedor </span>
+      <span class="item-name"> Fabricante </span>
     </a>
 </li>
 
@@ -260,6 +260,76 @@
         </i>
       <i class="sidenav-mini-icon"> H </i>
       <span class="item-name">Modo de Aplicação</span>
+    </a>
+</li>
+
+<li class="nav-item ">
+    <a class="nav-link" href="{{route('toxicologicalClass.index')}}">
+      <i class="icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="10" viewBox="0 0 24 24" fill="currentColor">
+                <g>
+                <circle cx="12" cy="12" r="8" fill="currentColor"></circle>
+                </g>
+            </svg>
+        </i>
+      <i class="sidenav-mini-icon"> H </i>
+      <span class="item-name">Classe Toxicológica</span>
+    </a>
+</li>
+
+<li class="nav-item ">
+    <a class="nav-link" href="{{route('chemicalGroup.index')}}">
+      <i class="icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="10" viewBox="0 0 24 24" fill="currentColor">
+                <g>
+                <circle cx="12" cy="12" r="8" fill="currentColor"></circle>
+                </g>
+            </svg>
+        </i>
+      <i class="sidenav-mini-icon"> H </i>
+      <span class="item-name">Grupo Químico</span>
+    </a>
+</li>
+
+<li class="nav-item ">
+    <a class="nav-link" href="{{route('actionSite.index')}}">
+      <i class="icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="10" viewBox="0 0 24 24" fill="currentColor">
+                <g>
+                <circle cx="12" cy="12" r="8" fill="currentColor"></circle>
+                </g>
+            </svg>
+        </i>
+      <i class="sidenav-mini-icon"> H </i>
+      <span class="item-name">Sitio de Atuação</span>
+    </a>
+</li>
+
+<li class="nav-item ">
+    <a class="nav-link" href="{{route('modeOperation.index')}}">
+      <i class="icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="10" viewBox="0 0 24 24" fill="currentColor">
+                <g>
+                <circle cx="12" cy="12" r="8" fill="currentColor"></circle>
+                </g>
+            </svg>
+        </i>
+      <i class="sidenav-mini-icon"> H </i>
+      <span class="item-name">Modo de Atuação</span>
+    </a>
+</li>
+
+<li class="nav-item ">
+    <a class="nav-link" href="{{route('actuationMechanism.index')}}">
+      <i class="icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="10" viewBox="0 0 24 24" fill="currentColor">
+                <g>
+                <circle cx="12" cy="12" r="8" fill="currentColor"></circle>
+                </g>
+            </svg>
+        </i>
+      <i class="sidenav-mini-icon"> H </i>
+      <span class="item-name"> Mecanismo de Atuação </span>
     </a>
 </li>
 

@@ -162,6 +162,46 @@ Route::get('applicationMode/{applicationMode}/edit', [App\Http\Controllers\Auxil
 Route::patch('applicationMode/{applicationMode}', [App\Http\Controllers\Auxiliaries\ApplicationModeController::class,'update'])->name('applicationMode.update');
 Route::delete('applicationMode/{applicationMode}', [App\Http\Controllers\Auxiliaries\ApplicationModeController::class,'destroy'])->name('applicationMode.destroy');
 
+Route::get('toxicologicalClass/create', [App\Http\Controllers\Auxiliaries\ToxicologicalClassController::class,'create'])->name('toxicologicalClass.create'); 
+Route::post('toxicologicalClass/store', [App\Http\Controllers\Auxiliaries\ToxicologicalClassController::class, 'store'])->name('toxicologicalClass.store');
+Route::get('toxicologicalClass/index', [App\Http\Controllers\Auxiliaries\ToxicologicalClassController::class, 'index'])->name('toxicologicalClass.index');
+Route::get('toxicologicalClass/{toxicologicalClass}', [App\Http\Controllers\Auxiliaries\ToxicologicalClassController::class,'show'])->name('toxicologicalClass.show');
+Route::get('toxicologicalClass/{toxicologicalClass}/edit', [App\Http\Controllers\Auxiliaries\ToxicologicalClassController::class,'edit'])->name('toxicologicalClass.edit');
+Route::patch('toxicologicalClass/{toxicologicalClass}', [App\Http\Controllers\Auxiliaries\ToxicologicalClassController::class,'update'])->name('toxicologicalClass.update');
+Route::delete('toxicologicalClass/{toxicologicalClass}', [App\Http\Controllers\Auxiliaries\ToxicologicalClassController::class,'destroy'])->name('toxicologicalClass.destroy');
+
+Route::get('chemicalGroup/create', [App\Http\Controllers\Auxiliaries\ChemicalGroupController::class,'create'])->name('chemicalGroup.create'); 
+Route::post('chemicalGroup/store', [App\Http\Controllers\Auxiliaries\ChemicalGroupController::class, 'store'])->name('chemicalGroup.store');
+Route::get('chemicalGroup/index', [App\Http\Controllers\Auxiliaries\ChemicalGroupController::class, 'index'])->name('chemicalGroup.index');
+Route::get('chemicalGroup/{chemicalGroup}', [App\Http\Controllers\Auxiliaries\ChemicalGroupController::class,'show'])->name('chemicalGroup.show');
+Route::get('chemicalGroup/{chemicalGroup}/edit', [App\Http\Controllers\Auxiliaries\ChemicalGroupController::class,'edit'])->name('chemicalGroup.edit');
+Route::patch('chemicalGroup/{chemicalGroup}', [App\Http\Controllers\Auxiliaries\ChemicalGroupController::class,'update'])->name('chemicalGroup.update');
+Route::delete('chemicalGroup/{chemicalGroup}', [App\Http\Controllers\Auxiliaries\ChemicalGroupController::class,'destroy'])->name('chemicalGroup.destroy');
+
+Route::get('actionSite/create', [App\Http\Controllers\Auxiliaries\ActionSiteController::class,'create'])->name('actionSite.create'); 
+Route::post('actionSite/store', [App\Http\Controllers\Auxiliaries\ActionSiteController::class, 'store'])->name('actionSite.store');
+Route::get('actionSite/index', [App\Http\Controllers\Auxiliaries\ActionSiteController::class, 'index'])->name('actionSite.index');
+Route::get('actionSite/{actionSite}', [App\Http\Controllers\Auxiliaries\ActionSiteController::class,'show'])->name('actionSite.show');
+Route::get('actionSite/{actionSite}/edit', [App\Http\Controllers\Auxiliaries\ActionSiteController::class,'edit'])->name('actionSite.edit');
+Route::patch('actionSite/{actionSite}', [App\Http\Controllers\Auxiliaries\ActionSiteController::class,'update'])->name('actionSite.update');
+Route::delete('actionSite/{actionSite}', [App\Http\Controllers\Auxiliaries\ActionSiteController::class,'destroy'])->name('actionSite.destroy');
+
+Route::get('modeOperation/create', [App\Http\Controllers\Auxiliaries\ModeOperationController::class,'create'])->name('modeOperation.create'); 
+Route::post('modeOperation/store', [App\Http\Controllers\Auxiliaries\ModeOperationController::class, 'store'])->name('modeOperation.store');
+Route::get('modeOperation/index', [App\Http\Controllers\Auxiliaries\ModeOperationController::class, 'index'])->name('modeOperation.index');
+Route::get('modeOperation/{modeOperation}', [App\Http\Controllers\Auxiliaries\ModeOperationController::class,'show'])->name('modeOperation.show');
+Route::get('modeOperation/{modeOperation}/edit', [App\Http\Controllers\Auxiliaries\ModeOperationController::class,'edit'])->name('modeOperation.edit');
+Route::patch('modeOperation/{modeOperation}', [App\Http\Controllers\Auxiliaries\ModeOperationController::class,'update'])->name('modeOperation.update');
+Route::delete('modeOperation/{modeOperation}', [App\Http\Controllers\Auxiliaries\ModeOperationController::class,'destroy'])->name('modeOperation.destroy');
+
+Route::get('actuationMechanism/create', [App\Http\Controllers\Auxiliaries\ActuationMechanismController::class,'create'])->name('actuationMechanism.create'); 
+Route::post('actuationMechanism/store', [App\Http\Controllers\Auxiliaries\ActuationMechanismController::class, 'store'])->name('actuationMechanism.store');
+Route::get('actuationMechanism/index', [App\Http\Controllers\Auxiliaries\ActuationMechanismController::class, 'index'])->name('actuationMechanism.index');
+Route::get('actuationMechanism/{actuationMechanism}', [App\Http\Controllers\Auxiliaries\ActuationMechanismController::class,'show'])->name('actuationMechanism.show');
+Route::get('actuationMechanism/{actuationMechanism}/edit', [App\Http\Controllers\Auxiliaries\ActuationMechanismController::class,'edit'])->name('actuationMechanism.edit');
+Route::patch('actuationMechanism/{actuationMechanism}', [App\Http\Controllers\Auxiliaries\ActuationMechanismController::class,'update'])->name('actuationMechanism.update');
+Route::delete('actuationMechanism/{actuationMechanism}', [App\Http\Controllers\Auxiliaries\ActuationMechanismController::class,'destroy'])->name('actuationMechanism.destroy');
+
 Route::get('locate_cropsASdisease/{disease_id}', [App\Http\Controllers\Join\JoinController::class, 'locate_cropsASdisease'])->name('locate_cropsASdisease');
 
 
