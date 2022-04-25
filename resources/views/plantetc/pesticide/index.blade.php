@@ -34,7 +34,7 @@
                   <table id="datatable" class="table table-striped" data-toggle="data-table">
                      <thead>
                         <tr class="text-sm-left" >
-                           <th><small>Defensivo<xl-small></th>
+                           <th><small>Nome<xl-small></th>
                            <th><small>Fabricante<xl-small></th>
                         </tr>
                      </thead>
@@ -42,10 +42,10 @@
                         @foreach($pesticides as $pesticide)
                            <tr class="h6">
                               <td>  
-                                 <a href= "{{route('pesticide.show' ,['pesticide' => $pesticide->id])}}" >{{$pesticide->id}}</a>
+                                 <a href= "{{route('pesticide.show' ,['pesticide' => $pesticide->id])}}" >{{$pesticide->name}}</a>
                               </td>
                               <td>  
-                                 <a href= "{{route('pesticide.show' ,['pesticide' => $pesticide->id])}}" >{{$pesticide->name}}</a>
+                                 <a href= "{{route('pesticide.show' ,['pesticide' => $pesticide->id])}}" >{{$pesticide->manufacturer_id}}</a>
                               </td>
                            </tr>           
                         @endforeach
