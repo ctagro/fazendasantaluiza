@@ -1,4 +1,7 @@
+
+
 <ul class="navbar-nav iq-main-menu"  id="sidebar">
+<!--
     <li class="nav-item static-item">
         <a class="nav-link static-item disabled" href="#" tabindex="-1">
             <span class="default-icon">Home</span>
@@ -16,6 +19,7 @@
             <span class="item-name">Home</span>
         </a>
     </li>
+-->
 <!---------------------------
     <ul class="navbar-nav iq-main-menu"  id="sidebar">
         <li class="nav-item static-item">
@@ -26,7 +30,7 @@
         </li>
     -->
         <!--
- -----------------------
+ 
  <li class="nav-item">
     <a class="nav-link" data-bs-toggle="collapse" href="#horizontal-menu" role="button" aria-expanded="false" aria-controls="horizontal-menu">
         <i class="icon">
@@ -100,7 +104,6 @@
         </li>
     </ul>
 -->
----------------------------
 <li class="nav-item">
     <a class="nav-link" data-bs-toggle="collapse" href="#horizontal-menu" role="button" aria-expanded="false" aria-controls="horizontal-menu">
         <i class="icon">
@@ -208,7 +211,7 @@
     </i>
     </a>
 
-    
+
     <ul class="sub-nav collapse" id="horizontal-menu" data-bs-parent="#sidebar">
     <li class="nav-item ">
         <a class="nav-link" href="{{route('agronomicClass.index')}}">

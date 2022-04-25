@@ -28,11 +28,11 @@ class UserSeeder extends Seeder
     ]);
 
         \App\Models\User::create([
-            'name' => 'Edson',
-            'first_name' => 'Costa',
-            'last_name' => 'Edson',
+            'name' => 'Edson Costa',
+            'first_name' => 'Edson Augusto',
+            'last_name' => 'da Silva Costa',
             'phone_number' => '23 98414-7887',
-            'email' => 'edson@gmail.com',
+            'email' => 'edsoncosta620@gmail.com',
             'email_verified_at' => now(),
             'password' => bcrypt('edson123'), // password
             'remember_token' => (Str::random(10)),

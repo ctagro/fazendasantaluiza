@@ -41,7 +41,7 @@
               <table id="datatable" class="table table-striped" data-toggle="data-table">
                  <thead>
                    <tr class="text-sm-left" >
-                     <th><small>Variedade<xl-small></th>
+                     <th><small>Nome<xl-small></th>
                      <th><small>Descriçao<xl-small></th>
                      <th><small>Nota<xl-small></th>
  
