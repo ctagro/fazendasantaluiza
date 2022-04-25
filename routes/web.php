@@ -101,10 +101,26 @@ Route::get('disease/{disease}/edit', [App\Http\Controllers\Pesticide\DiseaseCont
 Route::patch('disease/{disease}', [App\Http\Controllers\Pesticide\DiseaseController::class,'update'])->name('disease.update');
 Route::delete('disease/{disease}', [App\Http\Controllers\Pesticide\DiseaseController::class,'destroy'])->name('disease.destroy');
 
+Route::get('activePrinciple/create', [App\Http\Controllers\Pesticide\ActivePrincipleController::class,'create'])->name('activePrinciple.create'); 
+Route::post('activePrinciple/store', [App\Http\Controllers\Pesticide\ActivePrincipleController::class, 'store'])->name('activePrinciple.store');
+Route::get('activePrinciple/index', [App\Http\Controllers\Pesticide\ActivePrincipleController::class, 'index'])->name('activePrinciple.index');
+Route::get('activePrinciple/{activePrinciple}', [App\Http\Controllers\Pesticide\ActivePrincipleController::class,'show'])->name('activePrinciple.show');
+Route::get('activePrinciple/{activePrinciple}/edit', [App\Http\Controllers\Pesticide\ActivePrincipleController::class,'edit'])->name('activePrinciple.edit');
+Route::patch('activePrinciple/{activePrinciple}', [App\Http\Controllers\Pesticide\ActivePrincipleController::class,'update'])->name('activePrinciple.update');
+Route::delete('activePrinciple/{activePrinciple}', [App\Http\Controllers\Pesticide\ActivePrincipleController::class,'destroy'])->name('activePrinciple.destroy');
+
+Route::get('pesticide/create', [App\Http\Controllers\Pesticide\PesticideController::class,'create'])->name('pesticide.create'); 
+Route::post('pesticide/store', [App\Http\Controllers\Pesticide\PesticideController::class, 'store'])->name('pesticide.store');
+Route::get('pesticide/index', [App\Http\Controllers\Pesticide\PesticideController::class, 'index'])->name('pesticide.index');
+Route::get('pesticide/{pesticide}', [App\Http\Controllers\Pesticide\PesticideController::class,'show'])->name('pesticide.show');
+Route::get('pesticide/{pesticide}/edit', [App\Http\Controllers\Pesticide\PesticideController::class,'edit'])->name('pesticide.edit');
+Route::patch('pesticide/{pesticide}', [App\Http\Controllers\Pesticide\PesticideController::class,'update'])->name('pesticide.update');
+Route::delete('pesticide/{pesticide}', [App\Http\Controllers\Pesticide\PesticideController::class,'destroy'])->name('pesticide.destroy');
 
 Route::get('join/{crop_id},{desease_id}', [App\Http\Controllers\Join\JoinController::class, 'join_crop_disease'])->name('join');
 Route::get('locate_diseasesAScrop/{crop_id}', [App\Http\Controllers\Join\JoinController::class, 'locate_diseasesAScrop'])->name('locate_diseasesAScrop');
 
+//================  Auxiliares ======================
 
 Route::get('crop_variety/create', [App\Http\Controllers\Auxiliaries\Crop_varietyController::class,'create'])->name('crop_variety.create'); 
 Route::post('crop_variety/store', [App\Http\Controllers\Auxiliaries\Crop_varietyController::class, 'store'])->name('crop_variety.store');
@@ -114,7 +130,37 @@ Route::get('crop_variety/{crop_variety}/edit', [App\Http\Controllers\Auxiliaries
 Route::patch('crop_variety/{crop_variety}', [App\Http\Controllers\Auxiliaries\Crop_varietyController::class,'update'])->name('crop_variety.update');
 Route::delete('crop_variety/{crop_variety}', [App\Http\Controllers\Auxiliaries\Crop_varietyController::class,'destroy'])->name('crop_variety.destroy');
 
+Route::get('agronomicClass/create', [App\Http\Controllers\Auxiliaries\AgronomicClassController::class,'create'])->name('agronomicClass.create'); 
+Route::post('agronomicClass/store', [App\Http\Controllers\Auxiliaries\AgronomicClassController::class, 'store'])->name('agronomicClass.store');
+Route::get('agronomicClass/index', [App\Http\Controllers\Auxiliaries\AgronomicClassController::class, 'index'])->name('agronomicClass.index');
+Route::get('agronomicClass/{agronomicClass}', [App\Http\Controllers\Auxiliaries\AgronomicClassController::class,'show'])->name('agronomicClass.show');
+Route::get('agronomicClass/{agronomicClass}/edit', [App\Http\Controllers\Auxiliaries\AgronomicClassController::class,'edit'])->name('agronomicClass.edit');
+Route::patch('agronomicClass/{agronomicClass}', [App\Http\Controllers\Auxiliaries\AgronomicClassController::class,'update'])->name('agronomicClass.update');
+Route::delete('agronomicClass/{agronomicClass}', [App\Http\Controllers\Auxiliaries\AgronomicClassController::class,'destroy'])->name('agronomicClass.destroy');
 
+Route::get('formulationType/create', [App\Http\Controllers\Auxiliaries\FormulationTypeController::class,'create'])->name('formulationType.create'); 
+Route::post('formulationType/store', [App\Http\Controllers\Auxiliaries\FormulationTypeController::class, 'store'])->name('formulationType.store');
+Route::get('formulationType/index', [App\Http\Controllers\Auxiliaries\FormulationTypeController::class, 'index'])->name('formulationType.index');
+Route::get('formulationType/{formulationType}', [App\Http\Controllers\Auxiliaries\FormulationTypeController::class,'show'])->name('formulationType.show');
+Route::get('formulationType/{formulationType}/edit', [App\Http\Controllers\Auxiliaries\FormulationTypeController::class,'edit'])->name('formulationType.edit');
+Route::patch('formulationType/{formulationType}', [App\Http\Controllers\Auxiliaries\FormulationTypeController::class,'update'])->name('formulationType.update');
+Route::delete('formulationType/{formulationType}', [App\Http\Controllers\Auxiliaries\FormulationTypeController::class,'destroy'])->name('formulationType.destroy');
+
+Route::get('manufacturer/create', [App\Http\Controllers\Auxiliaries\ManufacturerController::class,'create'])->name('manufacturer.create'); 
+Route::post('manufacturer/store', [App\Http\Controllers\Auxiliaries\ManufacturerController::class, 'store'])->name('manufacturer.store');
+Route::get('manufacturer/index', [App\Http\Controllers\Auxiliaries\ManufacturerController::class, 'index'])->name('manufacturer.index');
+Route::get('manufacturer/{manufacturer}', [App\Http\Controllers\Auxiliaries\ManufacturerController::class,'show'])->name('manufacturer.show');
+Route::get('manufacturer/{manufacturer}/edit', [App\Http\Controllers\Auxiliaries\ManufacturerController::class,'edit'])->name('manufacturer.edit');
+Route::patch('manufacturer/{manufacturer}', [App\Http\Controllers\Auxiliaries\ManufacturerController::class,'update'])->name('manufacturer.update');
+Route::delete('manufacturer/{manufacturer}', [App\Http\Controllers\Auxiliaries\ManufacturerController::class,'destroy'])->name('manufacturer.destroy');
+
+Route::get('applicationMode/create', [App\Http\Controllers\Auxiliaries\ApplicationModeController::class,'create'])->name('applicationMode.create'); 
+Route::post('applicationMode/store', [App\Http\Controllers\Auxiliaries\ApplicationModeController::class, 'store'])->name('applicationMode.store');
+Route::get('applicationMode/index', [App\Http\Controllers\Auxiliaries\ApplicationModeController::class, 'index'])->name('applicationMode.index');
+Route::get('applicationMode/{applicationMode}', [App\Http\Controllers\Auxiliaries\ApplicationModeController::class,'show'])->name('applicationMode.show');
+Route::get('applicationMode/{applicationMode}/edit', [App\Http\Controllers\Auxiliaries\ApplicationModeController::class,'edit'])->name('applicationMode.edit');
+Route::patch('applicationMode/{applicationMode}', [App\Http\Controllers\Auxiliaries\ApplicationModeController::class,'update'])->name('applicationMode.update');
+Route::delete('applicationMode/{applicationMode}', [App\Http\Controllers\Auxiliaries\ApplicationModeController::class,'destroy'])->name('applicationMode.destroy');
 
 Route::get('locate_cropsASdisease/{disease_id}', [App\Http\Controllers\Join\JoinController::class, 'locate_cropsASdisease'])->name('locate_cropsASdisease');
 

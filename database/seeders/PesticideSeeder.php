@@ -13,44 +13,99 @@ class PesticideSeeder extends Seeder
      * @return void
      */
     public function run()
+
     {
         Pesticide::create([
-                        
-            'name'          => 'Defensivo 1',
+
+            'user_id'               => 1,
+            'name'                  => 'Dicarzol',
+            'manufacturer_id'       => 1,
+            'agronomicClass_id'     => 1,
+            'formulationType_id'    => 1,
+            'dosage'                => 100,
+            'unity'                 => 'ml',
+            'applicationMode_id'    => 1,
+            'toxicologicalClass_id' => 1,
+            'chemicalGroup_id'      => 1,
+            'actionSite_id'         => 1,
+            'modeOperation_id'      => 1,
+            'actuationMechanism'    => '3A - Modulador dos canais neurais de Sódio',
+            'applicationRange'      => 1,
+            'numberApplications'    => 1,
+            'note'                  => 1,
+            'image'                 => 'foto1',
+            'in_use'                => 'S',
            
         ]);
 
         Pesticide::create([
                         
-            'name'          => 'Defensivo 2',
+            'user_id'               => 1,
+            'name'                  => 'Fastac',
+            'manufacturer_id'       => 1,
+            'agronomicClass_id'     => 1,
+            'formulationType_id'    => 1,
+            'dosage'                => 100,
+            'unity'                 => 'ml',
+            'applicationMode_id'    => 1,
+            'toxicologicalClass_id' => 1,
+            'chemicalGroup_id'      => 1,
+            'actionSite_id'         => 1,
+            'modeOperation_id'      => 1,
+            'actuationMechanism'    => '3A - Modulador dos canais neurais de Sódio',
+            'applicationRange'      => 1,
+            'numberApplications'    => 1,
+            'note'                  => 1,
+            'image'                 => 'foto1',
+            'in_use'                => 'S',
            
         ]);
 
         Pesticide::create([
                         
-    
-            'name'          => 'Defensivo 3',
+            'user_id'               => 1,
+            'name'                  => 'Oberom',
+            'manufacturer_id'       => 1,
+            'agronomicClass_id'     => 1,
+            'formulationType_id'    => 1,
+            'dosage'                => 100,
+            'unity'                 => 'ml',
+            'applicationMode_id'    => 1,
+            'toxicologicalClass_id' => 1,
+            'chemicalGroup_id'      => 1,
+            'actionSite_id'         => 1,
+            'modeOperation_id'      => 1,
+            'actuationMechanism'    => '3A - Modulador dos canais neurais de Sódio',
+            'applicationRange'      => 1,
+            'numberApplications'    => 1,
+            'note'                  => 1,
+            'image'                 => 'foto1',
+            'in_use'                => 'S',
            
         ]);
 
         Pesticide::create([
                         
-            'name'          => 'Defensivo 4',
+            'user_id'               => 1,
+            'name'                  => 'Pirate',
+            'manufacturer_id'       => 1,
+            'agronomicClass_id'     => 1,
+            'formulationType_id'    => 1,
+            'dosage'                => 100,
+            'unity'                 => 'ml',
+            'applicationMode_id'    => 1,
+            'toxicologicalClass_id' => 1,
+            'chemicalGroup_id'      => 1,
+            'actionSite_id'         => 1,
+            'modeOperation_id'      => 1,
+            'actuationMechanism'    => '3A - Modulador dos canais neurais de Sódio',
+            'applicationRange'      => 1,
+            'numberApplications'    => 1,
+            'note'                  => 1,
+            'image'                 => 'foto1',
+            'in_use'                => 'S',
            
         ]);
-
-        Pesticide::create([
-                        
-            'name'          => 'Defensivo 5',
-           
-        ]);
-       
-          
-        Pesticide::create([
-                        
-            'name'          => 'Defensivo 6',
-           
-        ]);
-        
     }
+
 }

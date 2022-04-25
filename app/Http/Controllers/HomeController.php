@@ -20,7 +20,7 @@ class HomeController extends Controller
         $last_date = DB::table('price_ceasa_bhs')->max('date');
         // $last_cotacao= Price_ceasa_bh::where('date', '=', $last_date)->get();
         $last_cotacoes= DB::table('price_ceasa_bhs')->where('date', '=', $last_date)->where('product', 'LIKE', 'PIMENTAO AMARELO')->get();
-      dd($last_cotacoes);
+   //   dd($last_cotacoes);
 
         return view('dashboards.dashboard',compact('last_cotacoes'));
     }

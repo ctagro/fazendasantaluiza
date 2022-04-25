@@ -26,22 +26,24 @@ class DatabaseSeeder extends Seeder
             'remember_token' => Str::random(10),
         ]);
 */
+
+//==================  Ceasa ===============
       //  $this->call(CeasaProductSeeder::class);
 
-
-    
-  
+//===============   principal ========
         $this->call(UserSeeder::class); 
         $this->call(CeasaProductSeeder::class);
         $this->call(CropSeeder::class);
         $this->call(CropVarietySeeder::class);
         $this->call(DiseaseSeeder::class);
         $this->call(Price_ceasa_bhSeeder::class);
-        //      $this->call(PesticideSeeder::class);
-    //    $this->call(ActivePrincipleSeeder::class);
-     //   $this->call(CropDiseaseSeeder::class);
-  
-     
-  
+        $this->call(PesticideSeeder::class);
+        $this->call(ActivePrincipleSeeder::class);
+
+// =========   Auxiliares ======
+         $this->call(AgronomicClassSeeder::class);
+          $this->call(FormulationTypeSeeder::class);
+          $this->call(ManufacturerSeeder::class);
+          $this->call(ApplicationModeSeeder::class);   
     }
 }

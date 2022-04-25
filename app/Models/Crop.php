@@ -98,6 +98,8 @@ public function storeCrop(array $data): Array
                  });
                  // do the rest of the cleanup...
         }
+
+        
 /*
         public function image()
         {

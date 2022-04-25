@@ -29,19 +29,9 @@ class Crop_varietyController extends Controller
 
   $crops = Crop::where('id', '>', 4)->get();
 
- // dd($crops);
- 
-
     $crop_varieties = Crop_variety::get();
 
- //   $crop_varieties = auth()->user()->crop_variety()->get();
-
-  //  dd($crop_varieties);
-
-    // $crop_varieties = Crop::all();
-
-  //  dd($crop_varieties);   
-
+ 
         return view('auxiliaries.crop_variety.index', ['crop_varieties' => $crop_varieties, 'crops' => $crops]);
     }
 
@@ -210,8 +200,6 @@ class Crop_varietyController extends Controller
 
         $dataRequest = $this->validateRequest();
 
-     //  dd($crop_variety['image']);
-
    
         if ($request->hasFile('image') && $request->file('image')->isValid()) {
 
@@ -262,15 +250,18 @@ class Crop_varietyController extends Controller
     {  
         $path = 'public/storage/crop_varieties/'.$crop_variety['image'];
 
-     //  dd($path);
+    //   dd($path);  
 
       if($path != "public/storage/crop_varieties/crop_variety_avatar.png")
         {
-          $deleteImage =  Storage::delete([$path]);
-          dd($deleteImage);
+      //    $deleteImage =  Storage::delete(public_path('storage/crop_varieties'),$crop_variety['image']);
+          $deleteImage =  Storage::delete($path); // -----nao funciona----
+
+
+     //     dd($deleteImage);
         }
 
-        dd('passou');
+    //    dd('passou');
         $destroy = $crop_variety->delete();
 
         if ($destroy)
@@ -279,13 +270,12 @@ class Crop_varietyController extends Controller
               return redirect()
                               ->route('crop_variety.index')
                               ->with('sucess', 'A variedade '. $crop_variety->name . ' foi deletada com sucesso');
-                      
+        }              
   
               return redirect()
                       ->back()
                       ->with('error',  'Falha na deleção a variedade');
   
-          }
   
     }
 
@@ -299,7 +289,7 @@ class Crop_varietyController extends Controller
             'crop_id'       => 'required',
             'in_use'        => 'required',
             'note'          => 'required',
-            'image'         => 'required'      
+      //      'image'         => 'required'      
     
 
     

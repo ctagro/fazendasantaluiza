@@ -74,7 +74,7 @@
                                  class="img-thumbnail elevation-2"  style="max-width: 50px;"> 
                             @endif
                                 <label for="image">Imagem</label>
-                                <input type="file" class="form-control form-control-sm"  name='image' value='crop_avatar.png'>
+                                <input type="file" class="form-control form-control-sm"  name='image' value=''>
                             </div>
                       
                     </div>

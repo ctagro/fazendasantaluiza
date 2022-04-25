@@ -17,7 +17,7 @@ class UserSeeder extends Seeder
     {
        // \App\Models\User::factory(1000)->create();
         \App\Models\User::create([
-            'name' => 'System Admin',
+            'name' => 'João Procópio',
             'first_name' => 'System',
             'last_name' => 'Admin',
             'phone_number' => '11 95056-5771',

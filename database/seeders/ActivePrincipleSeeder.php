@@ -16,39 +16,54 @@ class ActivePrincipleSeeder extends Seeder
     {
         ActivePrinciple::create([
                         
-            'name'          => 'Principio Ativo 1',
+            'user_id'               => 1,            
+            'name'                  => 'Cloridrato de formetanate',
+            'agronomicClass_id'     => 1,
+            'description'           => 'O tomate é o fruto[1] do tomateiro (Solanum lycopersicum; Solanaceae).',
+            'note'                  => 'As espécies são originárias das Américas Central e do Sul; 
+                                    sua utilização como alimentos teve origem no México,[3] espalhando-se 
+                                    por todo o mundo depois da colonização das Américas pelos europeus.',
+            'in_use'                => 'S',
            
         ]);
 
         ActivePrinciple::create([
                         
-            'name'          => 'Principio Ativo 2',
+            'user_id'               => 1,            
+            'name'                  => 'Alfa-cipermetrina',
+            'agronomicClass_id'     => 1,
+            'description'           => 'O tomate é o fruto[1] do tomateiro (Solanum lycopersicum; Solanaceae).',
+            'note'                  => 'As espécies são originárias das Américas Central e do Sul; 
+                                    sua utilização como alimentos teve origem no México,[3] espalhando-se 
+                                    por todo o mundo depois da colonização das Américas pelos europeus.',
+            'in_use'                => 'S',
            
         ]);
 
         ActivePrinciple::create([
                         
     
-            'name'          => 'Principio Ativo 3',
+            'user_id'               => 1,            
+            'name'                  => 'Espiromezifeno',
+            'agronomicClass_id'     => 1,
+            'description'           => 'O tomate é o fruto[1] do tomateiro (Solanum lycopersicum; Solanaceae).',
+            'note'                  => 'As espécies são originárias das Américas Central e do Sul; 
+                                    sua utilização como alimentos teve origem no México,[3] espalhando-se 
+                                    por todo o mundo depois da colonização das Américas pelos europeus.',
+            'in_use'                => 'S',
            
         ]);
 
         ActivePrinciple::create([
                         
-            'name'          => 'Principio Ativo 4',
-           
-        ]);
-
-        ActivePrinciple::create([
-                        
-            'name'          => 'Principio Ativo 5',
-           
-        ]);
-       
-          
-        ActivePrinciple::create([
-                        
-            'name'          => 'Principio Ativo 6',
+            'user_id'               => 1,            
+            'name'                  => 'Espiromezifeno',
+            'agronomicClass_id'     => 1,
+            'description'           => 'O tomate é o fruto[1] do tomateiro (Solanum lycopersicum; Solanaceae).',
+            'note'                  => 'As espécies são originárias das Américas Central e do Sul; 
+                                    sua utilização como alimentos teve origem no México,[3] espalhando-se 
+                                    por todo o mundo depois da colonização das Américas pelos europeus.',
+            'in_use'                => 'S',
            
         ]);
         

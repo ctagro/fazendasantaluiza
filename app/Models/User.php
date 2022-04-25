@@ -7,6 +7,12 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use App\Models\Auxiliaries\Crop_variety;
+use App\Models\Pesticide;
+use App\Models\ActivePrinciple;
+use App\Models\Auxiliaries\AgronomicClass;
+use App\Models\Auxiliaries\FormulationType;
+use App\Models\Auxiliaries\Manufacturer;
+use App\Models\Auxiliaries\ApplicationMode;
 
 class User extends Authenticatable
 {
@@ -50,5 +56,38 @@ class User extends Authenticatable
     {
         return $this->hasMany(Crop_variety::class);
     }
+
+    public function active_principles()
+    {
+        return $this->hasMany(ActivePrinciple::class);
+    }
+
+    public function pesticide()
+    {
+        return $this->hasMany(Pesticide::class);
+    }
+
+    public function agronomicClass()
+    {
+        return $this->hasMany(AgronomicClass::class);
+    }
+
+    public function formulationType()
+    {
+        return $this->hasMany(FormulationType::class);
+    }
+
+    public function manufacturer()
+    {
+        return $this->hasMany(Manufacturer ::class);
+    }
+
+    public function applicationMode()
+    {
+        return $this->hasMany(ApplicationMode ::class);
+    }
+
+
+
 
 }

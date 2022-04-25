@@ -98,7 +98,7 @@ class CropVarietySeeder extends Seeder
             'image'         => 'crop_variety_avatar.png',  
             'note'          => 'Pimentão Verde',
 
-]); 
+    ]); 
 
     }
 }
