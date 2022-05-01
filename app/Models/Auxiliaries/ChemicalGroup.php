@@ -67,11 +67,6 @@ public function storechemicalGroup(array $data): Array
         return $this->belongsTo(User::class);
     }
 
-    public function pesticide()
-    {
-        return $this->belongsTo(Pesticide::class);
-    }
-
   
  
 }
