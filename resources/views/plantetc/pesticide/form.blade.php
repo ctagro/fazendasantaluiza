@@ -159,20 +159,22 @@
 
                       
                             <div class="row">
+     <!--
                             <div class="form-group col-sm-4 ">
                                 <label for="colFormLabelSm" class="form-label">Grupo Químico </label>
                                 <select name="" class="form-select form-select-sm mb-3" id="agronomicClass_id" aria-label=".form-select-lg example" required>
                                    <option selected disabled value="">Selecione </option>
-                                   @foreach($chemicalGroups as $chemicalGroup)    
-                                            <option value="{{$chemicalGroup->id}}">{{$chemicalGroup->name}} </option>                  
-                                        @endforeach
+                                   foreach($chemicalGroups as $chemicalGroup)    
+                                            <option value="{$chemicalGroup->id}}">{$chemicalGroup->name}} </option>                  
+                                        endforeach
                                 </select> 
-                                @if($errors->has('chemicalGroup_id'))    
+                                if($errors->has('chemicalGroup_id'))    
                                     <h6 class="text-danger" >Selecione</h6> 
-                                @endif 
+                                endif 
                             </div>
+-->
 
-                            <div class="form-group col-sm-4 ">
+                            <div class="form-group col-sm-6 ">
                                 <label for="colFormLabelSm" class="form-label">Sitio de Atuação</label>
                                 <select name="actionSite_id" class="form-select form-select-sm mb-3" id="agronomicClass_id" aria-label=".form-select-lg example" required>
                                    <option selected disabled value="">Selecione </option>
@@ -185,7 +187,7 @@
                                 @endif 
                             </div>   
 
-                            <div class="form-group col-sm-4 ">
+                            <div class="form-group col-sm-6 ">
                                 <label for="colFormLabelSm" class="form-label">Modo de Atuação</label>
                                 <select name="modeOperation_id" class="form-select form-select-sm mb-3" id="agronomicClass_id" aria-label=".form-select-lg example" required>
                                    <option selected disabled value="">Selecione </option>
