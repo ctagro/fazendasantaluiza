@@ -282,6 +282,8 @@ class DiseaseController extends Controller
       $request['note'] = "...";
       }
 
+      dd($request);
+
       $dataRequest = $this->validateRequest();
 
      

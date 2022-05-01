@@ -40,11 +40,32 @@ class PesticideController extends Controller
 
     {
 
-      $fabricantes = Manufacturer::all();
+
+      $manufacturers = Manufacturer::all();
+      $chemicalGroups = ChemicalGroup::all();
+      $agronomicClasses = AgronomicClass::all();
+      
 
       $pesticides = Pesticide::get();
 
-          return view('plantetc.pesticide.index', ['pesticides' => $pesticides, 'fabricantes' => $fabricantes]);
+      $users = User::all();
+
+      $chemicalGroups = ChemicalGroup::all();
+
+    // dd($users);
+
+    // dd($chemicalGroups);
+
+   // dd($pesticide,$chemicalGroup,$pesticide->chemicalGroup);
+  //    $pets = Pesticide::find(1)->chemicalGroup()->where('id','chemicalGroup_id');
+    //dd($user,$pesticide);
+      //dd($user->pesticide->name);
+
+    //  dd($pesticides,$manufactureres,$chemicalGroups);
+
+      
+
+          return view('plantetc.pesticide.index', compact('pesticides','manufacturers','chemicalGroups','agronomicClasses'));
     }
 
     /**
@@ -205,6 +226,16 @@ class PesticideController extends Controller
     public function show($pesticide_id)
     {
         // ++> verificar se precisa dessa linha
+
+        $agronomicClasses         = AgronomicClass::all();
+        $formulationTypes         = FormulationType::all();
+        $manufacturers            = Manufacturer::all();
+        $applicationModes         = ApplicationMode::all();
+        $chemicalGroups           = ChemicalGroup::all();
+        $toxicologicalClasses     = ToxicologicalClass::all();
+        $actionSites              = ActionSite::all();
+        $modeOperations           = ModeOperation::all();
+        $actuationMechanisms      = ActuationMechanism::all();
         $pesticide = Pesticide::find($pesticide_id);
 
         $user = auth()->user();
@@ -237,42 +268,37 @@ class PesticideController extends Controller
      */
     public function edit(Pesticide $pesticide) {
 
+      $user = auth()->user();
+
+      $agronomicClasses         = AgronomicClass::all();
+      $formulationTypes         = FormulationType::all();
+      $manufacturers            = Manufacturer::all();
+      $applicationModes         = ApplicationMode::all();
+      $chemicalGroups           = ChemicalGroup::all();
+      $toxicologicalClasses     = ToxicologicalClass::all();
+      $actionSites              = ActionSite::all();
+      $modeOperations           = ModeOperation::all();
+      $actuationMechanisms      = ActuationMechanism::all();
+
 
         $user = auth()->user();
 
-        // Para listar todas as defensivos
-
+   // Para listar as culturas e as que relacionam co pesticide
       $crops = Crop::all();
-
-      // para listar as defensivos relacionadas à cultura
-
-      $pesticide_crops = $pesticide->crops;
-
-   
-      
-      // criando o array que lista todas as defensivos e marca as que sào
-      // relacionadas à cultura em questão
-
       $pesticide_crops_result = [];
-
+      $pesticide_crops = $pesticide->crops;
       $count = count($crops);
       $index = [];
       $i=0;
-
-      // Criando o array com os indices das defensivos relacionadas
-
+    // Criando o array com os indices das defensivos relacionadas
        foreach($pesticide_crops as $pesticide_crop){ 
           $index[$i] = $pesticide_crop->id;
           $i++;
        }
-
-       $index1 = array_keys($index);
-   //   dd($index,$index1);
- 
+       $index1 = array_keys($index); 
     $j = 0;
     $count_j = count($index);
     $names = [];
-  // dd('i= ',$i, ' j= ', $j, ' count_j= ', $count_j, 'count=', $count);
 
     // Populando o arry resultante com todas as defensivos e setando as relacionadas
  
@@ -302,19 +328,114 @@ class PesticideController extends Controller
         // populando um arry com o nomes das defensivos
         $names[$i] = 'name'. $i;
     }
-
-     // dd($names);
-     // dd($crop_pesticides, $crop_pesticides_result);
-
       //renomeando o arry resultante
       $pesticide_crops = $pesticide_crops_result;
 
-    // dd($crop_pesticides);
+ //=============== Para listar as diseases e as que relacionam co pesticide
+ $diseases = Disease::all();
+ $pesticide_diseases_result = [];
+ $pesticide_diseases = $pesticide->diseases;
+ $count = count($diseases);
+ $index = [];
+ $i=0;
+// Criando o array com os indices das defensivos relacionadas
+  foreach($pesticide_diseases as $pesticide_disease){ 
+     $index[$i] = $pesticide_disease->id;
+     $i++;
+  }
+  $index1 = array_keys($index); 
+$j = 0;
+$count_j = count($index);
+$names = [];
+
+// Populando o arry resultante com todas as defensivos e setando as relacionadas
+
+for ($i = 0; $i < $count; $i++)
+{
+// dd($i,$index[$j]);
+if($count_j>0)
+ {
+     if(($i+1) == ($index[$j]) )
+     {
+       $pesticide_diseases_result[$i] = ($pesticide_diseases[$j]->id);
+       $j++;
+         if($j >= $count_j)
+         {
+           $j = $j-1;
+         }
+     }
+     else{
+       $pesticide_diseases_result[$i] = 999;
+     }
+ }
+ else
+ {
+   $pesticide_diseases_result[$i] = 999; 
+ }
+
+   // populando um arry com o nomes das defensivos
+   $names[$i] = 'name'. $i;
+}
+ //renomeando o arry resultante
+ $pesticide_diseases = $pesticide_diseases_result;
+
+ //=============== Para listar as diseases e as que relacionam co pesticide
+ $active_principles = ActivePrinciple::all();
+ $pesticide_active_principles_result = [];
+ $pesticide_active_principles = $pesticide->active_principles;
+ $count = count($active_principles);
+ $index = [];
+ $i=0;
+// Criando o array com os indices das defensivos relacionadas
+  foreach($pesticide_active_principles as $pesticide_active_principle){ 
+     $index[$i] = $pesticide_active_principle->id;
+     $i++;
+  }
+  $index1 = array_keys($index); 
+$j = 0;
+$count_j = count($index);
+$names = [];
+
+// Populando o arry resultante com todas as defensivos e setando as relacionadas
+
+for ($i = 0; $i < $count; $i++)
+{
+// dd($i,$index[$j]);
+if($count_j>0)
+ {
+     if(($i+1) == ($index[$j]) )
+     {
+       $pesticide_active_principles_result[$i] = ($pesticide_active_principles[$j]->id);
+       $j++;
+         if($j >= $count_j)
+         {
+           $j = $j-1;
+         }
+     }
+     else{
+       $pesticide_active_principles_result[$i] = 999;
+     }
+ }
+ else
+ {
+   $pesticide_active_principles_result[$i] = 999; 
+ }
+
+   // populando um arry com o nomes das defensivos
+   $names[$i] = 'name'. $i;
+}
+ //renomeando o arry resultante
+ $pesticide_active_principles = $pesticide_active_principles_result;
 
 
-        return view('plantetc.pesticide.edit',['crops' => $crops , 'pesticide' => $pesticide, 'names' => $names, 'pesticide_crops' => $pesticide_crops]);
-    }
+ 
 
+        return view('plantetc.pesticide.edit',compact('pesticide','crops','diseases','active_principles',
+                                                    'pesticide_crops','pesticide_diseases','pesticide_active_principles',                                                
+                                                    'agronomicClasses','formulationTypes','manufacturers',
+                                                    'applicationModes','chemicalGroups','toxicologicalClasses',
+                                                    'actionSites','modeOperations','actuationMechanisms')); 
+  }
     /**
      * Update the specified resource in storage.
      *
@@ -327,22 +448,35 @@ class PesticideController extends Controller
       
      // Update do campos do registro
 
+     $request['user_id'] = auth()->user()->id;
+
      if ($request['note'] == null){
       $request['note'] = "...";
       }
+   //   dd($request);
+
 
       $dataRequest = $this->validateRequest();
 
-     
 
-      $data['user_id']        = $dataRequest['user_id'];
-      $data['name']           = $dataRequest['name'];
-      $data['scientific_name']= $dataRequest['scientific_name'];
-      $data['description']    = $dataRequest['description'];
-      $data['symptoms']       = $data[ 'symptoms'];
-      $data['control']        = $data[ 'control'];
-      $data['in_use']         = $dataRequest['in_use'];  
-      $data['note']           = $dataRequest['note'];
+            $data['user_id'] =  $dataRequest['user_id'];
+            $data['name'] = $dataRequest['name'];
+            $data['manufacturer_id'] = $dataRequest['manufacturer_id'];
+            $data['agronomicClass_id'] = $dataRequest['agronomicClass_id'];
+            $data['formulationType_id'] = $dataRequest['formulationType_id'];
+            $data['dosage'] = $dataRequest['dosage'];
+            $data['unity'] = $dataRequest['unity'];
+            $data['applicationMode_id'] = $dataRequest['applicationMode_id'];
+            $data['toxicologicalClass_id'] = $dataRequest['toxicologicalClass_id'];
+            $data['chemicalGroup_id'] = $dataRequest['chemicalGroup_id'];
+            $data['actionSite_id'] = $dataRequest['actionSite_id'];
+            $data['modeOperation_id'] = $dataRequest['modeOperation_id'];
+            $data['actuationMechanism_id'] = $dataRequest['actuationMechanism_id'];
+            $data['applicationRange'] = $dataRequest['applicationRange'];
+            $data['numberApplications'] = $dataRequest['numberApplications'];
+            $data['note'] = $dataRequest['note'];
+        //    $data['image'] = $dataRequest['image'];
+            $data['in_use'] = $dataRequest['in_use'];
 
       $update = $pesticide->update($data);
 
@@ -449,6 +583,16 @@ $crops = $request;
      //   return redirect('crop.index');
     }
 
+    public function trocanomecoluna()
+    {
+
+      pesticide::table('pesticide', function ($table) {
+        $table->renameColumn('agronomicClass_id', 'agronomic_class_id');
+      });
+
+      dd('feito');
+       
+    }
     private function validateRequest()
     {
 
@@ -471,7 +615,7 @@ $crops = $request;
             'applicationRange'        => 'required',
             'numberApplications'      => 'required',
             'note'                    => 'required',
-            'image'                   => 'required',
+      //      'image'                   => 'required',
             'in_use'                  => 'required',
     
        ]);

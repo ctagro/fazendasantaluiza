@@ -66,7 +66,7 @@
                                  @endforeach
                             </div>
 
-<!--================Primcipio Ativo -->
+<!--================Principio Ativo -->
                             <label class="form-label" for="name">Selecione os principios ativos:</label>
                             <div class="row">
                                 <?php $index = 0   ?> 
@@ -161,7 +161,7 @@
                             <div class="row">
                             <div class="form-group col-sm-4 ">
                                 <label for="colFormLabelSm" class="form-label">Grupo Químico </label>
-                                <select name="chemicalGroup_id" class="form-select form-select-sm mb-3" id="agronomicClass_id" aria-label=".form-select-lg example" required>
+                                <select name="" class="form-select form-select-sm mb-3" id="agronomicClass_id" aria-label=".form-select-lg example" required>
                                    <option selected disabled value="">Selecione </option>
                                    @foreach($chemicalGroups as $chemicalGroup)    
                                             <option value="{{$chemicalGroup->id}}">{{$chemicalGroup->name}} </option>                  

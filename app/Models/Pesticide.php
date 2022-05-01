@@ -10,6 +10,16 @@ use App\Models\Crop;
 Use App\Models\ActivePrinciple;
 Use App\Models\Disease;
 
+use App\Models\Auxiliaries\AgronomicClass;
+use App\Models\Auxiliaries\FormulationType;
+use App\Models\Auxiliaries\Manufacturer;
+use App\Models\Auxiliaries\ApplicationMode;
+use App\Models\Auxiliaries\ChemicalGroup;
+use App\Models\Auxiliaries\ToxicologicalClass;
+use App\Models\Auxiliaries\ActionSite;
+use App\Models\Auxiliaries\ModeOperation;
+use App\Models\Auxiliaries\ActuationMechanism;
+
 class Pesticide extends Model
 {
     //use HasFactory;
@@ -97,6 +107,11 @@ class Pesticide extends Model
         {
             return $this->belongsTo(User::class);
         }
+        
+        public function chemicalGroup()
+        {
+            return $this->belongsTo(ChemicalGroup::class,'chemicalGroup_id');
+        }
 
     public function crops()
         {
@@ -136,5 +151,46 @@ class Pesticide extends Model
                  });
                  // do the rest of the cleanup...
         }
+
+        public function agronomicClass()
+        {
+            return $this->belongsTo(AgronomicClass::class,'agronomicClass_id');
+        }
+    
+        public function formulationType()
+        {
+            return $this->belongsTo(FormulationType::class,'formulationType_id');
+        }
+    
+        public function manufacturer()
+        {
+            return $this->belongsTo(Manufacturer::class,'manufacturer_id');
+        }
+    
+        public function applicationMode()
+        {
+            return $this->belongsTo(ApplicationMode::class,'applicationMode_id');
+        }
+    
+        public function toxicologicalClass()
+        {
+            return $this->belongsTo(ToxicologicalClass::class,'toxicologicalClass_id');
+        }
+    
+        public function actionSite()
+        {
+            return $this->belongsTo(ActionSite::class,'actionSite_id');
+        }
+    
+        public function modeOperation()
+        {
+            return $this->belongsTo(ModeOperation::class,'modeOperation_id');
+        }
+    
+        public function actuationMechanism()
+        {
+            return $this->belongsTo(ActuationMechanism::class,'actuationMechanism_id');
+        }
+    
     
 }

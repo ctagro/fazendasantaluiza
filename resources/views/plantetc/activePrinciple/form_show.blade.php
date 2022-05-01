@@ -28,7 +28,7 @@
                           </div>
                           <br>                     
   
-                            <label class="form-label" for="email">Defencivos relacionados:</label>
+                            <label class="form-label" for="email">Defensivos relacionados:</label>
                             <div class="row">
                                 <?php $index = 0   ?>    
                                 @foreach($pesticides as $pesticide)

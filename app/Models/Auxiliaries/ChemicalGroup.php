@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 use DB;
 use App\User;
+Use App\Models\Pesticide;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class ChemicalGroup extends Model
@@ -65,4 +66,12 @@ public function storechemicalGroup(array $data): Array
     {
         return $this->belongsTo(User::class);
     }
+
+    public function pesticide()
+    {
+        return $this->belongsTo(Pesticide::class);
+    }
+
+  
+ 
 }
