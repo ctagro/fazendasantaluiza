@@ -183,7 +183,7 @@
                                 @if($errors->has('actionSite_id'))    
                                     <h6 class="text-danger" >Selecione</h6> 
                                 @endif 
-                            </div>
+                            </div>   
 
                             <div class="form-group col-sm-4 ">
                                 <label for="colFormLabelSm" class="form-label">Modo de Atuação</label>

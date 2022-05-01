@@ -250,7 +250,7 @@ class PesticideController extends Controller
         
         $crops = $pesticide->crops;
 
-    //  dd($crops);
+  
     
 
 

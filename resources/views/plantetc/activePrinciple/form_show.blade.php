@@ -26,8 +26,8 @@
                           <div class="row">
                             <div class="form-control form-control-sm">{{ $activePrinciple->description}}</div>
                           </div>
-                          <br>                     
-  
+                          <br>                       
+   
                             <label class="form-label" for="email">Defensivos relacionados:</label>
                             <div class="row">
                                 <?php $index = 0   ?>    

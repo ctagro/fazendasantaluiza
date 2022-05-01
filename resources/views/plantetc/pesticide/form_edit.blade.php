@@ -225,7 +225,7 @@
                                         <h6 class="text-danger" >Digite o Número</h6> 
                                 @endif
                         </div>
-                    </div>
+                    </div> 
 
                 
                     <div class="row">

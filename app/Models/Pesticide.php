@@ -118,7 +118,7 @@ class Pesticide extends Model
             return $this->belongsToMany(Crop::class);
         }
 
-    public function diseases()
+    public function diseases() 
         {
             return $this->belongsToMany(Disease::class);
         }

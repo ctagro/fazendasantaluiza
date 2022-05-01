@@ -57,7 +57,7 @@
                            <td>
                               <a href= "{{route('pesticide.show' ,['pesticide' => $pesticide->id])}}" >{{$pesticide->chemicalGroup->name}}</a>
                            </td> 
-                        </tr>           
+                        </tr>            
                       @endforeach
                      </tbody>
                      <tfoot>

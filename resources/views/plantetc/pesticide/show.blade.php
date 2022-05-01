@@ -13,7 +13,7 @@
       </div>
   @endif
 
-  <div class="container">
+  <div class="container"> 
 
           @if(Session::has('mensagem_sucesso'))
 

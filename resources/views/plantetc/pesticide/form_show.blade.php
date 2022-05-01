@@ -21,7 +21,7 @@
                             </div>
                         </div>
                           
-                        <div class="row">
+                        <div class="row"> 
                               <div class="form-group col-sm-4"> 
                               <div class="bolder">Tipo de Formulação</div>
                               <div class="form-control form-control-sm">{{ $pesticide->formulationType->name}}</div>
@@ -64,7 +64,7 @@
                             <div class="bolder">Mecanismo de Atuação</div>
                             <div class="form-control form-control-sm">{{ $pesticide->actuationMechanism->name}}</div>
                           </div>
-                        </div>
+                        </div> 
                       <div class="row">
                         <div class="form-group col-sm-4"> 
                           <div class="bolder">Intervalo de Aplicações (dias)</div>
