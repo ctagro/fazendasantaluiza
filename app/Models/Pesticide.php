@@ -68,7 +68,7 @@ class Pesticide extends Model
                 'chemicalGroup_id'      => $data['chemicalGroup_id'],
                 'actionSite_id'         => $data['actionSite_id'],
                 'modeOperation_id'      => $data['modeOperation_id'],
-                'actuationMechanism_id' => $data[ 'actuationMechanism_id'],
+                'actuationMechanism_id' => $data['actuationMechanism_id'],
                 'applicationRange'      => $data['applicationRange'],
                 'numberApplications'    => $data['numberApplications'],
                 'note'                  => $data['note'],

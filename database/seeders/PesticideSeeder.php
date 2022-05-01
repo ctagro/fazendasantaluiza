@@ -18,7 +18,7 @@ class PesticideSeeder extends Seeder
         Pesticide::create([
 
             'user_id'               => 1,
-            'name'                  => 'Dicarzol',
+            'name'                  => 'Dicarzol1',
             'manufacturer_id'       => 1,
             'agronomicClass_id'     => 1,
             'formulationType_id'    => 1,
@@ -41,7 +41,7 @@ class PesticideSeeder extends Seeder
         Pesticide::create([
                         
             'user_id'               => 1,
-            'name'                  => 'Fastac',
+            'name'                  => 'Fastac1',
             'manufacturer_id'       => 1,
             'agronomicClass_id'     => 1,
             'formulationType_id'    => 1,
@@ -64,7 +64,7 @@ class PesticideSeeder extends Seeder
         Pesticide::create([
                         
             'user_id'               => 1,
-            'name'                  => 'Oberom',
+            'name'                  => 'Oberom1',
             'manufacturer_id'       => 1,
             'agronomicClass_id'     => 1,
             'formulationType_id'    => 1,
@@ -72,7 +72,7 @@ class PesticideSeeder extends Seeder
             'unity'                 => 'ml',
             'applicationMode_id'    => 1,
             'toxicologicalClass_id' => 1,
-            'chemicalGroup_id'     => 1,
+            'chemicalGroup_id'      => 1,
             'actionSite_id'         => 1,
             'modeOperation_id'      => 1,
             'actuationMechanism_id' => 1,
@@ -87,7 +87,7 @@ class PesticideSeeder extends Seeder
         Pesticide::create([
                         
             'user_id'               => 1,
-            'name'                  => 'Pirate',
+            'name'                  => 'Pirate1',
             'manufacturer_id'       => 1,
             'agronomicClass_id'     => 1,
             'formulationType_id'    => 1,
@@ -95,7 +95,7 @@ class PesticideSeeder extends Seeder
             'unity'                 => 'ml',
             'applicationMode_id'    => 1,
             'toxicologicalClass_id' => 1,
-            'chemicalGroup_id'     => 1,
+            'chemicalGroup_id'      => 1,
             'actionSite_id'         => 1,
             'modeOperation_id'      => 1,
             'actuationMechanism_id' => 1,

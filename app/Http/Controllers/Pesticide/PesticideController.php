@@ -428,7 +428,7 @@ if($count_j>0)
  $pesticide_active_principles = $pesticide_active_principles_result;
 
 
- 
+//dd($chemicalGroups) ;
 
         return view('plantetc.pesticide.edit',compact('pesticide','crops','diseases','active_principles',
                                                     'pesticide_crops','pesticide_diseases','pesticide_active_principles',                                                

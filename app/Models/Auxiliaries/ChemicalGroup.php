@@ -28,7 +28,7 @@ public function storechemicalGroup(array $data): Array
 
         //dd($data);
 
-            $chemicalGroup = auth()->user()->ChemicalGroup ()->create([         
+            $chemicalGroup = auth()->user()->ChemicalGroup()->create([         
                 
             
                 'name'              => $data['name'],
