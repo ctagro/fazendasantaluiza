@@ -37,7 +37,6 @@
                            <th><small>Nome<xl-small></th>
                            <th><small>Fabricante<xl-small></th>
                             <th><small>Classe Agronômica<xl-small></th>
-                           <th><small>Grupo Químico<xl-small></th>
                         </tr>
                      </thead>
                      <tbody>
