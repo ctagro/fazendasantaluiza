@@ -184,7 +184,7 @@ class Pesticide extends Model
             return $this->belongsTo(ActionSite::class,'actionSite_id');
         }
     
-        public function modeOperation()
+        public function modeOperation() 
         {
             return $this->belongsTo(ModeOperation::class,'modeOperation_id');
         }
