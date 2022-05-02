@@ -48,7 +48,7 @@
 
                             <div class="form-group col-sm-4"> 
                               <div class="bolder">Grupo Químico</div>
-                              <div class="form-control form-control-sm">{{ $pesticide->chemicalGroup_id->name}}</div>
+                              <div class="form-control form-control-sm">{{ $pesticide->chemicalGroup->name}}</div>
                             </div>
   
                         </div>
