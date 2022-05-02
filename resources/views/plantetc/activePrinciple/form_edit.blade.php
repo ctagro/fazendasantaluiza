@@ -33,15 +33,15 @@
                         <label class="form-label" for="email">Selecione as defensivo relacionadas:</label>
                         <div class="row">
                             <?php $index = -1   ?>    
-                            @foreach($pesticides as $pesticide)
+                            @foreach($defensivos as $defensivo)
                                 <?php $index++ 
                                  ?>                
                                 <div class="col">   
                                     <div class="form-check form-group">
-                                        <input type="radio" class="form-check-input" name="pesticide_id[{{$index}}]" id="nome{{$index}}" 
-                                        {{((($pesticide->id)) == $activePrinciple_pesticides[$index]) ? 'checked' : ""}} onclick=setRadioBtn() >
+                                        <input type="radio" class="form-check-input" name="defensivo_id[{{$index}}]" id="nome{{$index}}" 
+                                        {{((($defensivo->id)) == $activePrinciple_defensivos[$index]) ? 'checked' : ""}} onclick=setRadioBtn() >
                             
-                                        <label class="form-check-label" for="pesticide_id[{{$index}}]">{{$pesticide->name}}</label>
+                                        <label class="form-check-label" for="defensivo_id[{{$index}}]">{{$defensivo->name}}</label>
                                         <div class="invalid-feedback">Example invalid feedback text</div>  
                                         
                                     </div>

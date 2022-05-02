@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Models; 
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -20,7 +20,7 @@ use App\Models\Auxiliaries\ActionSite;
 use App\Models\Auxiliaries\ModeOperation;
 use App\Models\Auxiliaries\ActuationMechanism;
 
-class Pesticide extends Model
+class Defensivo extends Model
 {
     //use HasFactory;
     protected $fillable = [
@@ -50,11 +50,11 @@ class Pesticide extends Model
      * Formatando a data como dia mes e ano
      ******************************/
     
-    public function storePesticide(array $data): Array
+    public function storeDefensivo(array $data): Array
     {  
        //dd($data);
     
-            $pesticide = Pesticide::create([
+            $defensivo = Defensivo::create([
 
                 'user_id'               => $data['user_id'],
                 'name'                  => $data['name'],
@@ -77,16 +77,16 @@ class Pesticide extends Model
 
              ]);
     
-        $new_pesticide = $pesticide->id;
+        $new_defensivo = $defensivo->id;
     
-       if($pesticide){
+       if($defensivo){
     
             DB::commit();
     
             return[
                 'sucess' => true,
                 'mensage'=> 'Defensivo registrada com sucesso',
-                'new_pesticide' => $new_pesticide
+                'new_defensivo' => $new_defensivo
             ];
     
             }
@@ -127,24 +127,24 @@ class Pesticide extends Model
 
         public static function boot() {
             parent::boot();
-            self::deleting(function($pesticide) { // before delete() method call this
-                 $pesticide->crops()->detach(); // <-- direct deletion
+            self::deleting(function($defensivo) { // before delete() method call this
+                 $defensivo->crops()->detach(); // <-- direct deletion
                  });
                  // do the rest of the cleanup...
         }
 
         public static function boot1() {
             parent::boot();
-            self::deleting(function($pesticide) { // before delete() method call this
-                 $pesticide->diseases()->detach(); // <-- direct deletion
+            self::deleting(function($defensivo) { // before delete() method call this
+                 $defensivo->diseases()->detach(); // <-- direct deletion
                  });
                  // do the rest of the cleanup...
         }
 
         public static function boot2() {
             parent::boot();
-            self::deleting(function($pesticide) { // before delete() method call this
-                 $pesticide->active_principles()->detach(); // <-- direct deletion
+            self::deleting(function($defensivo) { // before delete() method call this
+                 $defensivo->active_principles()->detach(); // <-- direct deletion
                  });
                  // do the rest of the cleanup...
         }

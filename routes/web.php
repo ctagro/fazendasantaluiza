@@ -84,6 +84,14 @@ Route::namespace('Charts')->group(function () {
 
 // ----// Teste relacionamento muito pata muitos Crop------
 
+Route::get('defensivo/create', [App\Http\Controllers\Pesticide\DefensivoController::class,'create'])->name('defensivo.create'); 
+Route::post('defensivo/store', [App\Http\Controllers\Pesticide\DefensivoController::class, 'store'])->name('defensivo.store');
+Route::get('defensivo/index', [App\Http\Controllers\Pesticide\DefensivoController::class, 'index'])->name('defensivo.index');
+Route::get('defensivo/{defensivo}', [App\Http\Controllers\Pesticide\DefensivoController::class,'show'])->name('defensivo.show');
+Route::get('defensivo/{defensivo}/edit', [App\Http\Controllers\Pesticide\DefensivoController::class,'edit'])->name('defensivo.edit');
+Route::patch('defensivo/{defensivo}', [App\Http\Controllers\Pesticide\DefensivoController::class,'update'])->name('defensivo.update');
+Route::delete('defensivo/{defensivo}', [App\Http\Controllers\Pesticide\DefensivoController::class,'destroy'])->name('defensivo.destroy');
+
 Route::get('crop/create', [App\Http\Controllers\CropController::class,'create'])->name('crop.create'); 
 Route::post('crop/store', [App\Http\Controllers\CropController::class, 'store'])->name('crop.store');
 Route::get('crop/index', [App\Http\Controllers\CropController::class, 'index'])->name('crop.index');

@@ -31,13 +31,13 @@
                             <label class="form-label" for="email">Defensivos relacionados:</label>
                             <div class="row">
                                 <?php $index = 0   ?>    
-                                @foreach($pesticides as $pesticide)
+                                @foreach($defensivos as $defensivo)
                                     <?php $index++   ?> 
                                     <div class="col">   
                                         <div class="form-check form-group">
-                                          <p>{{$pesticide->name}}</p>
+                                          <p>{{$defensivo->name}}</p>
  <!--                                         
-                                            <a href= "{ route('pesticide.show' ,[ 'pesticide' => $pesticide->id  ])}}" class="form-check-label" for="validationFormCheck1">{$pesticide->name}}</a>
+                                            <a href= "{ route('defensivo.show' ,[ 'defensivo' => $defensivo->id  ])}}" class="form-check-label" for="validationFormCheck1">{$defensivo->name}}</a>
 
  -->
                                         </div>

@@ -8,8 +8,8 @@ use Illuminate\Http\Request;
 use DB;
 use App\Models\User;
 Use App\Models\ActivePrinciple;
-Use App\Models\Pesticide;
-Use App\Models\ActivePrinciple_pesticide;
+Use App\Models\Defensivo;
+Use App\Models\ActivePrinciple_defensivo;
 use Redirect;
 
 class ActivePrincipleController extends Controller
@@ -52,14 +52,14 @@ class ActivePrincipleController extends Controller
 
         ]);
 
-        $pesticides = Pesticide::all();
+        $defensivos = Defensivo::all();
 
-        $count = count($pesticides);
+        $count = count($defensivos);
 
-     //  dd($pesticides,$count);
+     //  dd($defensivos,$count);
 
        // return view('plantetc.activePrinciple.create',compact('ActivePrinciple')); // definitivo
-       return view('plantetc.activePrinciple.create',compact('activePrinciple','pesticides','count')); //teste
+       return view('plantetc.activePrinciple.create',compact('activePrinciple','defensivos','count')); //teste
        
     }
 
@@ -101,9 +101,9 @@ class ActivePrincipleController extends Controller
 
         // Capturando os dados da das doenças slecionado  
 
-        $pesticides= $request;
+        $defensivos= $request;
 
-    //  dd($pesticides);
+    //  dd($defensivos);
 
         $ActivePrinciple = new ActivePrinciple();
 
@@ -115,18 +115,18 @@ class ActivePrincipleController extends Controller
  
         
 
-        if($pesticides['pesticide_id'] != null)
+        if($defensivos['defensivo_id'] != null)
         {
-            $pesticides_id = array_keys($pesticides['pesticide_id']);
-        //   dd($pesticides_id);
-            foreach($pesticides_id as $pesticide_id)
+            $defensivos_id = array_keys($defensivos['defensivo_id']);
+        //   dd($defensivos_id);
+            foreach($defensivos_id as $defensivo_id)
                 {
-       //             dd($pesticide_id);
-                    $ActivePrinciple->pesticides()->attach($pesticide_id);
+       //             dd($defensivo_id);
+                    $ActivePrinciple->defensivos()->attach($defensivo_id);
 
                 }
                 
-         //     $pesticide = Pesticide::findOrFail($pesticides_id[0]);
+         //     $defensivo = Defensivo::findOrFail($defensivos_id[0]);
 
         }
        
@@ -167,23 +167,23 @@ class ActivePrincipleController extends Controller
 
        // dd($ActivePrinciple_name);
         
-        $count = count($activePrinciple->pesticides);
+        $count = count($activePrinciple->defensivos);
         
      //  dd($ActivePrinciple_name,($count>0));
         
-        $pesticides = $activePrinciple->pesticides;
+        $defensivos = $activePrinciple->defensivos;
 
-   //   dd($pesticides);
+   //   dd($defensivos);
    
       
-   //   dd($ActivePrinciple,$ActivePrinciple->name,$pesticide['name'],$count);
+   //   dd($ActivePrinciple,$ActivePrinciple->name,$defensivo['name'],$count);
       
       
       
       //dd('0k');
 
 
-        return view('plantetc.activePrinciple.show', compact('activePrinciple','pesticides' ));
+        return view('plantetc.activePrinciple.show', compact('activePrinciple','defensivos' ));
 
 
 
@@ -203,27 +203,27 @@ class ActivePrincipleController extends Controller
 
         // Para listar todas as doenças
 
-      $pesticides = Pesticide::all();
+      $defensivos = Defensivo::all();
 
       // para listar as doenças relacionadas à cultura
 
-      $activePrinciple_pesticides = $activePrinciple->pesticides;
+      $activePrinciple_defensivos = $activePrinciple->defensivos;
 
-     // dd($activePrinciple_pesticides);
+     // dd($activePrinciple_defensivos);
       
       // criando o array que lista todas as culturas e marca as que sào
       // relacionadas à cultura em questão
 
-      $activePrinciple_pesticides_result = [];
+      $activePrinciple_defensivos_result = [];
 
-      $count = count($pesticides);
+      $count = count($defensivos);
       $index = [];
       $i=0;
 
       // Criando o array com os indices das doenças relacionadas
 
-       foreach($activePrinciple_pesticides as $activePrinciple_pesticide){ 
-          $index[$i] = $activePrinciple_pesticide->id;
+       foreach($activePrinciple_defensivos as $activePrinciple_defensivo){ 
+          $index[$i] = $activePrinciple_defensivo->id;
           $i++;
        }
 
@@ -244,7 +244,7 @@ class ActivePrincipleController extends Controller
       {
           if(($i+1) == ($index[$j]) )
           {
-            $activePrinciple_pesticides_result[$i] = ($activePrinciple_pesticides[$j]->id);
+            $activePrinciple_defensivos_result[$i] = ($activePrinciple_defensivos[$j]->id);
             $j++;
               if($j >= $count_j)
               {
@@ -252,12 +252,12 @@ class ActivePrincipleController extends Controller
               }
           }
           else{
-            $activePrinciple_pesticides_result[$i] = 999;
+            $activePrinciple_defensivos_result[$i] = 999;
           }
       }
       else
       {
-        $activePrinciple_pesticides_result[$i] = 999; 
+        $activePrinciple_defensivos_result[$i] = 999; 
       }
 
         // populando um arry com o nomes das doenças
@@ -265,15 +265,15 @@ class ActivePrincipleController extends Controller
     }
 
      // dd($names);
-     // dd($activePrinciple_pesticides, $ActivePrinciple_pesticides_result);
+     // dd($activePrinciple_defensivos, $ActivePrinciple_defensivos_result);
 
       //renomeando o arry resultante
-      $activePrinciple_pesticides = $activePrinciple_pesticides_result;
+      $activePrinciple_defensivos = $activePrinciple_defensivos_result;
 
-    // dd($ActivePrinciple_pesticides);
+    // dd($ActivePrinciple_defensivos);
 
 
-        return view('plantetc.activePrinciple.edit',['activePrinciple' => $activePrinciple , 'pesticides' => $pesticides, 'names' => $names, 'activePrinciple_pesticides' => $activePrinciple_pesticides]);
+        return view('plantetc.activePrinciple.edit',['activePrinciple' => $activePrinciple , 'defensivos' => $defensivos, 'names' => $names, 'activePrinciple_defensivos' => $activePrinciple_defensivos]);
     }
 
     /**
@@ -311,52 +311,52 @@ class ActivePrincipleController extends Controller
 
      // Updade das relações
 
-        $pesticides = $request;
-     //  dd($pesticides); 
+        $defensivos = $request;
+     //  dd($defensivos); 
 
 
-        $activePrinciple_pesticides = $activePrinciple->pesticides;
+        $activePrinciple_defensivos = $activePrinciple->defensivos;
 
 //  Apagar os registros antigo das relações com as doenças
 
-    if($pesticides['pesticide_id'] != null)
+    if($defensivos['defensivo_id'] != null)
     {
-        $pesticides_id = array_keys($pesticides['pesticide_id']);
+        $defensivos_id = array_keys($defensivos['defensivo_id']);
        
-       $count = count($pesticides_id); 
-     //  dd($pesticides_id,$count);
+       $count = count($defensivos_id); 
+     //  dd($defensivos_id,$count);
        for ($i = 0; $i < $count; $i++) {
-         $pesticides_id[$i] =  $pesticides_id[$i]+1;
+         $defensivos_id[$i] =  $defensivos_id[$i]+1;
        }
-      //  dd($pesticides_id,$count);
+      //  dd($defensivos_id,$count);
 
-        foreach($pesticides_id as $pesticide_id)
+        foreach($defensivos_id as $defensivo_id)
             {
-               // dd($pesticide_id);
-                $activePrinciple->pesticides()->detach($pesticide_id);           
+               // dd($defensivo_id);
+                $activePrinciple->defensivos()->detach($defensivo_id);           
 
             }
       
     }
-//dd($pesticides[$pesticide_id]);
-$pesticides = $request;
-//dd($pesticides);
+//dd($defensivos[$defensivo_id]);
+$defensivos = $request;
+//dd($defensivos);
 
   // registrar as novas relações
 
-    if($pesticides['pesticide_id'] != null)
+    if($defensivos['defensivo_id'] != null)
     {
-        $pesticides_id = array_keys($pesticides['pesticide_id']);
+        $defensivos_id = array_keys($defensivos['defensivo_id']);
 
-        $count = count($pesticides_id); 
-       //  dd($pesticides_id,$count);
+        $count = count($defensivos_id); 
+       //  dd($defensivos_id,$count);
           for ($i = 0; $i < $count; $i++) {
-            $pesticides_id[$i] =  $pesticides_id[$i]+1;
+            $defensivos_id[$i] =  $defensivos_id[$i]+1;
           }
-       //   dd($pesticides_id,$count);
-        foreach($pesticides_id as $pesticide_id)
+       //   dd($defensivos_id,$count);
+        foreach($defensivos_id as $defensivo_id)
             {
-                $activePrinciple->pesticides()->attach($pesticide_id);
+                $activePrinciple->defensivos()->attach($defensivo_id);
             }
      
     }

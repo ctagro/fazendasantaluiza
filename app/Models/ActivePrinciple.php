@@ -9,7 +9,7 @@ use Carbon\Carbon;
 use DB;
 use App\User;
 use App\Models\Disease;
-use App\Models\Pesticide;
+use App\Models\Defensivo;
 
 class ActivePrinciple extends Model
 {
@@ -80,15 +80,15 @@ public function storeActivePrinciple(array $data): Array
             return $this->belongsTo(User::class);
         }
 
-    public function pesticides()
+    public function defensivos()
         {
-            return $this->belongsToMany(Pesticide::class);
+            return $this->belongsToMany(Defensivo::class);
         }
 
         public static function boot() {
             parent::boot();
             self::deleting(function($ActivePrinciple) { // before delete() method call this
-                 $ActivePrinciple->pesticides()->detach(); // <-- direct deletion
+                 $ActivePrinciple->defensivos()->detach(); // <-- direct deletion
                  });
                  // do the rest of the cleanup...
         }

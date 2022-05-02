@@ -9,7 +9,7 @@ use App\User;
 use App\Models\Auxiliaries\Crop_variety;
 
 use App\Models\Disease;
-use App\Models\Pesticide;
+use App\Models\Defensivo;
 
 class Crop extends Model
 {
@@ -86,9 +86,9 @@ public function storeCrop(array $data): Array
             return $this->belongsToMany(Disease::class);
         }
 
-    public function pesticides()
+    public function defensivos()
         {
-            return $this->belongsToMany(Pesticide::class);
+            return $this->belongsToMany(Defensivo::class);
         }
 
         public static function boot() {

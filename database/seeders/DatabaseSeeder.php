@@ -37,7 +37,8 @@ class DatabaseSeeder extends Seeder
    //     $this->call(CropVarietySeeder::class);
    //     $this->call(DiseaseSeeder::class);
    //     $this->call(Price_ceasa_bhSeeder::class);
-        $this->call(PesticideSeeder::class);
+   //     $this->call(PesticideSeeder::class);
+        $this->call(DefensivoSeeder::class);
   //      $this->call(ActivePrincipleSeeder::class);
 
 // =========   Auxiliares ======
