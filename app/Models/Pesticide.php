@@ -164,11 +164,6 @@ class Pesticide extends Model
             return $this->belongsTo(Manufacturer::class,'manufacturer_id');
         }
 
-        public function chemicalGroup()
-        {
-            return $this->belongsTo(ChemicalGroup::class,'chemicalGroup_id');
-        }
-    
         public function applicationMode()
         {
             return $this->belongsTo(ApplicationMode::class,'applicationMode_id');
@@ -192,6 +187,11 @@ class Pesticide extends Model
         public function actuationMechanism()
         {
             return $this->belongsTo(ActuationMechanism::class,'actuationMechanism_id');
+        }
+
+        public function chemicalGroup()
+        {
+            return $this->belongsTo(ChemicalGroup::class, 'chemicalGroup_id');
         }
     
     
