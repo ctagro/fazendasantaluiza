@@ -62,7 +62,7 @@
 <!--
                           <div class="form-group col-sm-4"> 
                             <div class="bolder">Modo de Atuação</div>
-                            <div class="form-control form-control-sm">{ $pesticide->modeOperation->name}}</div>
+                            <div class="form-control form-control-sm">{{ $pesticide->modeOperation->name}}</div>
                           </div>
 -->
                           <div class="form-group col-sm-6"> 
