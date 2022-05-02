@@ -45,17 +45,17 @@
                               <div class="bolder">Classe Toxicológica</div>
                               <div class="form-control form-control-sm">{{ $pesticide->toxicologicalClass->name}}</div>
                             </div>
-<!--
+
                             <div class="form-group col-sm-4"> 
                               <div class="bolder">Grupo Químico</div>
-                              <div class="form-control form-control-sm">{ $pesticide->chemicalGroup->name}}</div>
+                              <div class="form-control form-control-sm">{ $pesticide->chemicalGroup_id}}</div>
                             </div>
-  -->
+  
                         </div>
                       
                        
                         <div class="row">
-                          <div class="form-group col-sm-4"> 
+                          <div class="form-group col-sm-6"> 
                             <div class="bolder">Sítio de Ação</div>
                             <div class="form-control form-control-sm">{{ $pesticide->actionSite->name}}</div>
                           </div> 
@@ -64,8 +64,8 @@
                             <div class="bolder">Modo de Atuação</div>
                             <div class="form-control form-control-sm">{ $pesticide->modeOperation->name}}</div>
                           </div>
-                        -->
-                          <div class="form-group col-sm-4"> 
+-->
+                          <div class="form-group col-sm-6"> 
                             <div class="bolder">Mecanismo de Atuação</div>
                             <div class="form-control form-control-sm">{{ $pesticide->actuationMechanism->name}}</div>
                           </div>
