@@ -44,7 +44,7 @@ public function storechemicalGroup(array $data): Array
 
             return[
                 'sucess' => true,
-                'mensage'=> 'Classe Toxicológica registrada com sucesso'
+                'mensage'=> 'Tipo de Grupo Químico registrada com sucesso'
             ];
 
             }
@@ -55,7 +55,7 @@ public function storechemicalGroup(array $data): Array
 
             return[
                     'sucess' => false,
-                    'mensage'=> 'Falha ao registrar do Classe Toxicológica'
+                    'mensage'=> 'Falha ao registrar do Grupo Químico'
             ];
             }
 
@@ -66,6 +66,4 @@ public function storechemicalGroup(array $data): Array
         return $this->belongsTo(User::class);
     }
 
-  
- 
 }

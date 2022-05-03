@@ -55,7 +55,7 @@
                               <a href= "{{route('defensivo.show' ,['defensivo' => $defensivo->id])}}" >{{$defensivo->agronomicClass->name}}</a>
                            </td>
                            <td>  
-                              <a href= "{{route('defensivo.show' ,['defensivo' => $defensivo->id])}}" >{{$defensivo->chemicalGroup_id}}</a>
+                              <a href= "{{route('defensivo.show' ,['defensivo' => $defensivo->id])}}" >{{$defensivo->chemicalGroup->name}}</a>
                            </td>
                         </tr>            
                       @endforeach
