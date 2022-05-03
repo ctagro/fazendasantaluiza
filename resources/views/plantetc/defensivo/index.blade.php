@@ -45,7 +45,6 @@
                    
                      @foreach($defensivos as $defensivo)
                         <tr class="h6">
-                           {{var_dump($defensivo->chemicalGroup->name)}}
                            <td>
                               <a href= "{{route('defensivo.show' ,['defensivo' => $defensivo->id])}}" >{{$defensivo->name}}</a>
                            </td>
