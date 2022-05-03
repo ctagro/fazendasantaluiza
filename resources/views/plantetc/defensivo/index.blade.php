@@ -45,6 +45,7 @@
                    
                      @foreach($defensivos as $defensivo)
                         <tr class="h6">
+                           {{var_dump($defensivo->chemicalGroup->name)}}
                            <td>
                               <a href= "{{route('defensivo.show' ,['defensivo' => $defensivo->id])}}" >{{$defensivo->name}}</a>
                            </td>
@@ -55,7 +56,7 @@
                               <a href= "{{route('defensivo.show' ,['defensivo' => $defensivo->id])}}" >{{$defensivo->agronomicClass->name}}</a>
                            </td>
                            <td>  
-                              <a href= "{{route('defensivo.show' ,['defensivo' => $defensivo->id])}}" >{{$defensivo->chemicalGroup->name}}</a>
+                              <a href= "{{route('defensivo.show' ,['defensivo' => $defensivo->id])}}" >{{$defensivo->chemicalGroup_id}}</a>
                            </td>
                         </tr>            
                       @endforeach
