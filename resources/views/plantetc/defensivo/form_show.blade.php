@@ -45,14 +45,14 @@
                               <div class="bolder">Classe Toxicológica</div>
                               <div class="form-control form-control-sm">{{ $defensivo->toxicologicalClass->name}}</div>
                             </div>
-
+<!--
                             <div class="form-group col-sm-4"> 
                               <div class="bolder">Grupo Químico</div>
-                              <div class="form-control form-control-sm">{{ $defensivo->chemicalGroup->name}}</div>
+                              <div class="form-control form-control-sm">{ $defensivo->chemicalGroup->name}}</div>
                             </div>
   
                         </div>
-                      
+                      -->                      
                        
                         <div class="row">
                           <div class="form-group col-sm-4"> 
