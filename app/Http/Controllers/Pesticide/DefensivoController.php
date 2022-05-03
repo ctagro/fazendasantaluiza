@@ -42,20 +42,20 @@ class DefensivoController extends Controller
     {
 
 
-      $manufacturers = Manufacturer::all();
-      $chemicalGroups = ChemicalGroup::all();
-      $agronomicClasses = AgronomicClass::all();
+  //    $manufacturers = Manufacturer::all();
+  //    $chemicalGroups = ChemicalGroup::all();
+  //    $agronomicClasses = AgronomicClass::all();
       
 
       $defensivos = Defensivo::get();
 
-      $users = User::all();
+  //    $users = User::all();
 
-      $chemicalGroups = ChemicalGroup::all();
+  //    $chemicalGroups = ChemicalGroup::all();
 
     // dd($users);
 
-    // dd($chemicalGroups);
+   //  dd($chemicalGroups);
 
    // dd($defensivo,$chemicalGroup,$defensivo->chemicalGroup);
   //    $pets = Defensivo::find(1)->chemicalGroup()->where('id','chemicalGroup_id');
@@ -66,7 +66,7 @@ class DefensivoController extends Controller
 
       
 
-          return view('plantetc.defensivo.index', compact('defensivos','manufacturers','chemicalGroups','agronomicClasses'));
+          return view('plantetc.defensivo.index', compact('defensivos'));
     }
 
     /**
@@ -103,9 +103,7 @@ class DefensivoController extends Controller
         $active_principles = ActivePrinciple::all();
         $count_active_principles = count($crops);
 
-     //  dd($defensivos,$count);
 
-       // return view('plantetc.crop.create',compact('crop')); // definitivo
        return view('plantetc.defensivo.create',compact('defensivo','crops','count_crops','diseases',
                                                         'count_diseases','active_principles','count_active_principles',
                                                         'agronomicClasses','formulationTypes','manufacturers',

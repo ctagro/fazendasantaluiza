@@ -191,7 +191,7 @@ class Defensivo extends Model
 
         public function chemicalGroup()
         {
-            return $this->belongsTo(ChemicalGroup::class, 'chemicalGroup_id');
+            return $this->belongsTo(ChemicalGroup::class,'chemicalGroup_id');
         }
     
     

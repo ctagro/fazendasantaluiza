@@ -7,7 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 
 use DB;
 use App\User;
-Use App\Models\Pesticide;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class ChemicalGroup extends Model
