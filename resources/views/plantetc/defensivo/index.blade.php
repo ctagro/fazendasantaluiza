@@ -37,7 +37,8 @@
                            <th><small>Nome<xl-small></th>
                            <th><small>Fabricante<xl-small></th>
                             <th><small>Classe Agronômica<xl-small></th>
-                              <th><small>Grupo Químico<xl-small></th>
+
+                              
             
                         </tr>
                      </thead>
@@ -55,9 +56,9 @@
                            <td>  
                               <a href= "{{route('defensivo.show' ,['defensivo' => $defensivo->id])}}" >{{$defensivo->agronomicClass->name}}</a>
                            </td> 
-                           <td>  
-                              <a href= "{{route('defensivo.show' ,['defensivo' => $defensivo->id])}}" >{{$defensivo->chemicalGroup->name}}</a>
-                           </td>         
+<!--                           <td>  
+                              <a href= "{route('defensivo.show' ,['defensivo' => $defensivo->id])}}" >{$defensivo->chemicalGroup->name}}</a>
+                           </td>    -->     
                         </tr>            
                       @endforeach
                      </tbody>
@@ -66,7 +67,7 @@
                            <th><small>Nome<xl-small></th>
                            <th><small>Fabricante<xl-small></th>
                            <th><small>Classe Agronômica<xl-small></th>
-                              <th><small>Grupo Químico<xl-small></th>
+   
                         </tr>
                      </tfoot>
                   </table>
