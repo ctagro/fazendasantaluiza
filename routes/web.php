@@ -210,6 +210,14 @@ Route::get('actuationMechanism/{actuationMechanism}/edit', [App\Http\Controllers
 Route::patch('actuationMechanism/{actuationMechanism}', [App\Http\Controllers\Auxiliaries\ActuationMechanismController::class,'update'])->name('actuationMechanism.update');
 Route::delete('actuationMechanism/{actuationMechanism}', [App\Http\Controllers\Auxiliaries\ActuationMechanismController::class,'destroy'])->name('actuationMechanism.destroy');
 
+Route::get('grupo_quimico/create', [App\Http\Controllers\Auxiliaries\Grupo_quimicoController::class,'create'])->name('grupo_quimico.create'); 
+Route::post('grupo_quimico/store', [App\Http\Controllers\Auxiliaries\Grupo_quimicoController::class, 'store'])->name('grupo_quimico.store');
+Route::get('grupo_quimico/index', [App\Http\Controllers\Auxiliaries\Grupo_quimicoController::class, 'index'])->name('grupo_quimico.index');
+Route::get('grupo_quimico/{grupo_quimico}', [App\Http\Controllers\Auxiliaries\Grupo_quimicoController::class,'show'])->name('grupo_quimico.show');
+Route::get('grupo_quimico/{grupo_quimico}/edit', [App\Http\Controllers\Auxiliaries\Grupo_quimicoController::class,'edit'])->name('grupo_quimico.edit');
+Route::patch('grupo_quimico/{grupo_quimico}', [App\Http\Controllers\Auxiliaries\Grupo_quimicoController::class,'update'])->name('grupo_quimico.update');
+Route::delete('grupo_quimico/{grupo_quimico}', [App\Http\Controllers\Auxiliaries\Grupo_quimicoController::class,'destroy'])->name('grupo_quimico.destroy');
+
 Route::get('locate_cropsASdisease/{disease_id}', [App\Http\Controllers\Join\JoinController::class, 'locate_cropsASdisease'])->name('locate_cropsASdisease');
 
 

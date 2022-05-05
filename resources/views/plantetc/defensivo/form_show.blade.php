@@ -37,11 +37,11 @@
                         </div>
                        
                         <div class="row">
-                            <div class="form-group col-sm-4"> 
+                            <div class="form-group col-sm-6"> 
                               <div class="bolder">Modo de Aplicação</div>
                               <div class="form-control form-control-sm">{{ $defensivo->applicationMode->name}}</div>
                             </div> 
-                            <div class="form-group col-sm-4"> 
+                            <div class="form-group col-sm-6"> 
                               <div class="bolder">Classe Toxicológica</div>
                               <div class="form-control form-control-sm">{{ $defensivo->toxicologicalClass->name}}</div>
                             </div>
@@ -50,22 +50,22 @@
                               <div class="bolder">Grupo Químico</div>
                               <div class="form-control form-control-sm">{ $defensivo->chemicalGroup->name}}</div>
                             </div>
-  
+                          --> 
                         </div>
-                      -->                      
+                                         
                        
                         <div class="row">
-                          <div class="form-group col-sm-4"> 
+                          <div class="form-group col-sm-6"> 
                             <div class="bolder">Sítio de Ação</div>
                             <div class="form-control form-control-sm">{{ $defensivo->actionSite->name}}</div>
                           </div> 
-
+<!--
                           <div class="form-group col-sm-4"> 
                             <div class="bolder">Modo de Atuação</div>
-                            <div class="form-control form-control-sm">{{ $defensivo->modeOperation->name}}</div>
+                            <div class="form-control form-control-sm">{ { $defensivo->modeOperation->name}}</div>
                           </div>
-
-                          <div class="form-group col-sm-4"> 
+                        -->
+                          <div class="form-group col-sm-6"> 
                             <div class="bolder">Mecanismo de Atuação</div>
                             <div class="form-control form-control-sm">{{ $defensivo->actuationMechanism->name}}</div>
                           </div>

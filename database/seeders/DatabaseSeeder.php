@@ -38,7 +38,7 @@ class DatabaseSeeder extends Seeder
    //     $this->call(DiseaseSeeder::class);
    //     $this->call(Price_ceasa_bhSeeder::class);
    //     $this->call(PesticideSeeder::class);
-        $this->call(DefensivoSeeder::class);
+   //     $this->call(DefensivoSeeder::class);
   //      $this->call(ActivePrincipleSeeder::class);
 
 // =========   Auxiliares ======
@@ -51,5 +51,7 @@ class DatabaseSeeder extends Seeder
    //       $this->call(ActionSiteSeeder::class);  
    //       $this->call(ModeOperationSeeder::class); 
    //       $this->call(ActuationMechanismSeeder::class); 
+            $this->call(GrupoQuimicoSeeder::class);
+
     }
 }

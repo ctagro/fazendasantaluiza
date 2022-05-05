@@ -19,6 +19,7 @@ use App\Models\Auxiliaries\ToxicologicalClass;
 use App\Models\Auxiliaries\ActionSite;
 use App\Models\Auxiliaries\ModeOperation;
 use App\Models\Auxiliaries\ActuationMechanism;
+use App\Models\Auxiliaries\Grupo_quimico;
 
 class Defensivo extends Model
 {
@@ -192,6 +193,11 @@ class Defensivo extends Model
         public function chemicalGroup()
         {
             return $this->belongsTo(ChemicalGroup::class,'chemicalGroup_id');
+        }
+
+        public function grupo_quimico()
+        {
+            return $this->belongsTo(Grupo_quimico::class);
         }
     
     

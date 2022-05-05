@@ -174,7 +174,7 @@
                             </div>
 -->
 
-                            <div class="form-group col-sm-6 ">
+                            <div class="form-group col-sm-12 ">
                                 <label for="colFormLabelSm" class="form-label">Sitio de Atuação</label>
                                 <select name="actionSite_id" class="form-select form-select-sm mb-3" id="agronomicClass_id" aria-label=".form-select-lg example" required>
                                    <option selected disabled value="">Selecione </option>
@@ -186,19 +186,20 @@
                                     <h6 class="text-danger" >Selecione</h6> 
                                 @endif 
                             </div>   
-
+<!--
                             <div class="form-group col-sm-6 ">
                                 <label for="colFormLabelSm" class="form-label">Modo de Atuação</label>
                                 <select name="modeOperation_id" class="form-select form-select-sm mb-3" id="agronomicClass_id" aria-label=".form-select-lg example" required>
                                    <option selected disabled value="">Selecione </option>
-                                   @foreach($modeOperations as $modeOperation)    
-                                            <option value="{{$modeOperation->id}}">{{$modeOperation->name}} </option>                  
-                                        @endforeach
+                                   foreach($modeOperations as $modeOperation)    
+                                            <option value="{$modeOperation->id}}">{$modeOperation->name}} </option>                  
+                                        endforeach
                                 </select> 
-                                @if($errors->has('modeOperation_id'))    
+                                if($errors->has('modeOperation_id'))    
                                     <h6 class="text-danger" >Selecione</h6> 
-                                @endif 
+                                endif 
                             </div>
+                        -->
 
                         </div>
 

@@ -29,55 +29,55 @@
                 </div>
 
 
-<!--===================Indicações-->                           
+<!--===================Indicações                           
                     <label class="form-label" for="name">Selecione as indicações:</label>
                     <div class="row">
-                        <?php $index = 0   ?> 
-                        @foreach($diseases as $disease)
-                            <?php $index++   ?> 
+                        <php $index = 0   ?> 
+                        foreach($diseases as $disease)
+                            <php $index++   ?> 
                             <div class="col">   
                                 <div class="form-check form-group">
-                                    <input type="radio" name="disease_id[{{$index}}]" class="form-check-input" id="validationFormCheck1" >
-                                    <label class="form-check-label" for="disease_id[{{$index}}]">{{$disease->name}}</label>
+                                    <input type="radio" name="disease_id[{$index}}]" class="form-check-input" id="validationFormCheck1" >
+                                    <label class="form-check-label" for="disease_id[{$index}}]">{$disease->name}}</label>
                                     <div class="invalid-feedback">Indicações</div>  
                                 </div>
                             </div>
                                      
-                         @endforeach
+                         endforeach
                     </div>
 
-<!--============Culturas  -->
+!--============Culturas  
                     <label class="form-label" for="name">Selecione culturas indicadas:</label>
                     <div class="row">
-                        <?php $index = 0   ?> 
-                        @foreach($crops as $crop)
-                            <?php $index++   ?> 
+                        <php $index = 0   ?> 
+                        foreach($crops as $crop)
+                            <php $index++   ?> 
                             <div class="col">   
                                 <div class="form-check form-group">
-                                    <input type="radio" name="crop_id[{{$index}}]" class="form-check-input" id="validationFormCheck1" >
-                                    <label class="form-check-label" for="crop_id[{{$index}}]">{{$crop->name}}</label>
+                                    <input type="radio" name="crop_id[{$index}}]" class="form-check-input" id="validationFormCheck1" >
+                                    <label class="form-check-label" for="crop_id[{$index}}]">{$crop->name}}</label>
                                     <div class="invalid-feedback">Culturas indicadas</div>  
                                 </div>
                             </div>                    
-                         @endforeach
+                         endforeach
                     </div>
 
-<!--================Principio Ativo -->
+<--================Principio Ativo ---
                     <label class="form-label" for="name">Selecione os principios ativos:</label>
                     <div class="row">
-                        <?php $index = 0   ?> 
-                        @foreach($active_principles as $active_principle)
-                            <?php $index++   ?> 
+                        ?php $index = 0   ?> 
+                        foreach($active_principles as $active_principle)
+                            <php $index++   ?> 
                             <div class="col">   
                                 <div class="form-check form-group">
-                                    <input type="radio" name="active_principle_id[{{$index}}]" class="form-check-input" id="validationFormCheck1" >
-                                    <label class="form-check-label" for="active_principle_id[{{$index}}]">{{$active_principle->name}}</label>
+                                    <input type="radio" name="active_principle_id[{$index}}]" class="form-check-input" id="validationFormCheck1" >
+                                    <label class="form-check-label" for="active_principle_id[{$index}}]">{$active_principle->name}}</label>
                                     <div class="invalid-feedback">Principio ativos</div>  
                                 </div>
                             </div>                      
-                         @endforeach
+                         endforeach
                     </div>
-           
+                -->           
                     <div class="row">
 
                         <div class="form-group col-sm-4"> 
