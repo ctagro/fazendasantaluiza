@@ -218,6 +218,14 @@ Route::get('grupo_quimico/{grupo_quimico}/edit', [App\Http\Controllers\Auxiliari
 Route::patch('grupo_quimico/{grupo_quimico}', [App\Http\Controllers\Auxiliaries\Grupo_quimicoController::class,'update'])->name('grupo_quimico.update');
 Route::delete('grupo_quimico/{grupo_quimico}', [App\Http\Controllers\Auxiliaries\Grupo_quimicoController::class,'destroy'])->name('grupo_quimico.destroy');
 
+Route::get('modo_atuacao/create', [App\Http\Controllers\Auxiliaries\Modo_atuacaoController::class,'create'])->name('modo_atuacao.create'); 
+Route::post('modo_atuacao/store', [App\Http\Controllers\Auxiliaries\Modo_atuacaoController::class, 'store'])->name('modo_atuacao.store');
+Route::get('modo_atuacao/index', [App\Http\Controllers\Auxiliaries\Modo_atuacaoController::class, 'index'])->name('modo_atuacao.index');
+Route::get('modo_atuacao/{modo_atuacao}', [App\Http\Controllers\Auxiliaries\Modo_atuacaoController::class,'show'])->name('modo_atuacao.show');
+Route::get('modo_atuacao/{modo_atuacao}/edit', [App\Http\Controllers\Auxiliaries\Modo_atuacaoController::class,'edit'])->name('modo_atuacao.edit');
+Route::patch('modo_atuacao/{modo_atuacao}', [App\Http\Controllers\Auxiliaries\Modo_atuacaoController::class,'update'])->name('modo_atuacao.update');
+Route::delete('modo_atuacao/{modo_atuacao}', [App\Http\Controllers\Auxiliaries\Modo_atuacaoController::class,'destroy'])->name('modo_atuacao.destroy');
+
 Route::get('locate_cropsASdisease/{disease_id}', [App\Http\Controllers\Join\JoinController::class, 'locate_cropsASdisease'])->name('locate_cropsASdisease');
 
 

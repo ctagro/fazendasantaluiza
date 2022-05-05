@@ -20,6 +20,7 @@ use App\Models\Auxiliaries\ActionSite;
 use App\Models\Auxiliaries\ModeOperation;
 use App\Models\Auxiliaries\ActuationMechanism;
 use App\Models\Auxiliaries\Grupo_quimico;
+use App\Models\Auxiliaries\Modo_atuacao;
 
 class Defensivo extends Model
 {
@@ -198,6 +199,11 @@ class Defensivo extends Model
         public function grupo_quimico()
         {
             return $this->belongsTo(Grupo_quimico::class);
+        }
+
+        public function modo_atuacao()
+        {
+            return $this->belongsTo(Modo_atuacao::class);
         }
     
     

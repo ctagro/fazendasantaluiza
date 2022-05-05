@@ -42,7 +42,7 @@ class DatabaseSeeder extends Seeder
   //      $this->call(ActivePrincipleSeeder::class);
 
 // =========   Auxiliares ======
-   //         $this->call(AgronomicClassSeeder::class);
+   //       $this->call(AgronomicClassSeeder::class);
    //       $this->call(FormulationTypeSeeder::class);
    //       $this->call(ManufacturerSeeder::class);
    //       $this->call(ApplicationModeSeeder::class);
@@ -51,7 +51,9 @@ class DatabaseSeeder extends Seeder
    //       $this->call(ActionSiteSeeder::class);  
    //       $this->call(ModeOperationSeeder::class); 
    //       $this->call(ActuationMechanismSeeder::class); 
-            $this->call(GrupoQuimicoSeeder::class);
+   //       $this->call(GrupoQuimicoSeeder::class);
+            $this->call(ModoAtuacaoSeeder::class);
+  
 
     }
 }
