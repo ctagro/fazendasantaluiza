@@ -37,7 +37,7 @@ class Defensivo extends Model
         'applicationMode_id',
         'toxicologicalClass_id',
         'chemicalGroup_id',
-        'actionSite_id',
+        'grupo_quimico_id',
         'modeOperation_id',
         'actuationMechanism_id',
         'applicationRange',
@@ -67,14 +67,14 @@ class Defensivo extends Model
                 'unity'                 => $data['unity'],
                 'applicationMode_id'    => $data['applicationMode_id'],
                 'toxicologicalClass_id' => $data['toxicologicalClass_id'],
-                'chemicalGroup_id'      => $data['chemicalGroup_id'],
+                'grupo_quimico_id'      => $data['grupo_quimico_id'],
                 'actionSite_id'         => $data['actionSite_id'],
-                'modeOperation_id'      => $data['modeOperation_id'],
+//                'modeOperation_id'      => $data['modeOperation_id'],
                 'actuationMechanism_id' => $data['actuationMechanism_id'],
                 'applicationRange'      => $data['applicationRange'],
                 'numberApplications'    => $data['numberApplications'],
                 'note'                  => $data['note'],
-                'image'                 => $data['image'],
+//                'image'                 => $data['image'],
                 'in_use'                => $data['in_use'],
 
              ]);
@@ -203,7 +203,7 @@ class Defensivo extends Model
 
         public function modo_atuacao()
         {
-            return $this->belongsTo(Modo_atuacao::class);
+            return $this->belongsTo(Modo_atuacao::class, 'modo_atuacao_id');
         }
     
     

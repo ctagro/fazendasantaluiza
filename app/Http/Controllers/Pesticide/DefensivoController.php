@@ -21,7 +21,8 @@ use App\Models\Auxiliaries\ToxicologicalClass;
 use App\Models\Auxiliaries\ActionSite;
 use App\Models\Auxiliaries\ModeOperation;
 use App\Models\Auxiliaries\ActuationMechanism;
-
+use App\Models\Auxiliaries\Grupo_quimico;
+use App\Models\Auxiliaries\Modo_atuacao;
 use Redirect;
 
 
@@ -77,18 +78,18 @@ class DefensivoController extends Controller
     public function create()
     {
 
+      $user = auth()->user();
+
       $agronomicClasses         = AgronomicClass::all();
       $formulationTypes         = FormulationType::all();
       $manufacturers            = Manufacturer::all();
       $applicationModes         = ApplicationMode::all();
-      $chemicalGroups           = ChemicalGroup::all();
+      $grupo_quimicos           = Grupo_quimico::all();
       $toxicologicalClasses     = ToxicologicalClass::all();
       $actionSites              = ActionSite::all();
       $modeOperations           = ModeOperation::all();
       $actuationMechanisms      = ActuationMechanism::all();
 
-
-        $user = auth()->user();
 
         $defensivo= new \App\Models\Defensivo([   
 
@@ -107,7 +108,7 @@ class DefensivoController extends Controller
        return view('plantetc.defensivo.create',compact('defensivo','crops','count_crops','diseases',
                                                         'count_diseases','active_principles','count_active_principles',
                                                         'agronomicClasses','formulationTypes','manufacturers',
-                                                        'applicationModes','chemicalGroups','toxicologicalClasses',
+                                                        'applicationModes','grupo_quimicos','toxicologicalClasses',
                                                         'actionSites','modeOperations','actuationMechanisms')); 
        
     }
@@ -126,7 +127,7 @@ class DefensivoController extends Controller
         $request['note'] = "...";
      }
 
-   //  dd($request);
+  //   dd($request);
 
         // Capturando os dados da Cultura    
         $data = $this->validateRequest(); 
@@ -226,15 +227,7 @@ class DefensivoController extends Controller
     {
         // ++> verificar se precisa dessa linha
 
-        $agronomicClasses         = AgronomicClass::all();
-        $formulationTypes         = FormulationType::all();
-        $manufacturers            = Manufacturer::all();
-        $applicationModes         = ApplicationMode::all();
-        $chemicalGroups           = ChemicalGroup::all();
-        $toxicologicalClasses     = ToxicologicalClass::all();
-        $actionSites              = ActionSite::all();
-        $modeOperations           = ModeOperation::all();
-        $actuationMechanisms      = ActuationMechanism::all();
+
         $defensivo = Defensivo::find($defensivo_id);
 
         $user = auth()->user();
@@ -273,14 +266,12 @@ class DefensivoController extends Controller
       $formulationTypes         = FormulationType::all();
       $manufacturers            = Manufacturer::all();
       $applicationModes         = ApplicationMode::all();
-      $chemicalGroups           = ChemicalGroup::all();
+      $grupo_quimicos           = Grupo_quimico::all();
       $toxicologicalClasses     = ToxicologicalClass::all();
       $actionSites              = ActionSite::all();
       $modeOperations           = ModeOperation::all();
       $actuationMechanisms      = ActuationMechanism::all();
 
-
-        $user = auth()->user();
 
    // Para listar as culturas e as que relacionam co defensivo
       $crops = Crop::all();
@@ -427,12 +418,10 @@ if($count_j>0)
  $defensivo_active_principles = $defensivo_active_principles_result;
 
 
-//dd($chemicalGroups) ;
-
         return view('plantetc.defensivo.edit',compact('defensivo','crops','diseases','active_principles',
                                                     'defensivo_crops','defensivo_diseases','defensivo_active_principles',                                                
                                                     'agronomicClasses','formulationTypes','manufacturers',
-                                                    'applicationModes','chemicalGroups','toxicologicalClasses',
+                                                    'applicationModes','grupo_quimicos','toxicologicalClasses',
                                                     'actionSites','modeOperations','actuationMechanisms')); 
   }
     /**
@@ -467,7 +456,7 @@ if($count_j>0)
             $data['unity'] = $dataRequest['unity'];
             $data['applicationMode_id'] = $dataRequest['applicationMode_id'];
             $data['toxicologicalClass_id'] = $dataRequest['toxicologicalClass_id'];
-            $data['chemicalGroup_id'] = $dataRequest['chemicalGroup_id'];
+            $data['grupo_quimico_id'] = $dataRequest['grupo_quimico_id'];
             $data['actionSite_id'] = $dataRequest['actionSite_id'];
             $data['modeOperation_id'] = $dataRequest['modeOperation_id'];
             $data['actuationMechanism_id'] = $dataRequest['actuationMechanism_id'];
@@ -476,6 +465,7 @@ if($count_j>0)
             $data['note'] = $dataRequest['note'];
         //    $data['image'] = $dataRequest['image'];
             $data['in_use'] = $dataRequest['in_use'];
+
 
       $update = $defensivo->update($data);
 
@@ -607,10 +597,10 @@ $crops = $request;
             'unity'                   => 'required',
             'applicationMode_id'      => 'required',
             'toxicologicalClass_id'   => 'required',
-            'chemicalGroup_id'        => 'required',
+            'grupo_quimico_id'        => 'required',
             'actionSite_id'           => 'required',
-            'modeOperation_id'        => 'required',
-            'actuationMechanism_id'      => 'required',
+  //        'modeOperation_id'        => 'required',
+            'actuationMechanism_id'   => 'required',
             'applicationRange'        => 'required',
             'numberApplications'      => 'required',
             'note'                    => 'required',

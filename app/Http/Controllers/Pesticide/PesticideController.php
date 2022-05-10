@@ -251,7 +251,7 @@ class PesticideController extends Controller
         $crops = $pesticide->crops;
 
   
-    
+    //dd($pesticide->id);
 
 
         return view('plantetc.pesticide.show', compact('crops','pesticide' ));

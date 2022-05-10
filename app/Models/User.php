@@ -8,6 +8,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use App\Models\Auxiliaries\Crop_variety;
 use App\Models\Pesticide;
+use App\Models\Crop;
 use App\Models\ActivePrinciple;
 use App\Models\Auxiliaries\AgronomicClass;
 use App\Models\Auxiliaries\FormulationType;
@@ -71,6 +72,11 @@ class User extends Authenticatable
     public function pesticide()
     {
         return $this->hasMany(Pesticide::class);
+    }
+
+    public function crop()
+    {
+        return $this->hasMany(Crop::class);
     }
 
     public function agronomicClass()
