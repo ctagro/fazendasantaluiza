@@ -9,7 +9,7 @@ use Carbon\Carbon;
 use DB;
 use App\User;
 use App\Models\Crop;
-use App\Models\Defensivo;
+use App\Models\Pesticide;
 
 
 class Disease extends Model
@@ -91,9 +91,9 @@ class Disease extends Model
             return $this->belongsToMany(Crop::class);
         }
 
-    public function defensivos()
+    public function pesticides()
         {
-            return $this->belongsToMany(Defensivo::class);
+            return $this->belongsToMany(Pesticide::class);
         }
 
         public static function boot() {

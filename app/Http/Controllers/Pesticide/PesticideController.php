@@ -236,6 +236,7 @@ class PesticideController extends Controller
         $actionSites              = ActionSite::all();
         $modeOperations           = ModeOperation::all();
         $actuationMechanisms      = ActuationMechanism::all();
+
         $pesticide = Pesticide::find($pesticide_id);
 
         $user = auth()->user();

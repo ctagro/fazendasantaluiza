@@ -458,7 +458,7 @@ if($count_j>0)
             $data['toxicologicalClass_id'] = $dataRequest['toxicologicalClass_id'];
             $data['grupo_quimico_id'] = $dataRequest['grupo_quimico_id'];
             $data['actionSite_id'] = $dataRequest['actionSite_id'];
-            $data['modeOperation_id'] = $dataRequest['modeOperation_id'];
+//            $data['modeOperation_id'] = $dataRequest['modeOperation_id'];
             $data['actuationMechanism_id'] = $dataRequest['actuationMechanism_id'];
             $data['applicationRange'] = $dataRequest['applicationRange'];
             $data['numberApplications'] = $dataRequest['numberApplications'];
