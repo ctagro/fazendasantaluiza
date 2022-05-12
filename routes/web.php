@@ -145,7 +145,7 @@ Route::get('agronomicClass/{agronomicClass}', [App\Http\Controllers\Auxiliaries\
 Route::get('agronomicClass/{agronomicClass}/edit', [App\Http\Controllers\Auxiliaries\AgronomicClassController::class,'edit'])->name('agronomicClass.edit');
 Route::patch('agronomicClass/{agronomicClass}', [App\Http\Controllers\Auxiliaries\AgronomicClassController::class,'update'])->name('agronomicClass.update');
 Route::delete('agronomicClass/{agronomicClass}', [App\Http\Controllers\Auxiliaries\AgronomicClassController::class,'destroy'])->name('agronomicClass.destroy');
-
+ 
 Route::get('formulationType/create', [App\Http\Controllers\Auxiliaries\FormulationTypeController::class,'create'])->name('formulationType.create'); 
 Route::post('formulationType/store', [App\Http\Controllers\Auxiliaries\FormulationTypeController::class, 'store'])->name('formulationType.store');
 Route::get('formulationType/index', [App\Http\Controllers\Auxiliaries\FormulationTypeController::class, 'index'])->name('formulationType.index');

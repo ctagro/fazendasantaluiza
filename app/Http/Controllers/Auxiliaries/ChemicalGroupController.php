@@ -26,6 +26,8 @@ class ChemicalGroupController extends Controller
     {
 
    $chemicalGroups = ChemicalGroup::get();
+
+  // dd($chemicalGroups);
   
         return view('auxiliaries.chemicalGroup.index', ['chemicalGroups' => $chemicalGroups]);
     }
