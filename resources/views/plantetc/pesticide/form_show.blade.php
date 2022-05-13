@@ -78,7 +78,7 @@
                           </div>
                         </div>
                                                    
-                            <label class="form-label" for="email">Doenças que atingem a cultura:</label>
+                            <label class="form-label" for="email">Culturas recomendadas:</label>
                             <div class="row">
                                 <?php $index = 0   ?>    
                                 @foreach($crops as $crop)
@@ -87,10 +87,10 @@
                                         <div class="form-check form-group">
                                             <a href= "{{ route('crop.show' ,[ 'crop' => $crop->id  ])}}" class="form-check-label" for="validationFormCheck1">{{$crop->name}}</a>
                                         </div>
-                                    </div>
-                                             
+                                    </div>                            
                                  @endforeach
                             </div>
+
                             <div class="form-group">
                                 <div class="bolder">Nota:</div>
                                 <div class="form-control form-control-sm">{{ $pesticide->note}}</div>    

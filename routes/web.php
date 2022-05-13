@@ -84,13 +84,6 @@ Route::namespace('Charts')->group(function () {
 
 // ----// Teste relacionamento muito pata muitos Crop------
 
-Route::get('defensivo/create', [App\Http\Controllers\Pesticide\DefensivoController::class,'create'])->name('defensivo.create'); 
-Route::post('defensivo/store', [App\Http\Controllers\Pesticide\DefensivoController::class, 'store'])->name('defensivo.store');
-Route::get('defensivo/index', [App\Http\Controllers\Pesticide\DefensivoController::class, 'index'])->name('defensivo.index');
-Route::get('defensivo/{defensivo}', [App\Http\Controllers\Pesticide\DefensivoController::class,'show'])->name('defensivo.show');
-Route::get('defensivo/{defensivo}/edit', [App\Http\Controllers\Pesticide\DefensivoController::class,'edit'])->name('defensivo.edit');
-Route::patch('defensivo/{defensivo}', [App\Http\Controllers\Pesticide\DefensivoController::class,'update'])->name('defensivo.update');
-Route::delete('defensivo/{defensivo}', [App\Http\Controllers\Pesticide\DefensivoController::class,'destroy'])->name('defensivo.destroy');
 
 Route::get('crop/create', [App\Http\Controllers\CropController::class,'create'])->name('crop.create'); 
 Route::post('crop/store', [App\Http\Controllers\CropController::class, 'store'])->name('crop.store');
@@ -210,21 +203,6 @@ Route::get('actuationMechanism/{actuationMechanism}/edit', [App\Http\Controllers
 Route::patch('actuationMechanism/{actuationMechanism}', [App\Http\Controllers\Auxiliaries\ActuationMechanismController::class,'update'])->name('actuationMechanism.update');
 Route::delete('actuationMechanism/{actuationMechanism}', [App\Http\Controllers\Auxiliaries\ActuationMechanismController::class,'destroy'])->name('actuationMechanism.destroy');
 
-Route::get('grupo_quimico/create', [App\Http\Controllers\Auxiliaries\Grupo_quimicoController::class,'create'])->name('grupo_quimico.create'); 
-Route::post('grupo_quimico/store', [App\Http\Controllers\Auxiliaries\Grupo_quimicoController::class, 'store'])->name('grupo_quimico.store');
-Route::get('grupo_quimico/index', [App\Http\Controllers\Auxiliaries\Grupo_quimicoController::class, 'index'])->name('grupo_quimico.index');
-Route::get('grupo_quimico/{grupo_quimico}', [App\Http\Controllers\Auxiliaries\Grupo_quimicoController::class,'show'])->name('grupo_quimico.show');
-Route::get('grupo_quimico/{grupo_quimico}/edit', [App\Http\Controllers\Auxiliaries\Grupo_quimicoController::class,'edit'])->name('grupo_quimico.edit');
-Route::patch('grupo_quimico/{grupo_quimico}', [App\Http\Controllers\Auxiliaries\Grupo_quimicoController::class,'update'])->name('grupo_quimico.update');
-Route::delete('grupo_quimico/{grupo_quimico}', [App\Http\Controllers\Auxiliaries\Grupo_quimicoController::class,'destroy'])->name('grupo_quimico.destroy');
-
-Route::get('modo_atuacao/create', [App\Http\Controllers\Auxiliaries\Modo_atuacaoController::class,'create'])->name('modo_atuacao.create'); 
-Route::post('modo_atuacao/store', [App\Http\Controllers\Auxiliaries\Modo_atuacaoController::class, 'store'])->name('modo_atuacao.store');
-Route::get('modo_atuacao/index', [App\Http\Controllers\Auxiliaries\Modo_atuacaoController::class, 'index'])->name('modo_atuacao.index');
-Route::get('modo_atuacao/{modo_atuacao}', [App\Http\Controllers\Auxiliaries\Modo_atuacaoController::class,'show'])->name('modo_atuacao.show');
-Route::get('modo_atuacao/{modo_atuacao}/edit', [App\Http\Controllers\Auxiliaries\Modo_atuacaoController::class,'edit'])->name('modo_atuacao.edit');
-Route::patch('modo_atuacao/{modo_atuacao}', [App\Http\Controllers\Auxiliaries\Modo_atuacaoController::class,'update'])->name('modo_atuacao.update');
-Route::delete('modo_atuacao/{modo_atuacao}', [App\Http\Controllers\Auxiliaries\Modo_atuacaoController::class,'destroy'])->name('modo_atuacao.destroy');
 
 Route::get('locate_cropsASdisease/{disease_id}', [App\Http\Controllers\Join\JoinController::class, 'locate_cropsASdisease'])->name('locate_cropsASdisease');
 

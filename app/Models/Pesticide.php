@@ -72,7 +72,7 @@ class Pesticide extends Model
                 'applicationRange'      => $data['applicationRange'],
                 'numberApplications'    => $data['numberApplications'],
                 'note'                  => $data['note'],
-                'image'                 => $data['image'],
+//                'image'                 => $data['image'],
                 'in_use'                => $data['in_use'],
 
              ]);

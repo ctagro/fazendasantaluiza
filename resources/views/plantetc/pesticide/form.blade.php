@@ -100,7 +100,7 @@
                                 <div class="form-group col-sm-4 ">
                            
                                 <label for="colFormLabelSm" class="form-label">Tipo de Formulação</label>
-                                <select name="formulationType_id" class="form-select form-select-sm mb-3" id="agronomicClass_id" aria-label=".form-select-lg example" required>
+                                <select name="formulationType_id" class="form-select form-select-sm mb-3" id="formulationType_id" aria-label=".form-select-lg example" required>
                                    <option selected disabled value="">Selecione</option>
                                    @foreach($formulationTypes as $formulationType)    
                                             <option value="{{$formulationType->id}}">{{$formulationType->name}} </option>                  
@@ -114,7 +114,7 @@
                          
                             <div class="form-group col-sm-4 ">
                                     <label for="colFormLabelSm" class="form-label">Modo de Aplicação</label>
-                                    <select name="applicationMode_id" class="form-select form-select-sm mb-3" id="agronomicClass_id" aria-label=".form-select-lg example" required>
+                                    <select name="applicationMode_id" class="form-select form-select-sm mb-3" id="applicationMode_id" aria-label=".form-select-lg example" required>
                                        <option selected disabled value="">Selecione </option>
                                        @foreach($applicationModes as $applicationMode)    
                                                 <option value="{{$applicationMode->id}}">{{$applicationMode->name}} </option>                  
@@ -129,7 +129,7 @@
                             <div class="row">
                                 <div class="form-group col-sm-4"> 
                                     <label class="form-label" for="colFormLabelSm">Dose recomendada</label>
-                                    <input type="number" name="dosage" value="{{old('dosage') ?? $pesticide->dosege }}" class="form-control form-control-sm" placeholder="Dosagem">
+                                    <input type="number" name="dosage" value="{{old('dosage') ?? $pesticide->dosege }}" class="form-control form-control-sm" placeholder="Dose">
                                     @if($errors->has('dosage'))
                                             <h6 class="text-danger" >Digite a dose</h6> 
                                     @endif
@@ -145,7 +145,7 @@
 
                                     <div class="form-group col-sm-4 ">
                                         <label for="colFormLabelSm" class="form-label">Classe Toxicológica</label>
-                                        <select name="toxicologicalClass_id" class="form-select form-select-sm mb-3" id="agronomicClass_id" aria-label=".form-select-lg example" required>
+                                        <select name="toxicologicalClass_id" class="form-select form-select-sm mb-3" id="toxicologicalClass_id" aria-label=".form-select-lg example" required>
                                            <option selected disabled value="">Selecione </option>
                                            @foreach($toxicologicalClasses as $toxicologicalClass)    
                                                     <option value="{{$toxicologicalClass->id}}">{{$toxicologicalClass->name}} </option>                  
@@ -159,24 +159,24 @@
 
                       
                             <div class="row">
-     <!--
+     
                             <div class="form-group col-sm-4 ">
                                 <label for="colFormLabelSm" class="form-label">Grupo Químico </label>
-                                <select name="" class="form-select form-select-sm mb-3" id="agronomicClass_id" aria-label=".form-select-lg example" required>
+                                <select name="chemicalGroup_id" class="form-select form-select-sm mb-3" id="chemicalGroup_id" aria-label=".form-select-lg example" required>
                                    <option selected disabled value="">Selecione </option>
-                                   foreach($chemicalGroups as $chemicalGroup)    
-                                            <option value="{$chemicalGroup->id}}">{$chemicalGroup->name}} </option>                  
-                                        endforeach
+                                    @foreach($chemicalGroups as $chemicalGroup)    
+                                            <option value="{{$chemicalGroup->id}}">{{$chemicalGroup->name}} </option>                  
+                                    @endforeach
                                 </select> 
-                                if($errors->has('chemicalGroup_id'))    
+                                @if($errors->has('chemicalGroup_id'))    
                                     <h6 class="text-danger" >Selecione</h6> 
-                                endif 
+                                @endif 
                             </div>
--->
 
-                            <div class="form-group col-sm-6 ">
+
+                            <div class="form-group col-sm-4 ">
                                 <label for="colFormLabelSm" class="form-label">Sitio de Atuação</label>
-                                <select name="actionSite_id" class="form-select form-select-sm mb-3" id="agronomicClass_id" aria-label=".form-select-lg example" required>
+                                <select name="actionSite_id" class="form-select form-select-sm mb-3" id="actionSite_id" aria-label=".form-select-lg example" required>
                                    <option selected disabled value="">Selecione </option>
                                    @foreach($actionSites as $actionSite)    
                                             <option value="{{$actionSite->id}}">{{$actionSite->name}} </option>                  
@@ -187,9 +187,9 @@
                                 @endif 
                             </div>   
 
-                            <div class="form-group col-sm-6 ">
+                            <div class="form-group col-sm-4 ">
                                 <label for="colFormLabelSm" class="form-label">Modo de Atuação</label>
-                                <select name="modeOperation_id" class="form-select form-select-sm mb-3" id="agronomicClass_id" aria-label=".form-select-lg example" required>
+                                <select name="modeOperation_id" class="form-select form-select-sm mb-3" id="modeOperation_id" aria-label=".form-select-lg example" required>
                                    <option selected disabled value="">Selecione </option>
                                    @foreach($modeOperations as $modeOperation)    
                                             <option value="{{$modeOperation->id}}">{{$modeOperation->name}} </option>                  
@@ -218,7 +218,7 @@
                             <div class="row">
                                 <div class="form-group col-sm-4"> 
                                     <label class="form-label" for="colFormLabelSm">Intervalo de Aplicações (dias)</label>
-                                    <input type="number" name="applicationRange" value="{{old('applicationRange') ?? $pesticide->dosege }}" class="form-control form-control-sm" placeholder="Dosagem">
+                                    <input type="number" name="applicationRange" value="{{old('applicationRange') ?? $pesticide->dosege }}" class="form-control form-control-sm" placeholder="Intervalo">
                                     @if($errors->has('applicationRange'))
                                             <h6 class="text-danger" >Digite o Intervalo</h6> 
                                     @endif
@@ -226,7 +226,7 @@
 
                                     <div class="form-group col-sm-4"> 
                                         <label class="form-label" for="colFormLabelSm">Número de Aplicações</label>
-                                        <input type="number" name="numberApplications" value="{{old('numberApplications') ?? $pesticide->dosege }}" class="form-control form-control-sm" placeholder="Dosagem">
+                                        <input type="number" name="numberApplications" value="{{old('numberApplications') ?? $pesticide->dosege }}" class="form-control form-control-sm" placeholder="Número">
                                         @if($errors->has('numberApplications'))
                                                 <h6 class="text-danger" >Digite o Número</h6> 
                                         @endif
@@ -234,17 +234,17 @@
                             </div>
 
                         
-
+<!--
                             <div class="form-group">
                                 <label for="customFile1" class="form-label custom-file-input">Escolha a foto</label>
-                                @if ($pesticide->image != null)
-                                <img src="{{ asset('storage/pesticide/'.$pesticide->image)}}" 
+                                if ($pesticide->image != null)
+                                <img src="{ asset('storage/pesticide/'.$pesticide->image)}}" 
                                  class="img-thumbnail elevation-2"  style="max-width: 50px;"> 
-                            @endif
+                            endif
                                 <label for="image">Imagem</label>
                                 <input type="file" class="form-control form-control-sm"  name='image' value=''>
                             </div>
-                           
+-->                           
                             <div class="form-group">
                                 <label class="form-label" for="colFormLabelSm">Nota</label>
                                 <input type="text" name="note" value="{{old('note') ?? $pesticide->note }}" class="form-control form-control-sm" placeholder="Nota">
