@@ -33,15 +33,15 @@
                                 @endif
                             </div>                        
 
-                            <label class="form-label" for="name">Selecione os defensivos relacionadas:</label>
+                            <label class="form-label" for="name">Selecione os pesticides relacionadas:</label>
                             <div class="row">
                                 <?php $index = 0   ?> 
-                                @foreach($defensivos as $defensivo)
+                                @foreach($pesticides as $pesticide)
                                     <?php $index++   ?> 
                                     <div class="col">   
                                         <div class="form-check form-group">
-                                            <input type="radio" name="defensivo_id[{{$index}}]" class="form-check-input" id="validationFormCheck1" >
-                                            <label class="form-check-label" for="defensivo_id[{{$index}}]">{{$defensivo->name}}</label>
+                                            <input type="radio" name="pesticide_id[{{$index}}]" class="form-check-input" id="validationFormCheck1" >
+                                            <label class="form-check-label" for="pesticide_id[{{$index}}]">{{$pesticide->name}}</label>
                                             <div class="invalid-feedback">Example invalid feedback text</div>  
                                         </div>
                                     </div>

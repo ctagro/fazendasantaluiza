@@ -33,7 +33,7 @@
               <h4 class="card-title">Listagem de Principios Ativos</h4>
               
            </div>
-           <a class="float-right btn btn-primary" href="{{route('activePrinciple.create')}}">Cadastrar Principio ATivo</a>
+           <a class="float-right btn btn-primary" href="{{route('activePrinciple.create')}}">Cadastrar Principio Ativo</a>
         </div>
         <div class="card-body">
 

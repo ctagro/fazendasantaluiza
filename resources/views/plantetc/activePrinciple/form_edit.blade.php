@@ -30,18 +30,18 @@
                     </div>    
 
 
-                        <label class="form-label" for="email">Selecione as defensivo relacionadas:</label>
+                        <label class="form-label" for="email">Selecione as pesticide relacionadas:</label>
                         <div class="row">
                             <?php $index = -1   ?>    
-                            @foreach($defensivos as $defensivo)
+                            @foreach($pesticides as $pesticide)
                                 <?php $index++ 
                                  ?>                
                                 <div class="col">   
                                     <div class="form-check form-group">
-                                        <input type="radio" class="form-check-input" name="defensivo_id[{{$index}}]" id="nome{{$index}}" 
-                                        {{((($defensivo->id)) == $activePrinciple_defensivos[$index]) ? 'checked' : ""}} onclick=setRadioBtn() >
+                                        <input type="radio" class="form-check-input" name="pesticide_id[{{$index}}]" id="nome{{$index}}" 
+                                        {{((($pesticide->id)) == $activePrinciple_pesticides[$index]) ? 'checked' : ""}} onclick=setRadioBtn() >
                             
-                                        <label class="form-check-label" for="defensivo_id[{{$index}}]">{{$defensivo->name}}</label>
+                                        <label class="form-check-label" for="pesticide_id[{{$index}}]">{{$pesticide->name}}</label>
                                         <div class="invalid-feedback">Example invalid feedback text</div>  
                                         
                                     </div>
