@@ -14,6 +14,7 @@ class ModeOperationSeeder extends Seeder
      */
     public function run()
     {
+ 
         ModeOperation ::create([
                         
             'user_id'       => 1,
@@ -25,12 +26,12 @@ class ModeOperationSeeder extends Seeder
         ]);
 
         ModeOperation ::create([
-                        
+
             'user_id'       => 1,
-            'name'          => 'Sistêmico', 
+            'name'          => 'Ingestão', 
             'description'   => '...',    
             'note'          => '...',
-            'in_use'        => 'S'
+            'in_use'        => 'S' 
           
         ]);
 

@@ -13,6 +13,7 @@ class CreateCeasaProductsTable extends Migration
      */
     public function up()
     {
+     
         Schema::create('ceasa_products', function (Blueprint $table) {
             $table->id();
             $table->text('name',50);

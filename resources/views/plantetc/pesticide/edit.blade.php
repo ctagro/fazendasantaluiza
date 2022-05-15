@@ -28,7 +28,7 @@
                 <div class="card">
                     <div class="card-header d-flex justify-content-between">
                         <div class="header-title">
-                            <h4 class="card-title">Editar doença</h4>
+                            <h4 class="card-title">Editar Defensivo</h4>
                         </div>
                     </div>
 
@@ -56,6 +56,5 @@
  
 </x-app-layout>
 
-<script src="{{asset('js/select-btn.js') }}"></script>
 
 

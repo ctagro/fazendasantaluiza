@@ -50,7 +50,7 @@
                             </div>    
         
 
-                            <label class="form-label" for="name">Selecione as doenças relacionadas:</label>
+                            <label class="form-label" for="name">Selecione as culturas relacionadas:</label>
                             <div class="row">
                                 <?php $index = 0   ?> 
                                 @foreach($crops as $crop)

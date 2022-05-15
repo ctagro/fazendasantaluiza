@@ -29,12 +29,11 @@
                   <div class="card-header d-flex justify-content-between">
                       <div class="header-title">
                           <h4 class="card-title">Informações da Cultura</h4>
-                      </div>
-                     
+                      </div>                     
                   </div>
-                  <div class="card-body">
 
-                      <form  id="delete-form" method="POST"  action="{{ route('crop.destroy',[ 'crop' => $crop->id ])}}" enctype="multipart/form-data" class="col-12 was-validated">
+                  <div class="card-body">
+                      <form  id="delete-form" method="POST"  action="{{ route('crop.destroy',[ 'crop' => $crop->id, 'confirm' => "1"])}}" enctype="multipart/form-data" class="col-12 was-validated">
                         @method('DELETE')
                         @csrf
                
@@ -45,12 +44,7 @@
                       <a class="btn btn-primary" href="{{route('crop.edit',[ 'crop' => $crop->id ])}}" class="btn btn-danger">editar</a>
  
                       <a class="btn btn-primary" href="{{route('crop.index')}}" class="btn btn-danger">Voltar</a>
-
-        <!--              <a class="btn btn-primary" href="{route('crop.variety',[ 'crop' => $crop->id ])}}">Variedades</a>
-        -->
-                     
-                  </form>
-                         
+                    </form>  
           </div>
       </div>
 

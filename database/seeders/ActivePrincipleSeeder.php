@@ -14,6 +14,7 @@ class ActivePrincipleSeeder extends Seeder
      */
     public function run()
     {
+ 
         ActivePrinciple::create([
                         
             'user_id'               => 1,            

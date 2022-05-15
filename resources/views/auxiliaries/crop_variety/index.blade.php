@@ -33,7 +33,7 @@
               <h4 class="card-title">Variedades de culturas</h4>
               
            </div>
-           <a class="float-right" href="{{url('crop_variety/create')}}">Cadastrar</a>
+           <a class="float-right btn btn-primary" href="{{url('crop_variety/create')}}">Cadastrar</a>
         </div>
         <div class="card-body">
 

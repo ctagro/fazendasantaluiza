@@ -26,7 +26,7 @@
                   <h4 class="card-title">Defensivos</h4>
                </div>
 
-               <a class="float-right" href="{{url('pesticide/create')}}">Cadastrar</a>
+               <a class="float-right btn btn-primary" href="{{url('pesticide/create')}}">Cadastrar</a>
             </div>
             <div class="card-body">
 

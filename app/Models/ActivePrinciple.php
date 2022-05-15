@@ -10,6 +10,7 @@ use DB;
 use App\User;
 use App\Models\Disease;
 use App\Models\Pesticide;
+use App\Models\Auxiliaries\AgronomicClass;
 
 class ActivePrinciple extends Model
 {
@@ -78,6 +79,11 @@ public function storeActivePrinciple(array $data): Array
      public function user()
         {
             return $this->belongsTo(User::class);
+        }
+
+    public function agronomicClass()
+        {
+            return $this->belongsTo(AgronomicClass::class,'agronomicClass_id');
         }
 
     public function pesticides()

@@ -31,6 +31,7 @@
                         <label class="form-label" for="colFormLabelSm">Nota</label>
                         <input type="text" name="note" value="{{old('note') ?? $crop->note }}" class="form-control form-control-sm" placeholder="Nota">
                     </div>
+                    
                     <div class=row >
                         <div class="col-lg-1">                
                             <div class="card">

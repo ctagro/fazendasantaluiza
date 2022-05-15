@@ -12,7 +12,7 @@
                             <div class="row">
                                 <div class="form-group col-sm-6"> 
                                     <label class="form-label" for="colFormLabelSm">Nome do defensivo</label>
-                                    <input type="text" name="name" value="{{old('name') ?? $pesticide->name }}" class="form-control form-control-sm" placeholder="Defensivo">
+                                    <input type="text" name="name" value="{{old('name') ?? $pesticide->name }}" class="form-control form-control-sm  bg-light text-primary" placeholder="Defensivo">
                                     @if($errors->has('name'))
                                             <h6 class="text-danger" >Digite a Nome</h6> 
                                     @endif
@@ -33,55 +33,7 @@
                         </div>
 
 
- <!--===================Indicações-->                           
-                            <label class="form-label" for="name">Selecione as indicações:</label>
-                            <div class="row">
-                                <?php $index = 0   ?> 
-                                @foreach($diseases as $disease)
-                                    <?php $index++   ?> 
-                                    <div class="col">   
-                                        <div class="form-check form-group">
-                                            <input type="radio" name="disease_id[{{$index}}]" class="form-check-input" id="validationFormCheck1" >
-                                            <label class="form-check-label" for="disease_id[{{$index}}]">{{$disease->name}}</label>
-                                            <div class="invalid-feedback">Indicações</div>  
-                                        </div>
-                                    </div>
-                                             
-                                 @endforeach
-                            </div>
-
-<!--============Culturas  -->
-                            <label class="form-label" for="name">Selecione culturas indicadas:</label>
-                            <div class="row">
-                                <?php $index = 0   ?> 
-                                @foreach($crops as $crop)
-                                    <?php $index++   ?> 
-                                    <div class="col">   
-                                        <div class="form-check form-group">
-                                            <input type="radio" name="crop_id[{{$index}}]" class="form-check-input" id="validationFormCheck1" >
-                                            <label class="form-check-label" for="crop_id[{{$index}}]">{{$crop->name}}</label>
-                                            <div class="invalid-feedback">Culturas indicadas</div>  
-                                        </div>
-                                    </div>                    
-                                 @endforeach
-                            </div>
-
-<!--================Principio Ativo -->
-                            <label class="form-label" for="name">Selecione os principios ativos:</label>
-                            <div class="row">
-                                <?php $index = 0   ?> 
-                                @foreach($active_principles as $active_principle)
-                                    <?php $index++   ?> 
-                                    <div class="col">   
-                                        <div class="form-check form-group">
-                                            <input type="radio" name="active_principle_id[{{$index}}]" class="form-check-input" id="validationFormCheck1" >
-                                            <label class="form-check-label" for="active_principle_id[{{$index}}]">{{$active_principle->name}}</label>
-                                            <div class="invalid-feedback">Principio ativos</div>  
-                                        </div>
-                                    </div>                      
-                                 @endforeach
-                            </div>
-                   
+ 
                             <div class="row">
 
                                 <div class="form-group col-sm-4"> 
@@ -243,8 +195,54 @@
                             endif
                                 <label for="image">Imagem</label>
                                 <input type="file" class="form-control form-control-sm"  name='image' value=''>
+                            </div>-->
+
+                            <label class="form-label" for="name">Selecione as culturas relacionadas:</label>
+                            <div class="row">
+                                <?php $index = 0   ?> 
+                                @foreach($crops as $crop)
+                                    <?php $index++   ?> 
+                                    <div class="col">   
+                                        <div class="form-check form-group">
+                                            <input type="radio" name="crop_id[{{$index}}]" class="form-check-input" id="validationFormCheck1" >
+                                            <label class="form-check-label" for="crop_id[{{$index}}]">{{$crop->name}}</label>
+                                            <div class="invalid-feedback">Example invalid feedback text</div>  
+                                        </div>
+                                    </div>
+                                             
+                                 @endforeach
                             </div>
--->                           
+
+                            <label class="form-label" for="name">Selecione as doenças relacionadas:</label>
+                            <div class="row">
+                                <?php $index = 0   ?>    
+                                @foreach($diseases as $disease)
+                                    <?php $index++   ?> 
+                                    <div class="col">   
+                                        <div class="form-check form-group">
+                                            <input type="radio" name="disease_id[{{$index}}]" class="form-check-input" id="validationFormCheck1" >
+                                            <label class="form-check-label" for="disease_id[{{$index}}]">{{$disease->name}}</label>
+                                        </div>
+                                    </div>                              
+                                 @endforeach
+                             </div>
+
+                             <label class="form-label" for="name">Selecione as culturas relacionadas:</label>
+                             <div class="row">
+                                 <?php $index = 0   ?> 
+                                 @foreach($active_principles as $active_principle)
+                                     <?php $index++   ?> 
+                                     <div class="col">   
+                                         <div class="form-check form-group">
+                                             <input type="radio" name="active_principle_id[{{$index}}]" class="form-check-input" id="validationFormCheck1" >
+                                             <label class="form-check-label" for="active_principle_id[{{$index}}]">{{$active_principle->name}}</label>
+                                             <div class="invalid-feedback">Example invalid feedback text</div>  
+                                         </div>
+                                     </div>
+                                              
+                                  @endforeach
+                             </div>
+
                             <div class="form-group">
                                 <label class="form-label" for="colFormLabelSm">Nota</label>
                                 <input type="text" name="note" value="{{old('note') ?? $pesticide->note }}" class="form-control form-control-sm" placeholder="Nota">

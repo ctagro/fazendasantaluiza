@@ -49,11 +49,11 @@ class CropController extends Controller
      */
     public function create()
     {
-        $user = auth()->user();
-        $crop = new \App\Models\Crop([
-        ]);
-        $diseases = Disease::all();
-        $count = count($diseases);
+          $user = auth()->user();
+          $crop = new \App\Models\Crop([
+          ]);
+          $diseases = Disease::all();
+          $count = count($diseases);
        return view('plantetc.crop.create',compact('crop','diseases','count')); //teste      
     }
 
@@ -125,11 +125,11 @@ class CropController extends Controller
      */
     public function show($crop_id)
     {   
-        $crop = Crop::find($crop_id);
-        $user = auth()->user();
-        $crop_name = $crop->name;
-        $count = count($crop->diseases);
-        $diseases = $crop->diseases;
+          $crop = Crop::find($crop_id);
+          $user = auth()->user();
+          $crop_name = $crop->name;
+          $count = count($crop->diseases);
+          $diseases = $crop->diseases;
 
         return view('plantetc.crop.show', compact('crop','diseases' ));
     }
@@ -230,6 +230,7 @@ class CropController extends Controller
       }
     }
 //-----------------  Fim de Atualizar Relacionamentos --------------------//
+
         if ($update)
         return redirect()
                         ->route('crop.show' ,[ 'crop' => $crop->id ])
@@ -248,30 +249,19 @@ class CropController extends Controller
      */
     public function destroy(Crop $crop)
     {
-
-      $crop_name  = $crop->name;
-       
-        $destroy = $crop->delete();
-
-           
+      
+      $crop_name  = $crop->name;      
+      $destroy = $crop->delete();
+     
       if ($destroy)
       {
-
             return redirect()
                             ->route('crop.index')
                             ->with('sucess', 'A cultura '. $crop_name . ' foi deletada com sucesso');
-                    
-
             return redirect()
                     ->back()
                     ->with('error',  'Falha na deleção a cultura');
-
         }
-
-     //   dd($destroy);
-        
-  
-     //   return redirect('crop.index');
     }
 
     private function validateRequest()

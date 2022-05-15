@@ -40,9 +40,14 @@
                           <div class="row">
                             <div class="form-control form-control-sm">{{ $disease->control}}</div>
                           </div>
-                          <br>                     
+                          <br> 
+                          <div class="row">
+                            <div class="bolder">Nota:</div>
+                          </div>
+                          <div class="row">
+                            <div class="form-control form-control-sm">{{ $disease->note}}</div>                        
     
-                            <label class="form-label" for="email">Doenças que atingem a cultura:</label>
+                            <label class="form-label" for="email">Culturas que atingem a cultura:</label>
                             <div class="row">
                                 <?php $index = 0   ?>    
                                 @foreach($crops as $crop)
@@ -51,15 +56,10 @@
                                         <div class="form-check form-group">
                                             <a href= "{{ route('crop.show' ,[ 'crop' => $crop->id  ])}}" class="form-check-label" for="validationFormCheck1">{{$crop->name}}</a>
                                         </div>
-                                    </div>
-                                             
+                                    </div>               
                                  @endforeach
                             </div>
-                            <div class="row">
-                                <div class="bolder">Nota:</div>
-                              </div>
-                              <div class="row">
-                                <div class="form-control form-control-sm">{{ $disease->note}}</div>    
+
                     </div>
                 </div>        
             </div>

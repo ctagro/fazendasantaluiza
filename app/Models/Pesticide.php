@@ -130,22 +130,13 @@ class Pesticide extends Model
             self::deleting(function($pesticide) { // before delete() method call this
                  $pesticide->crops()->detach(); // <-- direct deletion
                  });
-                 // do the rest of the cleanup...
-        }
-
-        public static function boot1() {
+            self::deleting(function($pesticide) { // before delete() method call this
+                $pesticide->diseases()->detach(); // <-- direct deletion
+                });
             parent::boot();
             self::deleting(function($pesticide) { // before delete() method call this
-                 $pesticide->diseases()->detach(); // <-- direct deletion
-                 });
-                 // do the rest of the cleanup...
-        }
-
-        public static function boot2() {
-            parent::boot();
-            self::deleting(function($pesticide) { // before delete() method call this
-                 $pesticide->active_principles()->detach(); // <-- direct deletion
-                 });
+                     $pesticide->active_principles()->detach(); // <-- direct deletion
+                     });
                  // do the rest of the cleanup...
         }
 

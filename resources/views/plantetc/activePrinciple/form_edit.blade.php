@@ -13,13 +13,18 @@
                         @endif
                     </div>
 
-                    <div class="form-group">
-                        <label class="form-label" for="colFormLabelSm">Classe Agronômica</label>
-                        <input type="text" name="agronomicClass_id" value="{{old('agronomicClass_id') ?? $activePrinciple->agronomicClass_id }}" class="form-control form-control-sm" placeholder="Descrição">
-                        @if($errors->has('agronomicClass_id'))
-                                <h6 class="text-danger" >Digite a Classe Agronônica</h6> 
-                        @endif
-                    </div>
+                    <div class="form-group"> 
+                        <label for="colFormLabelSm" class="form-label">Classe Agronômica</label>
+                        <select name="agronomicClass_id" class="form-select form-select-sm mb-3" id="agronomicClass_id" aria-label=".form-select-lg example" required>
+                           <option selected disabled value="">Selecione</option>
+                           @foreach($agronomicClasses as $agronomicClass)    
+                                    <option value="{{$agronomicClass->id}}" {{ $agronomicClass->id ==  $activePrinciple->agronomicClass_id ? 'selected' : ''}}>{{$agronomicClass->name}} </option>                 
+                                @endforeach
+                        </select> 
+                        @if($errors->has('agronomicClass_id'))    
+                            <h6 class="text-danger" >Selecione</h6> 
+                        @endif 
+                     </div>
 
                     <div class="form-group">
                         <label class="form-label" for="colFormLabelSm">Descrição</label>
@@ -27,32 +32,71 @@
                         @if($errors->has('description'))
                                 <h6 class="text-danger" >Digite a descrição</h6> 
                         @endif
-                    </div>    
-
-
-                        <label class="form-label" for="email">Selecione as pesticide relacionadas:</label>
-                        <div class="row">
-                            <?php $index = -1   ?>    
-                            @foreach($pesticides as $pesticide)
-                                <?php $index++ 
-                                 ?>                
-                                <div class="col">   
-                                    <div class="form-check form-group">
-                                        <input type="radio" class="form-check-input" name="pesticide_id[{{$index}}]" id="nome{{$index}}" 
-                                        {{((($pesticide->id)) == $activePrinciple_pesticides[$index]) ? 'checked' : ""}} onclick=setRadioBtn() >
-                            
-                                        <label class="form-check-label" for="pesticide_id[{{$index}}]">{{$pesticide->name}}</label>
-                                        <div class="invalid-feedback">Example invalid feedback text</div>  
+                    </div>
                                         
+                    <div class="form-group">
+                        <label class="form-label" for="colFormLabelSm">Nota</label>
+                        <input type="text" name="note" value="{{old('note') ?? $activePrinciple->note }}" class="form-control form-control-sm" placeholder="Nota">
+                    </div>
+
+                    <div class=row >
+                        <div class="col-lg-1">                
+                            <div class="card">
+                                <div class="card-header d-flex justify-content-between">
+                                    <div class="header-title">
+                                        <h6 class="card-title">Atual</h6>
                                     </div>
-                                </div>                            
-                             @endforeach
+                                </div>
+                                <div class="card-body">
+                                    <div class="d-flex justify-content-start align-items-center">
+                                        <div>
+                                            <?php $index = 0   ?>    
+                                            @foreach($relation_ids as $relation_id)
+                                                <?php $index++ ?>                
+                                                <div class="col">   
+                                                    <div class="form-check form-group"> 
+                                                            <input type="radio" class="form-check-input" name="before_id[{{$index}}]" id="validationFormCheck1" 
+                                                            {{((($relation_id->id)) == $relation_lists[$index]) ? 'checked': ""}} />
+                                                    </div>
+                                                </div>                      
+                                            @endforeach
+                                        </div>
+                                    </div>                   
+                                </div>
+                            </div>
                         </div>
-                        
-                        <div class="form-group">
-                            <label class="form-label" for="colFormLabelSm">Nota</label>
-                            <input type="text" name="note" value="{{old('note') ?? $activePrinciple->note }}" class="form-control form-control-sm" placeholder="Nota">
+                        <div class="col-lg-11">
+                            <div class="card-header d-flex justify-content-between">
+                                <div class="header-title">
+                                    <h6 class="card-title">Atualizar - Repita os que permanezem no relacionamento</h6>
+                                </div>
+                            </div>  
+                        <div class="card-body">
+                            <div class="user-post-data">
+                                <div class="d-flex flex-wrap">
+                                    <div class="media-support-info mt-2">
+                                        <?php $index = 0   ?>    
+                                        @foreach($relation_ids as $relation_id)
+                                            <?php $index++   ?> 
+                                            <div class="col">   
+                                                <div class="form-check form-group">
+                                                    <input type="radio" name="after_id[{{$index}}]" class="form-check-input" id="validationFormCheck1" >
+                                                    <label class="form-check-label" for="after_id[{{$index}}]">{{$relation_id->name}}</label>
+                                                </div>
+                                            </div>                              
+                                        @endforeach
+                                    </div>
+                                </div>
+                            </div>
                         </div>
+                    </div>
+                </div>
+
+                <div class="form-check form-group">
+                    <input type="radio" name="clear_id" class="form-check-input" id="validationFormCheck1" >
+                    <label class="text-danger" for="clear_id">Excluir todos</label>
+                </div>
+ 
 
                         @if(!Request::is('*/edit'))
                         <input type="hidden" name="in_use" value="S" class="form-control py-3">

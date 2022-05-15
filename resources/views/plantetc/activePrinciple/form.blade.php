@@ -17,13 +17,18 @@
                                 @endif
                             </div>
 
-                            <div class="form-group">
-                                <label class="form-label" for="colFormLabelSm">Classe agronômica</label>
-                                <input type="text" name="agronomicClass_id" value="{{old('agronomicClass_id') ?? $activePrinciple->agronomicClass_id }}" class="form-control form-control-sm" placeholder="Classe agronômica">
-                                @if($errors->has('agronomicClass_id'))
-                                        <h6 class="text-danger" >Digite a Classe agronômica</h6> 
-                                @endif
-                            </div>
+                            <div class="form-group"> 
+                                <label for="colFormLabelSm" class="form-label">Classe Agronômica</label>
+                                <select name="agronomicClass_id" class="form-select form-select-sm mb-3" id="agronomicClass_id" aria-label=".form-select-lg example" required>
+                                   <option selected disabled value="">Selecione</option>
+                                   @foreach($agronomicClasses as $agronomicClass)    
+                                            <option value="{{$agronomicClass->id}}">{{$agronomicClass->name}} </option>                  
+                                        @endforeach
+                                </select> 
+                                @if($errors->has('agronomicClass_id'))    
+                                    <h6 class="text-danger" >Selecione</h6> 
+                                @endif 
+                             </div>
 
                             <div class="form-group">
                                 <label class="form-label" for="colFormLabelSm">Descrição</label>
@@ -49,10 +54,14 @@
                                  @endforeach
                             </div>
 
+    
+
                             <div class="form-group">
                                 <label class="form-label" for="colFormLabelSm">Nota</label>
                                 <input type="text" name="note" value="{{old('note') ?? $activePrinciple->note }}" class="form-control form-control-sm" placeholder="Nota">
                             </div>
+
+
 
                     </div>
                 </div>        

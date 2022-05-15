@@ -17,7 +17,7 @@
                             <div class="bolder">Classe Agronômica</div>
                           </div>
                           <div class="row">
-                            <div class="form-control form-control-sm">{{ $activePrinciple->agronomicClass_id}}</div>
+                            <div class="form-control form-control-sm">{{ $activePrinciple->agronomicClass->name}}</div>
                           </div>
                           <br>                     
                           <div class="row">

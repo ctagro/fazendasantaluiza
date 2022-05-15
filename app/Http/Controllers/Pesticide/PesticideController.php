@@ -40,30 +40,12 @@ class PesticideController extends Controller
 
     {
 
-
       $manufacturers = Manufacturer::all();
       $chemicalGroups = ChemicalGroup::all();
       $agronomicClasses = AgronomicClass::all();
-      
-
+      $chemicalGroups = ChemicalGroup::all();      
       $pesticides = Pesticide::get();
-
       $users = User::all();
-
-      $chemicalGroups = ChemicalGroup::all();
-
-    // dd($users);
-
-    // dd($chemicalGroups);
-
-   // dd($pesticide,$chemicalGroup,$pesticide->chemicalGroup);
-  //    $pets = Pesticide::find(1)->chemicalGroup()->where('id','chemicalGroup_id');
-    //dd($user,$pesticide);
-      //dd($user->pesticide->name);
-
-    //  dd($pesticides,$manufactureres,$chemicalGroups);
-
-      
 
           return view('plantetc.pesticide.index', compact('pesticides','manufacturers','chemicalGroups','agronomicClasses'));
     }
@@ -88,23 +70,15 @@ class PesticideController extends Controller
 
 
         $user = auth()->user();
-
         $pesticide= new \App\Models\Pesticide([   
-
         ]);
-
         $crops = Crop::all();
         $count_crops = count($crops);
-
         $diseases = Disease::all();
         $count_diseases = count($crops);
-
         $active_principles = ActivePrinciple::all();
         $count_active_principles = count($crops);
 
-     //  dd($pesticides,$count);
-
-       // return view('plantetc.crop.create',compact('crop')); // definitivo
        return view('plantetc.pesticide.create',compact('pesticide','crops','count_crops','diseases',
                                                         'count_diseases','active_principles','count_active_principles',
                                                         'agronomicClasses','formulationTypes','manufacturers',
@@ -126,94 +100,83 @@ class PesticideController extends Controller
       if ($request['note'] == null){
         $request['note'] = "...";
      }
-
-   //  dd($request);
-
-        // Capturando os dados da Cultura    
+      // Capturando os dados do Pesticides sem as diseases relacionadas
         $data = $this->validateRequest(); 
-
-     //   dd($data['user_id']);
-
         $userName['user_id'] = auth()->user()->name;
 
-   //     dd($data,$request,$data['name'],$data['user_id'],$userName);
-
-        $pesticide_entry = Pesticide::where('name', '=', $data['name'])->get()->count();
-
-
-
-  /*      if($pesticide_entry > 0){
-
-
-        //  dd($pesticide_entry);
-            return redirect()
-            ->route('pesticide.create')
-            ->with('error',  'O defensivo '. $data['name'].' ja foi cadastrada');
-        }
-  */
-        // Capturando os dados dos defensivos selecionado  
-
-        $pesticides= $request;
-
-    //  dd($pesticides,$pesticides['active_principle_id']);
-
-        $pesticide = new pesticide();
-
-        $response = $pesticide->storePesticide($data);
-
-        $pesticide_id = $response['new_pesticide'];
-
-    //    dd($pesticide_id);
-
-        $pesticide = Pesticide::find($pesticide_id);
+   //  Verificar se a cultura em referencia ja fui cadastrada
+   $pesticide_entry = Disease::where('name', '=', $data['name'])->get()->count();
+   if($pesticide_entry > 0){
+       return redirect()
+       ->route('pesticide.create')
+       ->with('error',  'O defensivo '. $data['name'].' ja foi cadastrada');
+   }
+    // Gravando os dados da pesticide sem as disease relacionadas
+    $pesticide = new pesticide();
+    $response = $pesticide->storePesticide($data);
+    $pesticide_id = $response['new_pesticide'];
+    $pesticide = Pesticide::find($pesticide_id);
+  
         
-// ===============  Relação defensivo com cultura  ===========
-        if($pesticides['crop_id'] != null)
-        {
-            $crops_id = array_keys($pesticides['crop_id']);
-            foreach($crops_id as $crop_id)
+              //============== Capturando os dados das crops relacionadas =========
+              $crops= $request;
+                
+              // Testando se não houve crop relacionada      
+                if($crops['crop_id'] != null)
                 {
-                     $pesticide->crops()->attach($crop_id);
+                // transformando os dados das crops relacionada em Array
+                    $crops_id = array_keys($crops['crop_id']);
+                  //   dd($crops_id);
+                // Gravando a relação no arquivo intermediarios crop_disease
+                    foreach($crops_id as $crop_id)
+                        {    
+                            $pesticide->crops()->attach($crop_id); //==>mudar
+                        }
                 }
-        }
        
-// ===============  Relação defensivo com doença  ===========
-        if($pesticides['disease_id'] != null)
-        {
-            $diseases_id = array_keys($pesticides['disease_id']);
-            foreach($diseases_id as $disease_id)
+             //============== Capturando os dados das diseases relacionadas =========
+             $diseases= $request;
+                
+             // Testando se não houve disease relacionada      
+               if($diseases['disease_id'] != null)
+               {
+               // transformando os dados das diseases relacionada em Array
+                   $diseases_id = array_keys($diseases['disease_id']);
+                 //   dd($diseases_id);
+               // Gravando a relação no arquivo intermediarios disease_disease
+                   foreach($diseases_id as $disease_id)
+                       {    
+                           $pesticide->diseases()->attach($disease_id); //==>mudar
+                       }
+               }
+
+            //============== Capturando os dados das active_principles relacionadas =========
+            $active_principles= $request;
+                
+            // Testando se não houve active_principle relacionada      
+              if($active_principles['active_principle_id'] != null)
+              {
+              // transformando os dados das active_principles relacionada em Array
+                  $active_principles_id = array_keys($active_principles['active_principle_id']);
+                //   dd($active_principles_id);
+              // Gravando a relação no arquivo intermediarios active_principle_disease
+                  foreach($active_principles_id as $active_principle_id)
+                      {    
+                          $pesticide->active_principles()->attach($active_principle_id); //==>mudar
+                      }
+              }
+ 
+              // verificando se o regidtro no BD foi bem sucedido  
+                if ($response)
                 {
-                     $pesticide->diseases()->attach($disease_id);
-                }
-        }
-
-// ===============  Relação defensivo com Princípio ativo  ===========
-        if($pesticides['active_principle_id'] != null)
-        {
-            $active_principles_id = array_keys($pesticides['active_principle_id']);
-      //      dd($request,$pesticides['active_principle_id'],$active_principles_id);
-            foreach($active_principles_id as $active_principle_id)
-                {
-                    $pesticide->active_principles()->attach($active_principle_id);
-                }
-        }
-
-        
-      if ($response)
-      {
-
-            return redirect()
-                            ->route('pesticide.create')
-                            ->with('sucess', 'Cadastro de '. $pesticide->name . ' realizado com sucesso');
-                    
-
-        return redirect()
-                    ->back()
-                    ->with('error',  'Falha ao cadastrar o defensivo');
-
-        }
-    
-    }
+                      return redirect()
+                                      ->route('pesticide.create')
+                                      ->with('sucess', 'Cadastro de '. $pesticide->name . ' realizado com sucesso');
+                  return redirect()
+                              ->back()
+                              ->with('error',  'Falha ao cadastrar o defensivo');
+                  }    
+      }
 
 
 
@@ -225,37 +188,32 @@ class PesticideController extends Controller
      */
     public function show($pesticide_id)
     {
-        // ++> verificar se precisa dessa linha
 
-        $agronomicClasses         = AgronomicClass::all();
-        $formulationTypes         = FormulationType::all();
-        $manufacturers            = Manufacturer::all();
-        $applicationModes         = ApplicationMode::all();
-        $chemicalGroups           = ChemicalGroup::all();
-        $toxicologicalClasses     = ToxicologicalClass::all();
-        $actionSites              = ActionSite::all();
-        $modeOperations           = ModeOperation::all();
-        $actuationMechanisms      = ActuationMechanism::all();
+      $agronomicClasses         = AgronomicClass::all();
+      $formulationTypes         = FormulationType::all();
+      $manufacturers            = Manufacturer::all();
+      $applicationModes         = ApplicationMode::all();
+      $chemicalGroups           = ChemicalGroup::all();
+      $toxicologicalClasses     = ToxicologicalClass::all();
+      $actionSites              = ActionSite::all();
+      $modeOperations           = ModeOperation::all();
+      $actuationMechanisms      = ActuationMechanism::all();
+      $active_principles        = ActivePrinciple::all();
+
 
         $pesticide = Pesticide::find($pesticide_id);
-
+        
         $user = auth()->user();
-
         $pesticide_name = $pesticide->name;
-
-       // dd($pesticide_name);
-        
-        $count = count($pesticide->crops);
-        
-     //  dd($pesticide_name,($count>0));
-        
         $crops = $pesticide->crops;
 
-  
-    //dd($pesticide->id);
+        $pesticide_name = $pesticide->name;
+        $diseases = $pesticide->diseases;
 
+        $pesticide_name = $pesticide->name;
+        $active_principles = $pesticide->active_principles;
 
-        return view('plantetc.pesticide.show', compact('crops','pesticide' ));
+        return view('plantetc.pesticide.show', compact('pesticide', 'crops', 'diseases', 'active_principles' ));
 
 
 
@@ -268,8 +226,6 @@ class PesticideController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function edit(Pesticide $pesticide) {
-
-      $user = auth()->user();
 
       $agronomicClasses         = AgronomicClass::all();
       $formulationTypes         = FormulationType::all();
@@ -284,158 +240,117 @@ class PesticideController extends Controller
 
         $user = auth()->user();
 
-   // Para listar as culturas e as que relacionam co pesticide
-      $crops = Crop::all();
-      $pesticide_crops_result = [];
-      $pesticide_crops = $pesticide->crops;
-      $count = count($crops);
-      $index = [];
-      $i=0;
-    // Criando o array com os indices das defensivos relacionadas
-       foreach($pesticide_crops as $pesticide_crop){ 
-          $index[$i] = $pesticide_crop->id;
-          $i++;
+//============= Para listar todas as crop com os dados completos============
+
+            $relationCrop_ids = Crop::all(); // =======> trocar
+            // para listar as disease relacionadas à cultura com todos os dados
+                  $relationCrop_lists = $pesticide->crops; // =======> trocar
+
+            // Criando o array $index com a crops relacionadas
+                  $indexCrop = [];
+                  $i=0;
+                  foreach($relationCrop_lists as $relationCrop_list){ 
+                      $indexCrop[$i] = $relationCrop_list->id;
+                      $i++;}    
+              // criando o array vazio para receber todas as crops relacionada 
+              // e preparar para marca-las os indices sem relação co null na view
+                  $relationCrop_lists_result = [];
+                  $countCrop = count($relationCrop_ids);
+                  $j = 0;
+                  $countCrop_j = count($indexCrop);
+                  $names = [];
+                  $relationCrop_id =[];
+              // Populando o arry resultante com todas as doenças e setando as relacionadas
+                  for ($i = 1; $i < $countCrop+1; $i++){
+                    if($countCrop_j>0){
+                          if(($i+1) == ($indexCrop[$j]+1) ){
+                            $relationCrop_lists_result[$i] = ($relationCrop_lists[$j]->id);
+                            $j++;
+                              if($j >= $countCrop_j){
+                                $j = $j-1;}}
+                          else{$relationCrop_lists_result[$i] = Null;}
+                      }
+                      else{$relationCrop_lists_result[$i] = Null; }
+                  }
+                  $relationCrop_lists = $relationCrop_lists_result;
+
+     
+ //============= Para listar todas as Disease com os dados completos============
+
+                $relationDisease_ids = Disease::all(); // =======> trocar
+                // para listar as disease relacionadas à cultura com todos os dados
+                      $relationDisease_lists = $pesticide->diseases; // =======> trocar
+                // Criando o array $index com a crops relacionadas
+                      $indexDisease = [];
+                      $i=0;
+                      foreach($relationDisease_lists as $relationDisease_list){ 
+                          $indexDisease[$i] = $relationDisease_list->id;
+                          $i++;}    
+                  // criando o array vazio para receber todas as crops relacionada 
+                  // e preparar para marca-las os indices sem relação co null na view
+                      $relationDisease_lists_result = [];
+                      $countDisease = count($relationDisease_ids);
+                      $j = 0;
+                      $countDisease_j = count($indexDisease);
+                      $names = [];
+                      $relationDisease_id =[];
+                  // Populando o arry resultante com todas as doenças e setando as relacionadas
+                      for ($i = 1; $i < $countDisease+1; $i++){
+                        if($countDisease_j>0){
+                              if(($i+1) == ($indexDisease[$j]+1) ){
+                                $relationDisease_lists_result[$i] = ($relationDisease_lists[$j]->id);
+                                $j++;
+                                  if($j >= $countDisease_j){
+                                    $j = $j-1;}}
+                              else{$relationDisease_lists_result[$i] = Null;}
+                          }
+                          else{$relationDisease_lists_result[$i] = Null; }
+                      }
+                      $relationDisease_lists = $relationDisease_lists_result;
+
+
+ //============= Para listar todas as Activite Principle com os dados completos============
+
+ $relationActive_principle_ids = ActivePrinciple::all(); // =======> trocar
+ // para listar as disease relacionadas à cultura com todos os dados
+       $relationActive_principle_lists = $pesticide->active_principles; // =======> trocar
+ // Criando o array $index com a crops relacionadas
+       $indexActive_principle = [];
+       $i=0;
+       foreach($relationActive_principle_lists as $relationActive_principle_list){ 
+           $indexActive_principle[$i] = $relationActive_principle_list->id;
+           $i++;}    
+   // criando o array vazio para receber todas as crops relacionada 
+   // e preparar para marca-las os indices sem relação co null na view
+       $relationActive_principle_lists_result = [];
+       $countActive_principle = count($relationActive_principle_ids);
+       $j = 0;
+       $countActive_principle_j = count($indexActive_principle);
+       $names = [];
+       $relationActive_principle_id =[];
+   // Populando o arry resultante com todas as doenças e setando as relacionadas
+       for ($i = 1; $i < $countActive_principle+1; $i++){
+         if($countActive_principle_j>0){
+               if(($i+1) == ($indexActive_principle[$j]+1) ){
+                 $relationActive_principle_lists_result[$i] = ($relationActive_principle_lists[$j]->id);
+                 $j++;
+                   if($j >= $countActive_principle_j){
+                     $j = $j-1;}}
+               else{$relationActive_principle_lists_result[$i] = Null;}
+           }
+           else{$relationActive_principle_lists_result[$i] = Null; }
        }
-       $index1 = array_keys($index); 
-    $j = 0;
-    $count_j = count($index);
-    $names = [];
+       $relationActive_principle_lists = $relationActive_principle_lists_result;
 
-    // Populando o arry resultante com todas as defensivos e setando as relacionadas
- 
-    for ($i = 0; $i < $count; $i++)
-    {
-    // dd($i,$index[$j]);
-    if($count_j>0)
-      {
-          if(($i+1) == ($index[$j]) )
-          {
-            $pesticide_crops_result[$i] = ($pesticide_crops[$j]->id);
-            $j++;
-              if($j >= $count_j)
-              {
-                $j = $j-1;
-              }
-          }
-          else{
-            $pesticide_crops_result[$i] = 999;
-          }
-      }
-      else
-      {
-        $pesticide_crops_result[$i] = 999; 
-      }
+        
+    //  dd($relationCrop_ids, $relationCrop_lists, $relationDisease_ids, $relationDisease_lists, $relationActive_principle_ids, $relationActive_principle_lists);
 
-        // populando um arry com o nomes das defensivos
-        $names[$i] = 'name'. $i;
-    }
-      //renomeando o arry resultante
-      $pesticide_crops = $pesticide_crops_result;
-
- //=============== Para listar as diseases e as que relacionam co pesticide
- $diseases = Disease::all();
- $pesticide_diseases_result = [];
- $pesticide_diseases = $pesticide->diseases;
- $count = count($diseases);
- $index = [];
- $i=0;
-// Criando o array com os indices das defensivos relacionadas
-  foreach($pesticide_diseases as $pesticide_disease){ 
-     $index[$i] = $pesticide_disease->id;
-     $i++;
-  }
-  $index1 = array_keys($index); 
-$j = 0;
-$count_j = count($index);
-$names = [];
-
-// Populando o arry resultante com todas as defensivos e setando as relacionadas
-
-for ($i = 0; $i < $count; $i++)
-{
-// dd($i,$index[$j]);
-if($count_j>0)
- {
-     if(($i+1) == ($index[$j]) )
-     {
-       $pesticide_diseases_result[$i] = ($pesticide_diseases[$j]->id);
-       $j++;
-         if($j >= $count_j)
-         {
-           $j = $j-1;
-         }
-     }
-     else{
-       $pesticide_diseases_result[$i] = 999;
-     }
- }
- else
- {
-   $pesticide_diseases_result[$i] = 999; 
- }
-
-   // populando um arry com o nomes das defensivos
-   $names[$i] = 'name'. $i;
-}
- //renomeando o arry resultante
- $pesticide_diseases = $pesticide_diseases_result;
-
- //=============== Para listar as diseases e as que relacionam co pesticide
- $active_principles = ActivePrinciple::all();
- $pesticide_active_principles_result = [];
- $pesticide_active_principles = $pesticide->active_principles;
- $count = count($active_principles);
- $index = [];
- $i=0;
-// Criando o array com os indices das defensivos relacionadas
-  foreach($pesticide_active_principles as $pesticide_active_principle){ 
-     $index[$i] = $pesticide_active_principle->id;
-     $i++;
-  }
-  $index1 = array_keys($index); 
-$j = 0;
-$count_j = count($index);
-$names = [];
-
-// Populando o arry resultante com todas as defensivos e setando as relacionadas
-
-for ($i = 0; $i < $count; $i++)
-{
-// dd($i,$index[$j]);
-if($count_j>0)
- {
-     if(($i+1) == ($index[$j]) )
-     {
-       $pesticide_active_principles_result[$i] = ($pesticide_active_principles[$j]->id);
-       $j++;
-         if($j >= $count_j)
-         {
-           $j = $j-1;
-         }
-     }
-     else{
-       $pesticide_active_principles_result[$i] = 999;
-     }
- }
- else
- {
-   $pesticide_active_principles_result[$i] = 999; 
- }
-
-   // populando um arry com o nomes das defensivos
-   $names[$i] = 'name'. $i;
-}
- //renomeando o arry resultante
- $pesticide_active_principles = $pesticide_active_principles_result;
-
-
-//dd($chemicalGroups) ;
-
-        return view('plantetc.pesticide.edit',compact('pesticide','crops','diseases','active_principles',
-                                                    'pesticide_crops','pesticide_diseases','pesticide_active_principles',                                                
-                                                    'agronomicClasses','formulationTypes','manufacturers',
-                                                    'applicationModes','chemicalGroups','toxicologicalClasses',
-                                                    'actionSites','modeOperations','actuationMechanisms')); 
+        return view('plantetc.pesticide.edit',compact('pesticide', 'relationCrop_ids','relationCrop_lists',
+                                                      'relationDisease_ids','relationDisease_lists', 
+                                                      'relationActive_principle_ids','relationActive_principle_lists',
+                                                      'agronomicClasses','formulationTypes','manufacturers',
+                                                      'applicationModes','chemicalGroups','toxicologicalClasses',
+                                                      'actionSites','modeOperations','actuationMechanisms')); 
   }
     /**
      * Update the specified resource in storage.
@@ -446,19 +361,13 @@ if($count_j>0)
      */
     public function update(Request $request, Pesticide $pesticide)
     {
-      
-     // Update do campos do registro
+       // dd($request);
+            // Update do campos do registro
+            $request['user_id'] = auth()->user()->id;
 
-     $request['user_id'] = auth()->user()->id;
+            if ($request['note'] == null){$request['note'] = "...";}
 
-     if ($request['note'] == null){
-      $request['note'] = "...";
-      }
-   //   dd($request);
-
-
-      $dataRequest = $this->validateRequest();
-
+            $dataRequest = $this->validateRequest();
 
             $data['user_id'] =  $dataRequest['user_id'];
             $data['name'] = $dataRequest['name'];
@@ -479,64 +388,87 @@ if($count_j>0)
         //    $data['image'] = $dataRequest['image'];
             $data['in_use'] = $dataRequest['in_use'];
 
+      // Gravar a atualizacões
       $update = $pesticide->update($data);
 
-     $crop_update = Pesticide::find($pesticide['id']);
-
-     // Updade das relações
-
-        $crops = $request;
-     //  dd($crops); 
-
-
-        $pesticide_crops = $pesticide->crops;
-
-//  Apagar os registros antigo das relações com as defensivos
-
-    if($crops['crop_id'] != null)
-    {
-        $crops_id = array_keys($crops['crop_id']);
-       
-       $count = count($crops_id); 
-     //  dd($crops_id,$count);
-       for ($i = 0; $i < $count; $i++) {
-         $crops_id[$i] =  $crops_id[$i]+1;
-       }
-      //  dd($crops_id,$count);
-
-        foreach($crops_id as $crop_id)
-            {
-               // dd($pesticide_id);
-                $pesticide->crops()->detach($crop_id);           
-
+      //-----------------  Atualizar Relacionamentos Crop->Pesticide----------------//
+      $list_ids = $request; 
+      //  Passo1 : Apagar os registros antigo das relações com as doenças
+      // Verificar se houve atualizaçao de relacionamentos 
+        if($list_ids['afterCrop_id']!= Null OR $list_ids['clearCrop_id'] != Null){     
+          // Verificar se tem relacionamentos antigos ou se quer limpar todos
+            if($list_ids['beforeCrop_id'] != Null OR $list_ids['clearCrop_id'] != Null) 
+            {//  Criar um array dos relacionamentos antigos
+              $beforesCrop_id = array_keys($list_ids['beforeCrop_id']); 
+              // Eliminar os relacionamentos antigos     
+              foreach($beforesCrop_id as $beforeCrop_id){
+                $pesticide->crops()->detach($beforeCrop_id);} // =======> trocar     
             }
-      
-    }
-//dd($pesticides[$pesticide_id]);
-$crops = $request;
-//dd($pesticides);
-
-  // registrar as novas relações
-
-    if($crops['crop_id'] != null)
-    {
-        $crops_id = array_keys($crops['crop_id']);
-
-        $count = count($crops_id); 
-       //  dd($crops_id,$count);
-          for ($i = 0; $i < $count; $i++) {
-            $crops_id[$i] =  $crops_id[$i]+1;
+          //Passo 2 : Ler os relacionamentos atualizados
+          // Verificar se houve solicitacao de limpar todos relacionamentos
+          if($list_ids['clearCrop_id'] == Null AND $list_ids['afterCrop_id'] != null) 
+          {
+             //  Criar um array dos relacionamentos
+              $aftersCrop_id = array_keys($list_ids['afterCrop_id']); 
+         //     dd($request,$afters_id,$pesticide);
+            // Gravar a atualizacao dos relacionamentos  
+              foreach($aftersCrop_id as $afterCrop_id)
+                {  $pesticide->crops()->attach($afterCrop_id);} // =======> trocar         
           }
-       //   dd($crops_id,$count);
-        foreach($crops_id as $crop_id)
-            {
-                $pesticide->crops()->attach($crop_id);
+        }
+
+//-----------------  Atualizar Relacionamentos Disease->Pesticide----------------//
+      $list_ids = $request; 
+      //  Passo1 : Apagar os registros antigo das relações com as doenças
+      // Verificar se houve atualizaçao de relacionamentos 
+        if($list_ids['afterDisease_id']!= Null OR $list_ids['clearDisease_id'] != Null){     
+          // Verificar se tem relacionamentos antigos ou se quer limpar todos
+            if($list_ids['beforeDisease_id'] != Null OR $list_ids['clearDisease_id'] != Null) 
+            {//  Criar um array dos relacionamentos antigos
+              $beforesDisease_id = array_keys($list_ids['beforeDisease_id']); 
+              // Eliminar os relacionamentos antigos     
+              foreach($beforesDisease_id as $beforeDisease_id){
+                $pesticide->diseases()->detach($beforeDisease_id);} // =======> trocar     
             }
-     
-    }
+          //Passo 2 : Ler os relacionamentos atualizados
+          // Verificar se houve solicitacao de limpar todos relacionamentos
+          if($list_ids['clearDisease_id'] == Null AND $list_ids['afterDisease_id'] != null) 
+          {
+             //  Criar um array dos relacionamentos
+              $aftersDisease_id = array_keys($list_ids['afterDisease_id']); 
+         //     dd($request,$afters_id,$pesticide);
+            // Gravar a atualizacao dos relacionamentos  
+              foreach($aftersDisease_id as $afterDisease_id)
+                {  $pesticide->diseases()->attach($afterDisease_id);} // =======> trocar         
+          }
+        }
 
+     //-----------------  Atualizar Relacionamentos active_principle->Pesticide----------------//
+     $list_ids = $request; 
+     //  Passo1 : Apagar os registros antigo das relações com as doenças
+     // Verificar se houve atualizaçao de relacionamentos 
+       if($list_ids['afterActive_principle_id']!= Null OR $list_ids['clearActive_principle_id'] != Null){     
+         // Verificar se tem relacionamentos antigos ou se quer limpar todos
+           if($list_ids['beforeActive_principle_id'] != Null OR $list_ids['clearActive_principle_id'] != Null) 
+           {//  Criar um array dos relacionamentos antigos
+             $beforesActive_principle_id = array_keys($list_ids['beforeActive_principle_id']); 
+             // Eliminar os relacionamentos antigos     
+             foreach($beforesActive_principle_id as $beforeActive_principle_id){
+               $pesticide->active_principles()->detach($beforeActive_principle_id);} // =======> trocar     
+           }
+         //Passo 2 : Ler os relacionamentos atualizados
+         // Verificar se houve solicitacao de limpar todos relacionamentos
+         if($list_ids['clearActive_principle_id'] == Null AND $list_ids['afterActive_principle_id'] != null) 
+         {
+            //  Criar um array dos relacionamentos
+             $aftersActive_principle_id = array_keys($list_ids['afterActive_principle_id']); 
+        //     dd($request,$afters_id,$pesticide);
+           // Gravar a atualizacao dos relacionamentos  
+             foreach($aftersActive_principle_id as $afterActive_principle_id){
+                 $pesticide->active_principles()->attach($afterActive_principle_id);} // =======> trocar         
+         }
+       }
         if ($update)
-
         return redirect()
                         ->route('pesticide.show' ,[ 'pesticide' => $pesticide->id ])
                         ->with('sucess', 'Sucesso ao salvar alteração');
@@ -545,7 +477,6 @@ $crops = $request;
         return redirect()
                     ->back()
                     ->with('error',  'Falha ao salvar alteração');     
-
     }
    
 
@@ -558,10 +489,10 @@ $crops = $request;
     public function destroy(Pesticide $pesticide)
     {
 
-    //  dd($pesticide);
+    //  dd($pesticide->id);
       $pesticide_name  = $pesticide->name;
        
-        $destroy = $pesticide->delete();
+      $destroy = $pesticide->delete();
 
            
       if ($destroy)
@@ -569,7 +500,7 @@ $crops = $request;
 
             return redirect()
                             ->route('pesticide.index')
-                            ->with('sucess', 'A defensivo '. $pesticide_name . ' foi deletada com sucesso');
+                            ->with('danger', 'A defensivo '. $pesticide_name . ' foi deletada com sucesso');
                     
 
             return redirect()

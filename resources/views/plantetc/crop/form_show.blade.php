@@ -3,7 +3,7 @@
         <div class="row">
             <div class="col">
                 <div class="card">
-    
+                 <p> {{Request::is()}} </p>
                     <div class="card-body text-sm-left">
   
                         <div class="row">
@@ -37,10 +37,10 @@
                                         <div class="form-check form-group">
                                             <a href= "{{ route('disease.show' ,[ 'disease' => $disease->id  ])}}" class="form-check-label" for="validationFormCheck1">{{$disease->name}}</a>
                                         </div>
-                                    </div>
-                                             
+                                    </div>                                         
                                  @endforeach
                             </div>
+                            
                             <div class="row">
                                 <div class="bolder">Nota:</div>
                               </div>

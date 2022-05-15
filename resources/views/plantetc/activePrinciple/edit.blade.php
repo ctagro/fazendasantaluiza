@@ -55,6 +55,4 @@
  
 </x-app-layout>
 
-<script src="{{asset('js/select-btn.js') }}"></script>
-
 

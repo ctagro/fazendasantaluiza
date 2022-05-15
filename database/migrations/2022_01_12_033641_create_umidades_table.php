@@ -13,6 +13,7 @@ class CreateUmidadesTable extends Migration
      */
     public function up()
     {
+        
         Schema::create('umidades', function (Blueprint $table) {
             $table->id();
             $table->double('valor',5,2);

@@ -54,7 +54,7 @@
                         <a href= "{{ route('activePrinciple.show' , $activePrinciple->id  )}}" >{{ $activePrinciple->name}}</a>
                      </td>
                      <td>  
-                        <a href= "{{ route('activePrinciple.show' , $activePrinciple->id  )}}" >{{ $activePrinciple->agronomicClass_id}}</a>
+                        <a href= "{{ route('activePrinciple.show' , $activePrinciple->id  )}}" >{{ $activePrinciple->agronomicClass->name}}</a>
                      </td>
                      <td>  
                         <a href= "{{ route('activePrinciple.show' , $activePrinciple->id  )}}" >{{ $activePrinciple->description}}</a>

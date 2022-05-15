@@ -13,6 +13,7 @@ class CreateTemperaturasTable extends Migration
      */
     public function up()
     {
+        
         Schema::create('temperaturas', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->text('medidor',50);

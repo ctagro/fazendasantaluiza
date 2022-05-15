@@ -13,6 +13,7 @@ class CreatePriceCeasaBhsTable extends Migration
      */
     public function up()
     {
+        
         Schema::create('price_ceasa_bhs', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->date('date');

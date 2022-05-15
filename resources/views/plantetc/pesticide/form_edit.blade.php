@@ -8,7 +8,7 @@
                     <div class="row">
                         <div class="form-group col-sm-6"> 
                             <label class="form-label" for="colFormLabelSm">Nome do defensivo</label>
-                            <input type="text" name="name" value="{{old('name') ?? $pesticide->name }}" class="form-control form-control-sm" placeholder="Defensivo">
+                            <input type="text" name="name" value="{{old('name') ?? $pesticide->name }}" class="form-control form-control-sm  bg-light text-primary" placeholder="Defensivo">
                             @if($errors->has('name'))
                                     <h6 class="text-danger" >Digite a Nome</h6> 
                             @endif
@@ -28,55 +28,6 @@
                      </div>
                 </div>
 
-
-<!--===================Indicações-->                           
-                    <label class="form-label" for="name">Selecione as indicações:</label>
-                    <div class="row">
-                        <?php $index = 0   ?> 
-                        @foreach($diseases as $disease)
-                            <?php $index++   ?> 
-                            <div class="col">   
-                                <div class="form-check form-group">
-                                    <input type="radio" name="disease_id[{{$index}}]" class="form-check-input" id="validationFormCheck1" >
-                                    <label class="form-check-label" for="disease_id[{{$index}}]">{{$disease->name}}</label>
-                                    <div class="invalid-feedback">Indicações</div>  
-                                </div>
-                            </div>
-                                     
-                         @endforeach
-                    </div>
-
-<!--============Culturas  -->
-                    <label class="form-label" for="name">Selecione culturas indicadas:</label>
-                    <div class="row">
-                        <?php $index = 0   ?> 
-                        @foreach($crops as $crop)
-                            <?php $index++   ?> 
-                            <div class="col">   
-                                <div class="form-check form-group">
-                                    <input type="radio" name="crop_id[{{$index}}]" class="form-check-input" id="validationFormCheck1" >
-                                    <label class="form-check-label" for="crop_id[{{$index}}]">{{$crop->name}}</label>
-                                    <div class="invalid-feedback">Culturas indicadas</div>  
-                                </div>
-                            </div>                    
-                         @endforeach
-                    </div>
-
-<!--================Principio Ativo -->
-                    <label class="form-label" for="name">Selecione os principios ativos:</label>
-                    <div class="row">
-                        <?php $index = 0   ?> 
-                        @foreach($active_principles as $active_principle)
-                            <?php $index++   ?> 
-                            <div class="col">   
-                                <div class="form-check form-group">
-                                    <input type="radio" name="active_principle_id[{{$index}}]" class="form-check-input" id="validationFormCheck1" >
-                                    <label class="form-check-label" for="active_principle_id[{{$index}}]">{{$active_principle->name}}</label>
-                                    <div class="invalid-feedback">Principio ativos</div>  
-                                </div>
-                            </div>                      
-                         @endforeach
-                    </div>
            
                     <div class="row">
 
@@ -243,6 +194,202 @@
                         <input type="file" class="form-control form-control-sm"  name='image' value=''>
                     </div>
                 </div>
+                   
+                <div class="form-group">
+                    <label class="form-label" for="colFormLabelSm">Nota</label>
+                    <input type="text" name="note" value="{{old('note') ?? $pesticide->note }}" class="form-control form-control-sm" >
+                </div>
+
+<!--=========== Relacionamento com a Cultura Crop  ================== -->
+
+
+            <div class=row >
+                <div class="col-lg-1">                
+                    <div class="card">
+                        <div class="card-header d-flex justify-content-between">
+                            <div class="header-title">
+                                <h6 class="card-title">Atual</h6>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <div class="d-flex justify-content-start align-items-center">
+                                <div>
+                                    <?php $indexCrop= 0   ?>    
+                                    @foreach($relationCrop_ids as $relationCrop_id)
+                                        <?php $indexCrop++ ?> 
+                                        <div class="col">   
+                                            <div class="form-check form-group"> 
+                                                    <input type="radio" class="form-check-input" name="beforeCrop_id[{{$indexCrop}}]" id="validationFormCheck1" 
+                                                    {{((($relationCrop_id->id)) == $relationCrop_lists[$indexCrop]) ? 'checked': ""}} />
+                                            </div>
+                                        </div>                      
+                                    @endforeach
+                                </div>
+                            </div>                   
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-11">
+                    <div class="card-header d-flex justify-content-between">
+                        <div class="header-title">
+                            <h6 class="card-title">Atualizar Culturas - Repita os que permanezem no relacionamento</h6>
+                        </div>
+                    </div>  
+                <div class="card-body">
+                    <div class="user-post-data">
+                        <div class="d-flex flex-wrap">
+                            <div class="media-support-info mt-2">
+                                <?php $indexCrop = 0   ?>    
+                                @foreach($relationCrop_ids as $relationCrop_id)
+                                    <?php $indexCrop++   ?> 
+                                    <div class="col">   
+                                        <div class="form-check form-group">
+                                            <input type="radio" name="afterCrop_id[{{$indexCrop}}]" class="form-check-input" id="validationFormCheck1" >
+                                            <label class="form-check-label" for="afterCrop_id[{{$indexCrop}}]">{{$relationCrop_id->name}}</label>
+                                        </div>
+                                    </div>                              
+                                @endforeach
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </div>
+
+            <!----  Excluir os relacionamentos  ------------------>
+
+            <div class="form-check form-group">
+                <input type="radio" name="clearCrop_id" class="form-check-input" id="validationFormCheck1" >
+                <label class="text-danger" for="clearCrop_id">Excluir todas as Culturas</label>
+            </div>
+
+<!--=========== Relacionamento com a Diseases   ================== -->
+
+
+                <div class=row >
+                    <div class="col-lg-1">                
+                        <div class="card">
+                            <div class="card-header d-flex justify-content-between">
+                                <div class="header-title">
+                                    <h6 class="card-title">Atual</h6>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <div class="d-flex justify-content-start align-items-center">
+                                    <div>
+                                        <?php $indexDisease = 0   ?>    
+                                        @foreach($relationDisease_ids as $relationDisease_id)
+                                            <?php $indexDisease++ ?>                
+                                            <div class="col">   
+                                                <div class="form-check form-group"> 
+                                                        <input type="radio" class="form-check-input" name="beforeDisease_id[{{$indexDisease}}]" id="validationFormCheck1" 
+                                                        {{((($relationDisease_id->id)) == $relationDisease_lists[$indexDisease]) ? 'checked': ""}} />
+                                                </div>
+                                            </div>                      
+                                        @endforeach
+                                    </div>
+                                </div>                   
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-11">
+                        <div class="card-header d-flex justify-content-between">
+                            <div class="header-title">
+                                <h6 class="card-title">Atualizar Doenças/Pragas - Repita os que permanezem no relacionamento</h6>
+                            </div>
+                        </div>  
+                    <div class="card-body">
+                        <div class="user-post-data">
+                            <div class="d-flex flex-wrap">
+                                <div class="media-support-info mt-2">
+                                    <?php $indexDisease = 0   ?>    
+                                    @foreach($relationDisease_ids as $relationDisease_id)
+                                        <?php $indexDisease++   ?> 
+                                        <div class="col">   
+                                            <div class="form-check form-group">
+                                                <input type="radio" name="afterDisease_id[{{$indexDisease}}]" class="form-check-input" id="validationFormCheck1" >
+                                                <label class="form-check-label" for="afterDisease_id[{{$indexDisease}}]">{{$relationDisease_id->name}}</label>
+                                            </div>
+                                        </div>                              
+                                    @endforeach
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                </div>
+
+                <!----  Excluir os relacionamentos  ------------------>
+
+            <div class="form-check form-group">
+                <input type="radio" name="clearDisease_id" class="form-check-input" id="validationFormCheck1" >
+                <label class="text-danger" for="clearDisease_id">Excluir todas as Doenças/Pragas</label>
+            </div>
+
+                <!--=========== Relacionamento com a Principio Ativo Crop  ================== -->
+
+
+            <div class=row >
+                <div class="col-lg-1">                
+                    <div class="card">
+                        <div class="card-header d-flex justify-content-between">
+                            <div class="header-title">
+                                <h6 class="card-title">Atual</h6>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <div class="d-flex justify-content-start align-items-center">
+                                <div>
+                                    <?php $indexActive_principle = 0   ?>    
+                                    @foreach($relationActive_principle_ids as $relationActive_principle_id)
+                                        <?php $indexActive_principle++ ?>                
+                                        <div class="col">   
+                                            <div class="form-check form-group"> 
+                                                    <input type="radio" class="form-check-input" name="beforeActive_principle_id[{{$indexActive_principle}}]" id="validationFormCheck1" 
+                                                    {{((($relationActive_principle_id->id)) == $relationActive_principle_lists[$indexActive_principle]) ? 'checked': ""}} />
+                                            </div>
+                                        </div>                      
+                                    @endforeach
+                                </div>
+                            </div>                   
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-11">
+                    <div class="card-header d-flex justify-content-between">
+                        <div class="header-title">
+                            <h6 class="card-title">Atualizar Princípios Ativos- Repita os que permanezem no relacionamento</h6>
+                        </div>
+                    </div>  
+                <div class="card-body">
+                    <div class="user-post-data">
+                        <div class="d-flex flex-wrap">
+                            <div class="media-support-info mt-2">
+                                <?php $indexActive_principle = 0   ?>    
+                                @foreach($relationActive_principle_ids as $relationActive_principle_id)
+                                    <?php $indexActive_principle++   ?> 
+                                    <div class="col">   
+                                        <div class="form-check form-group">
+                                            <input type="radio" name="afterActive_principle_id[{{$indexActive_principle}}]" class="form-check-input" id="validationFormCheck1" >
+                                            <label class="form-check-label" for="afterActive_principle_id[{{$indexActive_principle}}]">{{$relationActive_principle_id->name}}</label>
+                                        </div>
+                                    </div>                              
+                                @endforeach
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </div>
+
+
+<!----  Excluir os relacionamentos  ------------------>
+
+            <div class="form-check form-group">
+                <input type="radio" name="clearActive_principle_id" class="form-check-input" id="validationFormCheck1" >
+                <label class="text-danger" for="clearActive_principle_id">Excluir todos os Princípios Ativos</label>
+            </div>
+<!-- ---------------------------------->
 
                     <div class="form-group col-sm-6"> 
                     <div>
@@ -250,7 +397,7 @@
                             <input type="hidden" name="in_use" value="S" class="form-control form-control-sm py-3">
                         @else
                             <div class="form-group">
-                                <label>Ativo: {{$crop->in_use}} </label>
+                                <label>Ativo: {{$pesticide->in_use}} </label>
                                 <select name="in_use"  id="in_use" class="form-select" required aria-label="select example">>
                                     <option value="S">Sim</option>
                                     <option value="N">Não</option>
@@ -263,12 +410,6 @@
                     </div>
                 </div>
             </div>
-
-                   
-                    <div class="form-group">
-                        <label class="form-label" for="colFormLabelSm">Nota</label>
-                        <input type="text" name="note" value="{{old('note') ?? $pesticide->note }}" class="form-control form-control-sm" >
-                    </div>
 
 
                 </div>
