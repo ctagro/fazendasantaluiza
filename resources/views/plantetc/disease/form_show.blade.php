@@ -47,7 +47,7 @@
                           <div class="row">
                             <div class="form-control form-control-sm">{{ $disease->note}}</div>                        
     
-                            <label class="form-label" for="email">Culturas que atingem a cultura:</label>
+                            <label class="form-label" for="email">Culturas relacionadas:</label>
                             <div class="row">
                                 <?php $index = 0   ?>    
                                 @foreach($crops as $crop)

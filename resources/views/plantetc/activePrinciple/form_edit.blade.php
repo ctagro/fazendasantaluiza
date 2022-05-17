@@ -55,8 +55,8 @@
                                                 <?php $index++ ?>                
                                                 <div class="col">   
                                                     <div class="form-check form-group"> 
-                                                            <input type="radio" class="form-check-input" name="before_id[{{$index}}]" id="validationFormCheck1" 
-                                                            {{((($relation_id->id)) == $relation_lists[$index]) ? 'checked': ""}} />
+                                                            <input type="radio" class="form-check-input" name="before_id[{{$index}}]" value={{$relation_lists[$index]}} id="validationFormCheck1" 
+                                                            {{($relation_id == $relation_lists[$index]) ? 'checked': ""}} />
                                                     </div>
                                                 </div>                      
                                             @endforeach
@@ -76,12 +76,12 @@
                                 <div class="d-flex flex-wrap">
                                     <div class="media-support-info mt-2">
                                         <?php $index = 0   ?>    
-                                        @foreach($relation_ids as $relation_id)
+                                        @foreach($relation0_ids as $relation0_id)
                                             <?php $index++   ?> 
                                             <div class="col">   
                                                 <div class="form-check form-group">
-                                                    <input type="radio" name="after_id[{{$index}}]" class="form-check-input" id="validationFormCheck1" >
-                                                    <label class="form-check-label" for="after_id[{{$index}}]">{{$relation_id->name}}</label>
+                                                    <input type="radio" name="after_id[{{$index}}]" value={{$relation0_id->id}} class="form-check-input" id="validationFormCheck1" >
+                                                    <label class="form-check-label" for="after_id[{{$index}}]">{{$relation0_id->name}}</label>
                                                 </div>
                                             </div>                              
                                         @endforeach

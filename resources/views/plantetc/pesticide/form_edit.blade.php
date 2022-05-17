@@ -219,8 +219,8 @@
                                         <?php $indexCrop++ ?> 
                                         <div class="col">   
                                             <div class="form-check form-group"> 
-                                                    <input type="radio" class="form-check-input" name="beforeCrop_id[{{$indexCrop}}]" id="validationFormCheck1" 
-                                                    {{((($relationCrop_id->id)) == $relationCrop_lists[$indexCrop]) ? 'checked': ""}} />
+                                                    <input type="radio" class="form-check-input" name="beforeCrop_id[{{$indexCrop}}]" value={{$relationCrop_lists[$indexCrop]}} id="validationFormCheck1" 
+                                                    {{($relationCrop_id == $relationCrop_lists[$indexCrop]) ? 'checked': ""}} />
                                             </div>
                                         </div>                      
                                     @endforeach
@@ -240,12 +240,12 @@
                         <div class="d-flex flex-wrap">
                             <div class="media-support-info mt-2">
                                 <?php $indexCrop = 0   ?>    
-                                @foreach($relationCrop_ids as $relationCrop_id)
+                                @foreach($relationCrop0_ids as $relationCrop0_id)
                                     <?php $indexCrop++   ?> 
                                     <div class="col">   
                                         <div class="form-check form-group">
-                                            <input type="radio" name="afterCrop_id[{{$indexCrop}}]" class="form-check-input" id="validationFormCheck1" >
-                                            <label class="form-check-label" for="afterCrop_id[{{$indexCrop}}]">{{$relationCrop_id->name}}</label>
+                                            <input type="radio" name="afterCrop_id[{{$indexCrop}}]" class="form-check-input"value={{$relationCrop0_id->id}} id="validationFormCheck1" >
+                                            <label class="form-check-label" for="afterCrop_id[{{$indexCrop}}]">{{$relationCrop0_id->name}}</label>
                                         </div>
                                     </div>                              
                                 @endforeach
@@ -282,8 +282,8 @@
                                             <?php $indexDisease++ ?>                
                                             <div class="col">   
                                                 <div class="form-check form-group"> 
-                                                        <input type="radio" class="form-check-input" name="beforeDisease_id[{{$indexDisease}}]" id="validationFormCheck1" 
-                                                        {{((($relationDisease_id->id)) == $relationDisease_lists[$indexDisease]) ? 'checked': ""}} />
+                                                        <input type="radio" class="form-check-input" name="beforeDisease_id[{{$indexDisease}}]" value={{$relationDisease_lists[$indexDisease]}} id="validationFormCheck1" 
+                                                        {{($relationDisease_id == $relationDisease_lists[$indexDisease]) ? 'checked': ""}} />
                                                 </div>
                                             </div>                      
                                         @endforeach
@@ -303,12 +303,12 @@
                             <div class="d-flex flex-wrap">
                                 <div class="media-support-info mt-2">
                                     <?php $indexDisease = 0   ?>    
-                                    @foreach($relationDisease_ids as $relationDisease_id)
+                                    @foreach($relationDisease0_ids as $relationDisease0_id)
                                         <?php $indexDisease++   ?> 
                                         <div class="col">   
                                             <div class="form-check form-group">
-                                                <input type="radio" name="afterDisease_id[{{$indexDisease}}]" class="form-check-input" id="validationFormCheck1" >
-                                                <label class="form-check-label" for="afterDisease_id[{{$indexDisease}}]">{{$relationDisease_id->name}}</label>
+                                                <input type="radio" name="afterDisease_id[{{$indexDisease}}]" value={{$relationDisease0_id->id}} class="form-check-input" id="validationFormCheck1" >
+                                                <label class="form-check-label" for="afterDisease_id[{{$indexDisease}}]">{{$relationDisease0_id->name}}</label>
                                             </div>
                                         </div>                              
                                     @endforeach
@@ -345,8 +345,9 @@
                                         <?php $indexActive_principle++ ?>                
                                         <div class="col">   
                                             <div class="form-check form-group"> 
-                                                    <input type="radio" class="form-check-input" name="beforeActive_principle_id[{{$indexActive_principle}}]" id="validationFormCheck1" 
-                                                    {{((($relationActive_principle_id->id)) == $relationActive_principle_lists[$indexActive_principle]) ? 'checked': ""}} />
+                                                    <input type="radio" class="form-check-input" name="beforeActive_principle_id[{{$indexActive_principle}}]"
+                                                     value={{$relationActive_principle_lists[$indexActive_principle]}} id="validationFormCheck1" 
+                                                    {{($relationActive_principle_id == $relationActive_principle_lists[$indexActive_principle]) ? 'checked': ""}} />
                                             </div>
                                         </div>                      
                                     @endforeach
@@ -366,12 +367,13 @@
                         <div class="d-flex flex-wrap">
                             <div class="media-support-info mt-2">
                                 <?php $indexActive_principle = 0   ?>    
-                                @foreach($relationActive_principle_ids as $relationActive_principle_id)
+                                @foreach($relationActive_principle0_ids as $relationActive_principle0_id)
                                     <?php $indexActive_principle++   ?> 
                                     <div class="col">   
                                         <div class="form-check form-group">
-                                            <input type="radio" name="afterActive_principle_id[{{$indexActive_principle}}]" class="form-check-input" id="validationFormCheck1" >
-                                            <label class="form-check-label" for="afterActive_principle_id[{{$indexActive_principle}}]">{{$relationActive_principle_id->name}}</label>
+                                            <input type="radio" name="afterActive_principle_id[{{$indexActive_principle}}]" 
+                                            value={{$relationActive_principle0_id->id}} class="form-check-input" id="validationFormCheck1" >
+                                            <label class="form-check-label" for="afterActive_principle_id[{{$indexActive_principle}}]">{{$relationActive_principle0_id->name}}</label>
                                         </div>
                                     </div>                              
                                 @endforeach

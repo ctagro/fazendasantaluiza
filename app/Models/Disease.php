@@ -101,7 +101,10 @@ class Disease extends Model
             self::deleting(function($disease) { // before delete() method call this
                  $disease->crops()->detach(); // <-- direct deletion
                  });
-                }
+            self::deleting(function($disease) { // before delete() method call this
+                $disease->pesticides()->detach(); // <-- direct deletion
+                });
+            }
 
 
 }

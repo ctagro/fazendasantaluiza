@@ -96,7 +96,7 @@ class CropController extends Controller
         if($diseases['disease_id'] != null)
         {
         // transformando os dados das diseases relacionada em Array
-            $diseases_id = array_keys($diseases['disease_id']);
+            $diseases_id = array($diseases['disease_id']);
         // Gravando a relação no arquivo intermediarios crop_disease
             foreach($diseases_id as $disease_id)
                 {
@@ -145,38 +145,54 @@ class CropController extends Controller
         $user = auth()->user();
 
   // Para listar todas as disease com os dados completos
-        $relation_ids = Disease::all(); // =======> trocar
+        $relation0_ids = Disease::all(); // =======> trocar
   // para listar as disease relacionadas à cultura com todos os dados
-        $relation_lists = $crop->diseases; // =======> trocar
-   // Criando o array $index com a diseases relacionadas
-        $index = [];
-        $i=0;
-        foreach($relation_lists as $relation_list){ 
-            $index[$i] = $relation_list->id;
-            $i++;}    
-    // criando o array vazio para receber todas as diseases relacionada 
-    // e preparar para marca-las os indices sem relação co null na view
-        $relation_lists_result = [];
-        $count = count($relation_ids);
-        $j = 0;
-        $count_j = count($index);
-        $names = [];
-        $relation_id =[];
-    // Populando o arry resultante com todas as doenças e setando as relacionadas
-        for ($i = 1; $i < $count+1; $i++){
-          if($count_j>0){
-                if(($i+1) == ($index[$j]+1) ){
-                  $relation_lists_result[$i] = ($relation_lists[$j]->id);
-                  $j++;
-                    if($j >= $count_j){
-                      $j = $j-1;}}
-                else{$relation_lists_result[$i] = Null;}
-            }
-            else{$relation_lists_result[$i] = Null; }
+        $relation0_lists = $crop->diseases; // =======> trocar
+
+        $i = 0;
+        $temp = [];
+  // Criando o array com todos os pesticides
+        foreach($relation0_ids as $relation0_id){ 
+          $i++;
+          $relation_ids[$i] = $relation0_id->id;
+          $temp[$i] = null;
         }
-        $relation_lists = $relation_lists_result;
+   
+   // Criando o array com os pesticides relacionadas
+        $relation_lists =[];
+        $i= 0;
+        foreach($relation0_lists as $relation0_list){ 
+          $index[$i] = $relation0_list->id;
+          $i++; 
+          $relation_lists[$i] = $relation0_list->id;
+            } 
+  
+  // testando se nao tem pesticides relacionados
+          if(empty($relation_lists)){       
+              $count_i  = count($relation_ids);
+                for ($i = 1; $i <= $count_i; $i++){
+                  $relation_lists[$i] = null;
+                }  
+              }
+            else{
+              $count_i  = count($relation_lists); 
+          }
+            $count_j = count($relation_ids);
+  
+            for ($j = 1; $j <= $count_j; $j++){
+              for ($i = 1; $i <= $count_i; $i++){
+                if($relation_ids[$j] == $relation_lists[$i] ){
+                  $temp[$j] = $relation_lists[$i];
+                  break;
+                }
+              }
+            }
+   
+          $relation_lists = $temp;
+  
+   //    dd($relation_ids,$relation_lists,$relation0_ids);
  
-        return view('plantetc.crop.edit',compact('crop','relation_ids','relation_lists'));
+        return view('plantetc.crop.edit',compact('crop','relation_ids','relation_lists','relation0_ids'));
     }
 
     /**
@@ -206,14 +222,14 @@ class CropController extends Controller
       $update = $crop->update($data);
 
 //-----------------  Atualizar Relacionamentos Crop->Diseases----------------//
-      $list_ids = $request; 
+      $list_ids = $request;
   //  Passo1 : Apagar os registros antigo das relações com as doenças
   // Verificar se houve atualizaçao de relacionamentos 
     if($list_ids['after_id']!= Null OR $list_ids['clear_id'] != Null){     
       // Verificar se tem relacionamentos antigos ou se quer limpar todos
         if($list_ids['before_id'] != Null OR $list_ids['clear_id'] != Null) 
         {//  Criar um array dos relacionamentos antigos
-          $befores_id = array_keys($list_ids['before_id']); 
+          $befores_id = array($list_ids['before_id']); 
           // Eliminar os relacionamentos antigos     
           foreach($befores_id as $before_id){
             $crop->diseases()->detach($before_id);} // =======> trocar     
@@ -223,7 +239,7 @@ class CropController extends Controller
       if($list_ids['clear_id'] == Null AND $list_ids['after_id'] != null) 
       {
          //  Criar um array dos relacionamentos
-          $afters_id = array_keys($list_ids['after_id']); 
+          $afters_id = array($list_ids['after_id']); 
         // Gravar a atualizacao dos relacionamentos  
           foreach($afters_id as $after_id)
             {  $crop->diseases()->attach($after_id);} // =======> trocar         

@@ -79,10 +79,9 @@ class ActivePrincipleController extends Controller
        // Gravando os dados da disease sem as disease relacionadas
        $activePrinciple = new activePrinciple();
        $response = $activePrinciple->storeActivePrinciple($data);
-     //  dd($response['new_ActivePrinciple']);
        $activePrinciple_id = $response['new_ActivePrinciple'];
        $activePrinciple = ActivePrinciple::find($activePrinciple_id);
-
+     
      // Capturando os dados das crops relacionadas 
        $pesticides= $request;
  
@@ -90,11 +89,11 @@ class ActivePrincipleController extends Controller
        if($pesticides['pesticide_id'] != null)
        {
        // transformando os dados das pesticides relacionada em Array
-           $pesticides_id = array_keys($pesticides['pesticide_id']);
-        //   dd($pesticides_id);
+           $pesticides_id = array($pesticides['pesticide_id']);
+     
        // Gravando a relação no arquivo intermediarios pesticide_activePrinciple
            foreach($pesticides_id as $pesticide_id)
-               {    
+               {   
                    $activePrinciple->pesticides()->attach($pesticide_id); //==>mudar
                }
        }
@@ -109,8 +108,6 @@ class ActivePrincipleController extends Controller
                     ->with('error',  'Falha ao cadastrar a cultura');
         }   
     }
-
-
 
     /**
      * Display the specified resource.
@@ -137,43 +134,61 @@ class ActivePrincipleController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function edit(activePrinciple $activePrinciple) {
-
+      
         $user = auth()->user();
         $agronomicClasses = AgronomicClass::all();
-// Para listar todas as crop com os dados completos
-$relation_ids = Pesticide::all(); // =======> trocar
-// para listar as disease relacionadas à cultura com todos os dados
-      $relation_lists = $activePrinciple->pesticides; // =======> trocar
- // Criando o array $index com a crops relacionadas
-      $index = [];
-      $i=0;
-      foreach($relation_lists as $relation_list){ 
-          $index[$i] = $relation_list->id;
-          $i++;}    
-  // criando o array vazio para receber todas as crops relacionada 
-  // e preparar para marca-las os indices sem relação co null na view
-      $relation_lists_result = [];
-      $count = count($relation_ids);
-      $j = 0;
-      $count_j = count($index);
-      $names = [];
-      $relation_id =[];
-  // Populando o arry resultante com todas as doenças e setando as relacionadas
-      for ($i = 1; $i < $count+1; $i++){
-        if($count_j>0){
-              if(($i+1) == ($index[$j]+1) ){
-                $relation_lists_result[$i] = ($relation_lists[$j]->id);
-                $j++;
-                  if($j >= $count_j){
-                    $j = $j-1;}}
-              else{$relation_lists_result[$i] = Null;}
-          }
-          else{$relation_lists_result[$i] = Null; }
+        $activePrinciple_id = $activePrinciple->id;
+      
+// Para listar todas os pesticides com os dados completos
+        $relation0_ids = Pesticide::all(); // =======> trocar
+
+// para listar os pesticides relacionadas à cultura com todos os dados
+        $relation0_lists = $activePrinciple->pesticides; // =======> trocar
+
+      $i = 0;
+      $temp = [];
+// Criando o array com todos os pesticides
+      foreach($relation0_ids as $relation0_id){ 
+        $i++;
+        $relation_ids[$i] = $relation0_id->id;
+        $temp[$i] = null;
       }
-      $relation_lists = $relation_lists_result;
+ 
+ // Criando o array com os pesticides relacionadas
+      $relation_lists =[];
+      $i= 0;
+      foreach($relation0_lists as $relation0_list){ 
+        $index[$i] = $relation0_list->id;
+        $i++; 
+        $relation_lists[$i] = $relation0_list->id;
+          } 
 
+// testando se nao tem pesticides relacionados
+        if(empty($relation_lists)){       
+            $count_i  = count($relation_ids);
+              for ($i = 1; $i <= $count_i; $i++){
+                $relation_lists[$i] = null;
+              }  
+            }
+          else{
+            $count_i  = count($relation_lists); 
+        }
+          $count_j = count($relation_ids);
 
-        return view('plantetc.activePrinciple.edit',compact('activePrinciple','relation_ids','relation_lists','agronomicClasses'));
+          for ($j = 1; $j <= $count_j; $j++){
+            for ($i = 1; $i <= $count_i; $i++){
+              if($relation_ids[$j] == $relation_lists[$i] ){
+                $temp[$j] = $relation_lists[$i];
+                break;
+              }
+            }
+          }
+ 
+        $relation_lists = $temp;
+
+ //    dd($relation_ids,$relation_lists,$relation0_ids);
+
+        return view('plantetc.activePrinciple.edit',compact('activePrinciple','relation_ids','relation_lists','relation0_ids','agronomicClasses'));
     }
 
     /**
@@ -210,21 +225,24 @@ $relation_ids = Pesticide::all(); // =======> trocar
             // Verificar se tem relacionamentos antigos ou se quer limpar todos
               if($list_ids['before_id'] != Null OR $list_ids['clear_id'] != Null) 
               {//  Criar um array dos relacionamentos antigos
-                $befores_id = array_keys($list_ids['before_id']); 
+                $befores_id = array($list_ids['before_id']); 
                 // Eliminar os relacionamentos antigos     
                 foreach($befores_id as $before_id){
+                
                   $activePrinciple->pesticides()->detach($before_id);} // =======> trocar     
               }
+
             //Passo 2 : Ler os relacionamentos atualizados
             // Verificar se houve solicitacao de limpar todos relacionamentos
             if($list_ids['clear_id'] == Null AND $list_ids['after_id'] != null) 
             {
                //  Criar um array dos relacionamentos
-                $afters_id = array_keys($list_ids['after_id']); 
-           //     dd($request,$afters_id,$disease);
+                $afters_id = array($list_ids['after_id']); 
+  
               // Gravar a atualizacao dos relacionamentos  
                 foreach($afters_id as $after_id)
-                  {  $activePrinciple->pesticides()->attach($after_id);} // =======> trocar         
+                  {  
+                     $activePrinciple->pesticides()->attach($after_id);} // =======> trocar         
             }
           }
       //-----------------  Fim de Atualizar Relacionamentos --------------------//

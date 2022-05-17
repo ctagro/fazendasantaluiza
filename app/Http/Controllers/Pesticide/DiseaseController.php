@@ -62,7 +62,7 @@ class DiseaseController extends Controller
 
       // Capturando os dados da Diseases sem as diseases relacionadas   
         $data = $this->validateRequest(); 
-        $data['user_id'] = auth()->user()->id; 
+        $data['user_id'] = auth()->user()->id;
       
       //  Verificar se a cultura em referencia ja fui cadastrada
 
@@ -86,8 +86,8 @@ class DiseaseController extends Controller
         if($crops['crop_id'] != null)
         {
         // transformando os dados das crops relacionada em Array
-            $crops_id = array_keys($crops['crop_id']);
-         //   dd($crops_id);
+            $crops_id = array($crops['crop_id']);
+        
         // Gravando a relação no arquivo intermediarios crop_disease
             foreach($crops_id as $crop_id)
                 {    
@@ -97,16 +97,12 @@ class DiseaseController extends Controller
       // verificando se o regidtro no BD foi bem sucedido  
       if ($response)
       {
-
             return redirect()
                             ->route('disease.create')
                             ->with('sucess', 'Cadastro de '. $disease->name . ' realizado com sucesso');
-                    
-
-        return redirect()
-                    ->back()
-                    ->with('error',  'Falha ao cadastrar a doença');
-
+            return redirect()
+                        ->back()
+                        ->with('error',  'Falha ao cadastrar a doença');
         }
     
     }
@@ -140,40 +136,61 @@ class DiseaseController extends Controller
 
 
         $user = auth()->user();
+        $disease_id = $disease->id;
 
  // Para listar todas as crop com os dados completos
- $relation_ids = Crop::all(); // =======> trocar
- // para listar as disease relacionadas à cultura com todos os dados
-       $relation_lists = $disease->crops; // =======> trocar
-  // Criando o array $index com a crops relacionadas
-       $index = [];
-       $i=0;
-       foreach($relation_lists as $relation_list){ 
-           $index[$i] = $relation_list->id;
-           $i++;}    
-   // criando o array vazio para receber todas as crops relacionada 
-   // e preparar para marca-las os indices sem relação co null na view
-       $relation_lists_result = [];
-       $count = count($relation_ids);
-       $j = 0;
-       $count_j = count($index);
-       $names = [];
-       $relation_id =[];
-   // Populando o arry resultante com todas as doenças e setando as relacionadas
-       for ($i = 1; $i < $count+1; $i++){
-         if($count_j>0){
-               if(($i+1) == ($index[$j]+1) ){
-                 $relation_lists_result[$i] = ($relation_lists[$j]->id);
-                 $j++;
-                   if($j >= $count_j){
-                     $j = $j-1;}}
-               else{$relation_lists_result[$i] = Null;}
-           }
-           else{$relation_lists_result[$i] = Null; }
-       }
-       $relation_lists = $relation_lists_result;
+      $relation0_ids = Crop::all(); // =======> trocar
 
-        return view('plantetc.disease.edit',compact('disease','relation_ids','relation_lists'));
+
+ // para listar as disease relacionadas à cultura com todos os dados
+       $relation0_lists = $disease->crops; // =======> trocar
+
+
+       $i = 0;
+      $temp = [];
+// Criando o array com todos as diseases
+      foreach($relation0_ids as $relation0_id){ 
+        $i++;
+        $relation_ids[$i] = $relation0_id->id;
+        $temp[$i] = 9999;
+      }
+ 
+ // Criando o array com as diseases relacionadas
+      $relation_lists =[];
+      $i= 0;
+      foreach($relation0_lists as $relation0_list){ 
+        $index[$i] = $relation0_list->id;
+        $i++; 
+        $relation_lists[$i] = $relation0_list->id;
+          } 
+
+// testando se nao tem diseases relacionados
+        if(empty($relation_lists)){       
+            $count_i  = count($relation_ids);
+              for ($i = 1; $i <= $count_i; $i++){
+                $relation_lists[$i] = 9999;
+              }  
+            }
+          else{
+            $count_i  = count($relation_lists); 
+        }
+          $count_j = count($relation_ids);
+
+          for ($j = 1; $j <= $count_j; $j++){
+            for ($i = 1; $i <= $count_i; $i++){
+              if($relation_ids[$j] == $relation_lists[$i] ){
+                $temp[$j] = $relation_lists[$i];
+                break;
+              }
+            }
+          }
+ 
+        $relation_lists = $temp;
+
+  //   dd($relation_ids,$relation_lists,$relation0_ids);
+
+
+        return view('plantetc.disease.edit',compact('disease','relation_ids','relation_lists','relation0_ids'));
     }
 
     /**
@@ -212,7 +229,7 @@ class DiseaseController extends Controller
        // Verificar se tem relacionamentos antigos ou se quer limpar todos
          if($list_ids['before_id'] != Null OR $list_ids['clear_id'] != Null) 
          {//  Criar um array dos relacionamentos antigos
-           $befores_id = array_keys($list_ids['before_id']); 
+           $befores_id = array($list_ids['before_id']); 
            // Eliminar os relacionamentos antigos     
            foreach($befores_id as $before_id){
              $disease->crops()->detach($before_id);} // =======> trocar     
@@ -222,7 +239,7 @@ class DiseaseController extends Controller
        if($list_ids['clear_id'] == Null AND $list_ids['after_id'] != null) 
        {
           //  Criar um array dos relacionamentos
-           $afters_id = array_keys($list_ids['after_id']); 
+           $afters_id = array($list_ids['after_id']); 
       //     dd($request,$afters_id,$disease);
          // Gravar a atualizacao dos relacionamentos  
            foreach($afters_id as $after_id)
@@ -250,8 +267,7 @@ class DiseaseController extends Controller
     public function destroy(Disease $disease)
     {
 
-      $disease_name  = $disease->name;
-       
+      $disease_name  = $disease->name;    
       $destroy = $disease->delete();
            
       if ($destroy)

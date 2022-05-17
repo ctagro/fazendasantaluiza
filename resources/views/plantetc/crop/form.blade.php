@@ -45,7 +45,7 @@
                                     <?php $index++   ?> 
                                     <div class="col">   
                                         <div class="form-check form-group">
-                                            <input type="radio" name="disease_id[{{$index}}]" class="form-check-input" id="validationFormCheck1" >
+                                            <input type="radio" name="disease_id[{{$index}}]" value={{$disease->id}} class="form-check-input" id="validationFormCheck1" >
                                             <label class="form-check-label" for="disease_id[{{$index}}]">{{$disease->name}}</label>
                                         </div>
                                     </div>                              

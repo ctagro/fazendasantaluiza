@@ -96,6 +96,9 @@ public function storeCrop(array $data): Array
             self::deleting(function($crop) { // before delete() method call this
                  $crop->diseases()->detach(); // <-- direct deletion
                  });
+            self::deleting(function($crop) { // before delete() method call this
+                $crop->pesticides()->detach(); // <-- direct deletion
+                });                 
                  // do the rest of the cleanup...
         }
 

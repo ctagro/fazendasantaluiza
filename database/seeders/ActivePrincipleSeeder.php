@@ -58,7 +58,7 @@ class ActivePrincipleSeeder extends Seeder
         ActivePrinciple::create([
                         
             'user_id'               => 1,            
-            'name'                  => 'Espiromezifeno',
+            'name'                  => 'Teste Principio Ativo',
             'agronomicClass_id'     => 1,
             'description'           => 'O tomate é o fruto[1] do tomateiro (Solanum lycopersicum; Solanaceae).',
             'note'                  => 'As espécies são originárias das Américas Central e do Sul; 
