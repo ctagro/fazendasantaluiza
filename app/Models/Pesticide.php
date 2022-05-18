@@ -20,6 +20,7 @@ use App\Models\Auxiliaries\ActionSite;
 use App\Models\Auxiliaries\ModeOperation;
 use App\Models\Auxiliaries\ActuationMechanism;
 
+
 class Pesticide extends Model
 {
     //use HasFactory;

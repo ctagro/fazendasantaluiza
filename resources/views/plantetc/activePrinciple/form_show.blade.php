@@ -34,12 +34,8 @@
                                 @foreach($pesticides as $pesticide)
                                     <?php $index++   ?> 
                                     <div class="col">   
-                                        <div class="form-check form-group">
-                                          <p>{{$pesticide->name}}</p>
- <!--                                         
-                                            <a href= "{ route('pesticide.show' ,[ 'pesticide' => $pesticide->id  ])}}" class="form-check-label" for="validationFormCheck1">{$pesticide->name}}</a>
-
- -->
+                                        <div class="form-check form-group">                               
+                                            <a href= "{{ route('pesticide.show' ,[ 'pesticide' => $pesticide->id  ])}}" class="form-check-label" for="validationFormCheck1">{{$pesticide->name}}</a>
                                         </div>
                                     </div>
                                              

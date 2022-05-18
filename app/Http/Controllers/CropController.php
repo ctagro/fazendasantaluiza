@@ -97,6 +97,7 @@ class CropController extends Controller
         {
         // transformando os dados das diseases relacionada em Array
             $diseases_id = array($diseases['disease_id']);
+            dd($request,$diseases_id);
         // Gravando a relação no arquivo intermediarios crop_disease
             foreach($diseases_id as $disease_id)
                 {
@@ -240,6 +241,7 @@ class CropController extends Controller
       {
          //  Criar um array dos relacionamentos
           $afters_id = array($list_ids['after_id']); 
+          dd($request,$afters_id);
         // Gravar a atualizacao dos relacionamentos  
           foreach($afters_id as $after_id)
             {  $crop->diseases()->attach($after_id);} // =======> trocar         

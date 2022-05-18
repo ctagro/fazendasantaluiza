@@ -8,7 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 use Carbon\Carbon;
 use DB;
 use App\User;
-use App\Models\Disease;
 use App\Models\Pesticide;
 use App\Models\Auxiliaries\AgronomicClass;
 

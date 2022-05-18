@@ -11,7 +11,6 @@ Use App\Models\Crop;
 Use App\Models\Disease;
 Use App\Models\Pesticide;
 Use App\Models\ActivePrinciple;
-Use App\Models\Crop_pesticise;
 use App\Models\Auxiliaries\AgronomicClass;
 use App\Models\Auxiliaries\FormulationType;
 use App\Models\Auxiliaries\Manufacturer;
@@ -152,13 +151,13 @@ class PesticideController extends Controller
 
             //============== Capturando os dados das active_principles relacionadas =========
             $active_principles= $request;
-                
+  
             // Testando se não houve active_principle relacionada      
               if($active_principles['active_principle_id'] != null)
               {
               // transformando os dados das active_principles relacionada em Array
                   $active_principles_id = array_keys($active_principles['active_principle_id']);
-                   dd($active_principles_id);
+
               // Gravando a relação no arquivo intermediarios active_principle_disease
                   foreach($active_principles_id as $active_principle_id)
                       {    
