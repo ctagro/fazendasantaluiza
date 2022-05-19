@@ -53,8 +53,8 @@ class CropController extends Controller
           $crop = new \App\Models\Crop([
           ]);
           $diseases = Disease::all();
-          $count = count($diseases);
-       return view('plantetc.crop.create',compact('crop','diseases','count')); //teste      
+
+       return view('plantetc.crop.create',compact('crop','diseases')); //teste      
     }
 
 
@@ -66,6 +66,7 @@ class CropController extends Controller
      */
     public function store(Request $request)
     {
+
       // Preenchendo o campo note
       if ($request['note'] == null){
         $request['note'] = "...";
@@ -97,14 +98,14 @@ class CropController extends Controller
         {
         // transformando os dados das diseases relacionada em Array
             $diseases_id = array($diseases['disease_id']);
-            dd($request,$diseases_id);
+
         // Gravando a relação no arquivo intermediarios crop_disease
             foreach($diseases_id as $disease_id)
                 {
                     $crop->diseases()->attach($disease_id);
                 }
         }
-      // verificando se o regidtro no BD foi bem sucedido       
+      // verificando se o registro no BD foi bem sucedido       
       if ($response)
       {
         return redirect()
@@ -241,7 +242,6 @@ class CropController extends Controller
       {
          //  Criar um array dos relacionamentos
           $afters_id = array($list_ids['after_id']); 
-          dd($request,$afters_id);
         // Gravar a atualizacao dos relacionamentos  
           foreach($afters_id as $after_id)
             {  $crop->diseases()->attach($after_id);} // =======> trocar         

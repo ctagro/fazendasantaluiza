@@ -8,6 +8,7 @@
 
                             <input type="hidden" name="in_use" value={{"S"}} class="form-control form-control-sm py-3">
                             <input type="hidden" name="user_id" value="{{auth()->user()->id}}" class="form-control form-control-sm py-3">
+                       
                     
                             <div class="form-group">
                                 <label class="form-label" for="colFormLabelSm">Nome da doenças</label>

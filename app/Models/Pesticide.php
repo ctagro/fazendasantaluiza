@@ -123,7 +123,7 @@ class Pesticide extends Model
 
         public function active_principles()
         {
-            return $this->belongsToMany(ActivePrinciple::class, 'active_principle_pesticide', 'active_principle_id', 'pesticide_id');
+            return $this->belongsToMany(ActivePrinciple::class);
         } 
 
         public static function boot() {

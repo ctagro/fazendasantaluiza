@@ -87,7 +87,7 @@ public function storeActivePrinciple(array $data): Array
 
     public function pesticides()
         {
-            return $this->belongsToMany(Pesticide::class,  'active_principle_pesticide', 'active_principle_id', 'pesticide_id');
+            return $this->belongsToMany(Pesticide::class);
         }
 
         public static function boot() {

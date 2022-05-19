@@ -30,7 +30,7 @@ class DatabaseSeeder extends Seeder
 //==================  Ceasa ===============
       //  $this->call(CeasaProductSeeder::class);
 
-/*===============   principal ========
+//===============   principal ========
         $this->call(UserSeeder::class); 
         $this->call(CeasaProductSeeder::class);
         $this->call(CropSeeder::class);
@@ -51,6 +51,6 @@ class DatabaseSeeder extends Seeder
          $this->call(ModeOperationSeeder::class); 
          $this->call(ActuationMechanismSeeder::class);             
          $this->call(ModoAtuacaoSeeder::class);
-*/  
+  
     }
 }

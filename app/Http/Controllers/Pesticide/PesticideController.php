@@ -160,7 +160,7 @@ class PesticideController extends Controller
 
               // Gravando a relação no arquivo intermediarios active_principle_disease
                   foreach($active_principles_id as $active_principle_id)
-                      {    
+                      {   
                           $pesticide->active_principles()->attach($active_principle_id); //==>mudar
                       }
               }
@@ -286,7 +286,7 @@ class PesticideController extends Controller
              
                     $relationCrop_lists = $temp;
             
-             //    dd($relationCrop_ids,$relationCrop_lists,$relationCrop0_ids);
+       
      
  //============= Para listar todas as Disease com os dados completos============
 
@@ -335,7 +335,6 @@ class PesticideController extends Controller
         
                 $relationDisease_lists = $temp;
 
-        //    dd($relationDisease_ids,$relationDisease_lists,$relationDisease0_ids);
 
 
  //============= Para listar todas as Activite Principle com os dados completos============
@@ -385,8 +384,6 @@ class PesticideController extends Controller
           }
  
         $relationActive_principle_lists = $temp;
-
-  //   dd($relationActive_principle_ids,$relationActive_principle_lists,$relationActive_principle0_ids);
 
         return view('plantetc.pesticide.edit',compact('pesticide', 'relationCrop_ids','relationCrop0_ids','relationCrop_lists',
                                                       'relationDisease_ids','relationDisease0_ids','relationDisease_lists', 

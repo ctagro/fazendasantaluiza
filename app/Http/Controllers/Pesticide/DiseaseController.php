@@ -55,6 +55,7 @@ class DiseaseController extends Controller
      */
     public function store(Request $request)
     {
+
       // Preenchendo o campo note
       if ($request['note'] == null){
         $request['note'] = "...";
