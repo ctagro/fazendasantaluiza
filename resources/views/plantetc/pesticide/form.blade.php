@@ -204,7 +204,7 @@
                                     <?php $index++   ?> 
                                     <div class="col">   
                                         <div class="form-check form-group">
-                                            <input type="radio" name="crop_id[{{$index}}]" class="form-check-input" id="validationFormCheck1" >
+                                            <input type="radio" name="crop_id[{{$index}}]" value={{$crop->id}}  class="form-check-input" id="validationFormCheck1" >
                                             <label class="form-check-label" for="crop_id[{{$index}}]">{{$crop->name}}</label>
                                             <div class="invalid-feedback">Example invalid feedback text</div>  
                                         </div>
@@ -220,7 +220,7 @@
                                     <?php $index++   ?> 
                                     <div class="col">   
                                         <div class="form-check form-group">
-                                            <input type="radio" name="disease_id[{{$index}}]" class="form-check-input" id="validationFormCheck1" >
+                                            <input type="radio" name="disease_id[{{$index}}]" value={{$disease->id}}  class="form-check-input" id="validationFormCheck1" >
                                             <label class="form-check-label" for="disease_id[{{$index}}]">{{$disease->name}}</label>
                                         </div>
                                     </div>                              
@@ -234,7 +234,7 @@
                                      <?php $index++   ?> 
                                      <div class="col">   
                                          <div class="form-check form-group">
-                                             <input type="radio" name="active_principle_id[{{$index}}]" class="form-check-input" id="validationFormCheck1" >
+                                             <input type="radio" name="active_principle_id[{{$index}}]" value={{$active_principle->id}} class="form-check-input" id="validationFormCheck1" >
                                              <label class="form-check-label" for="active_principle_id[{{$index}}]">{{$active_principle->name}}</label>
                                              <div class="invalid-feedback">Example invalid feedback text</div>  
                                          </div>

@@ -110,7 +110,7 @@ class PesticideController extends Controller
        ->route('pesticide.create')
        ->with('error',  'O defensivo '. $data['name'].' ja foi cadastrado');
    }
-    // Gravando os dados da pesticide sem as disease relacionadas
+    // Gravando os dados da Pestocide sem as dcrop relacionadas
     $pesticide = new pesticide();
     $response = $pesticide->storePesticide($data);
     $pesticide_id = $response['new_pesticide'];
@@ -119,12 +119,12 @@ class PesticideController extends Controller
         
               //============== Capturando os dados das crops relacionadas =========
               $crops= $request;
-                
+     
               // Testando se não houve crop relacionada      
                 if($crops['crop_id'] != null)
                 {
                 // transformando os dados das crops relacionada em Array
-                    $crops_id = array_keys($crops['crop_id']);
+                    $crops_id = array($crops['crop_id']);
                   //   dd($crops_id);
                 // Gravando a relação no arquivo intermediarios crop_disease
                     foreach($crops_id as $crop_id)
@@ -140,7 +140,7 @@ class PesticideController extends Controller
                if($diseases['disease_id'] != null)
                {
                // transformando os dados das diseases relacionada em Array
-                   $diseases_id = array_keys($diseases['disease_id']);
+                   $diseases_id = array($diseases['disease_id']);
                  //   dd($diseases_id);
                // Gravando a relação no arquivo intermediarios disease_disease
                    foreach($diseases_id as $disease_id)
@@ -156,7 +156,7 @@ class PesticideController extends Controller
               if($active_principles['active_principle_id'] != null)
               {
               // transformando os dados das active_principles relacionada em Array
-                  $active_principles_id = array_keys($active_principles['active_principle_id']);
+                  $active_principles_id = array($active_principles['active_principle_id']);
 
               // Gravando a relação no arquivo intermediarios active_principle_disease
                   foreach($active_principles_id as $active_principle_id)

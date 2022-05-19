@@ -74,7 +74,7 @@ class DiseaseController extends Controller
             ->with('error',  'A Praga / Doença '. $data['name'].' ja foi cadastrada');
         }
 
-        // Gravando os dados da disease sem as disease relacionadas
+        // Gravando os dados da disease sem as crop relacionadas
         $disease = new disease();
         $response = $disease->storeDisease($data);
         $disease_id = $response['new_disease'];
@@ -82,7 +82,7 @@ class DiseaseController extends Controller
 
       // Capturando os dados das crops relacionadas 
         $crops= $request;
-  
+ 
       // Testando se não houve crop relacionada      
         if($crops['crop_id'] != null)
         {

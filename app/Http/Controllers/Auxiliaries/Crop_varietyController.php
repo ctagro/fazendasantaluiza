@@ -31,6 +31,8 @@ class Crop_varietyController extends Controller
 
     $crop_varieties = Crop_variety::get();
 
+   // dd($crop_varieties);
+
  
         return view('auxiliaries.crop_variety.index', ['crop_varieties' => $crop_varieties, 'crops' => $crops]);
     }
