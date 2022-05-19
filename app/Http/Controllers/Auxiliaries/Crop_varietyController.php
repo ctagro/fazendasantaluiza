@@ -27,14 +27,15 @@ class Crop_varietyController extends Controller
     public function index()
     {
 
-  $crops = Crop::where('id', '>', 4)->get();
+  $crops = Crop::get();
 
-    $crop_varieties = Crop_variety::get();
 
-   // dd($crop_varieties);
+    $crop_varietys = Crop_variety::get();
+
+ //   dd($crops, $crop_varietys);
 
  
-        return view('auxiliaries.crop_variety.index', ['crop_varieties' => $crop_varieties, 'crops' => $crops]);
+        return view('auxiliaries.crop_variety.index', ['crop_varietys' => $crop_varietys, 'crops' => $crops]);
     }
 
     /**

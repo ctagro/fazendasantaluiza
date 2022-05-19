@@ -49,7 +49,7 @@
                     </tr>
                  </thead>
                  <tbody>
-                  @foreach($crop_varieties as $crop_variety)
+                  @foreach($crop_varietys as $crop_variety)
                   <tr class="h6">
                      <td>
                         <img src="{{ asset('storage/crop_varieties/'.$crop_variety->image)}}" class="img-thumbnail elevation-2"  style="max-width: 50px;"> 
