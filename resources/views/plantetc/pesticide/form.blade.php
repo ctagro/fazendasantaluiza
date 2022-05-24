@@ -185,18 +185,6 @@
                                 </div>
                             </div>
 
-                        
-<!--
-                            <div class="form-group">
-                                <label for="customFile1" class="form-label custom-file-input">Escolha a foto</label>
-                                if ($pesticide->image != null)
-                                <img src="{ asset('storage/pesticide/'.$pesticide->image)}}" 
-                                 class="img-thumbnail elevation-2"  style="max-width: 50px;"> 
-                            endif
-                                <label for="image">Imagem</label>
-                                <input type="file" class="form-control form-control-sm"  name='image' value=''>
-                            </div>-->
-
                             <label class="form-label" for="name">Selecione as culturas relacionadas:</label>
                             <div class="row">
                                 <?php $index = 0   ?> 
@@ -242,6 +230,24 @@
                                               
                                   @endforeach
                              </div>
+
+                            <div class=row>
+                                <div class="form-group col-2">
+                                    
+                                    @if ($pesticide->image != null)
+                                            <img src="{{ asset('storage/pesticides/'.$pesticide->image)}}" 
+                                            class="img-thumbnail elevation-2"  style="max-width: 120px;">
+                                        @else
+                                            <img src="{{ asset('storage/pesticides/pesticide_avatar.png')}}" 
+                                            class="img-thumbnail elevation-2"  style="max-width: 100px;"> 
+                                        @endif
+                                    </div> 
+                                    <div class="form-group col-10"> 
+                                        <label class="form-label" for="colFormLabelSm">Escolha a imagem</label>
+                                        <input type="file" class="form-control form-control-sm"  name='image' value=''>
+                                    </div>
+                                <div>
+                            </div>
 
                             <div class="form-group">
                                 <label class="form-label" for="colFormLabelSm">Nota</label>

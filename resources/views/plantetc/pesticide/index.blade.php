@@ -34,6 +34,7 @@
                   <table id="datatable" class="table table-striped" data-toggle="data-table">
                      <thead>
                         <tr class="text-sm-left" >
+                           <th><small>Foto<xl-small></th>
                            <th><small>Nome<xl-small></th>
                            <th><small>Fabricante<xl-small></th>
                             <th><small>Classe Agronômica<xl-small></th>
@@ -44,6 +45,9 @@
                    
                      @foreach($pesticides as $pesticide)
                         <tr class="h6">
+                           <td>
+                              <img src="{{ asset('storage/pesticides/'.$pesticide->image)}}" class="img-thumbnail elevation-2"  style="max-width: 50px;"> 
+                            </td>
                            <td>
                               <a href= "{{route('pesticide.show' ,['pesticide' => $pesticide->id])}}" >{{$pesticide->name}}</a>
                            </td>
@@ -58,6 +62,7 @@
                      </tbody>
                      <tfoot>
                         <tr class="h6">
+                           <th><small>Foto<xl-small></th>
                            <th><small>Nome<xl-small></th>
                            <th><small>Fabricante<xl-small></th>
                            <th><small>Grupo Químico<xl-small></th>

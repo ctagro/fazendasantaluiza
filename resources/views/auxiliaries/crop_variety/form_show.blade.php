@@ -2,11 +2,8 @@
     <div>
         <div class="row">
             <div class="col">
-                <div class="card">
-    
-                    <div class="card-body text-sm-left">
-                    
-                           
+                <div class="card">    
+                    <div class="card-body text-sm-left">                           
                             <div class="row">
                                 <div class="bolder">Cultura</div>
                               </div>    
@@ -29,19 +26,15 @@
                               </div>
                               <br>                     
                               <div class="row">
-                                <div class="bolder">Nota:</div>
-                              </div>
-                              <div class="row">
+                                <div class="bolder">Nota:</div>                        
                                 <div class="form-control form-control-sm">{{ $crop_variety->note}}</div>
-
-                                <div class="row">
-                                  Imagem :
-                                  <img src="{{ asset('storage/crop_varieties/'.$crop_variety->image)}}" class="img-thumbnail elevation-2"  style="max-width: 50px;"> 
-                                </div>
-
                               </div>
-            
-
+                              <br>
+                              <div class="row">
+                                  <img src="{{ asset('storage/crop_varieties/'.$crop_variety->image)}}" class="img-thumbnail elevation-2"  style="max-width: 100px;"> 
+                              </div>
+                              </div>
+                          </div>
                     </div>
                 </div>        
             </div>

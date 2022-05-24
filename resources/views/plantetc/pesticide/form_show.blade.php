@@ -7,11 +7,14 @@
                     <div class="card-body text-sm-left">
   
                         <div class="row">
-                            <div class="form-group col-sm-6"> 
+                          <div class="form-group col-sm-2"> 
+                            <img src="{{ asset('storage/pesticides/'.$pesticide->image)}}" class="img-thumbnail elevation-2"  style="max-width: 100px;"> 
+                          </div>
+                            <div class="form-group col-sm-5"> 
                               <div class="bolder">Defensivo</div> 
                               <div class="form-control form-control-sm  bg-light text-primary">{{ $pesticide->name}}</div>
                             </div>
-                            <div class="form-group col-sm-6"> 
+                            <div class="form-group col-sm-5"> 
                               <div class="bolder">Fabricante</div>
                               <div class="form-control form-control-sm">{{ $pesticide->manufacturer->name}}</div>
                             </div>

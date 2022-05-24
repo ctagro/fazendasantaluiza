@@ -96,7 +96,7 @@ class Crop_varietyController extends Controller
 
 
         if ($request->file('image') === null){
-            $data['image'] = 'crop_variety_avatar.png';
+            $data['image'] = 'crop_variety_avatar.png'; 
          //   dd('avatar',$data['image']);
             }          
         else{
@@ -227,7 +227,6 @@ class Crop_varietyController extends Controller
         $data['in_use']             = $dataRequest['in_use'];
         $data['note']             = $dataRequest['note'];
        
-    //     dd($data);
         $update = $crop_variety -> update($data);
 
         if ($update)
@@ -259,9 +258,6 @@ class Crop_varietyController extends Controller
         {
       //    $deleteImage =  Storage::delete(public_path('storage/crop_varieties'),$crop_variety['image']);
           $deleteImage =  Storage::delete($path); // -----nao funciona----
-
-
-     //     dd($deleteImage);
         }
 
     //    dd('passou');

@@ -99,18 +99,40 @@ class PesticideController extends Controller
       if ($request['note'] == null){
         $request['note'] = "...";
      }
+
       // Capturando os dados do Pesticides sem as diseases relacionadas
         $data = $this->validateRequest(); 
         $userName['user_id'] = auth()->user()->name;
 
    //  Verificar se a cultura em referencia ja fui cadastrada
-   $pesticide_entry = Pesticide::where('name', '=', $data['name'])->get()->count();
-   if($pesticide_entry > 0){
-       return redirect()
-       ->route('pesticide.create')
-       ->with('error',  'O defensivo '. $data['name'].' ja foi cadastrado');
-   }
-    // Gravando os dados da Pestocide sem as dcrop relacionadas
+      $pesticide_entry = Pesticide::where('name', '=', $data['name'])->get()->count();
+      if($pesticide_entry > 0){
+          return redirect()
+          ->route('pesticide.create')
+          ->with('error',  'O defensivo '. $data['name'].' ja foi cadastrado');
+      } 
+
+      // Cadastrando a imagem
+
+      if ($request->file('image') === null){
+        $data['image'] = 'pesticide_avatar.png'; 
+  
+        }          
+      else{
+        if ($request->file('image')->isValid() && $request->file('image')->isValid()) {
+      
+        //cria um nome para a imagem concatenado id e nome do user
+            $name = 'pesticide_'.time();   // tirar os espacos com o kebab_case
+            $extenstion = $request->image->extension(); // reguperar a extensao do arquivo de imagem
+            $nameFile = "{$name}.{$extenstion}"; // concatenando
+            $data['image'] = $nameFile;
+      
+          $upload = $request->file('image')->move(public_path('storage/pesticides'),$nameFile);
+ 
+         }
+      }
+  
+    // Gravando os dados da Pesticide sem as crop relacionadas
     $pesticide = new pesticide();
     $response = $pesticide->storePesticide($data);
     $pesticide_id = $response['new_pesticide'];
@@ -409,6 +431,25 @@ class PesticideController extends Controller
 
             $dataRequest = $this->validateRequest();
 
+          //  dd($dataRequest['image']);
+
+            if ($request->hasFile('image') && $request->file('image')->isValid()) {
+
+              $nameFile = $pesticide['image'];
+              
+            if  ($nameFile == "pesticide_avatar.png"){
+    
+                //cria um nome para a imagem concatenado id e nome do user
+                $name = 'pesticide_'.time();   // tirar os espacos com o kebab_case
+                $extenstion = $request->image->extension(); // reguperar a extensao do arquivo de imagem
+                $nameFile = "{$name}.{$extenstion}"; // concatenando
+                $pesticide['image'] = $nameFile;
+                dd($nameFile,$dataRequest['image'], $pesticide['image']);
+            }
+            $upload = $request->file('image')->move(public_path('storage/pesticides'),$nameFile);
+       //     $upload = $request->file('image')->storeAs('public/crop_varieties', $nameFile);
+        }
+
             $data['user_id'] =  $dataRequest['user_id'];
             $data['name'] = $dataRequest['name'];
             $data['manufacturer_id'] = $dataRequest['manufacturer_id'];
@@ -425,7 +466,7 @@ class PesticideController extends Controller
             $data['applicationRange'] = $dataRequest['applicationRange'];
             $data['numberApplications'] = $dataRequest['numberApplications'];
             $data['note'] = $dataRequest['note'];
-        //    $data['image'] = $dataRequest['image'];
+            $data['image'] =  $pesticide['image'];
             $data['in_use'] = $dataRequest['in_use'];
 
       // Gravar a atualizacões
@@ -584,11 +625,11 @@ class PesticideController extends Controller
             'chemicalGroup_id'        => 'required',
             'actionSite_id'           => 'required',
             'modeOperation_id'        => 'required',
-            'actuationMechanism_id'      => 'required',
+            'actuationMechanism_id'   => 'required',
             'applicationRange'        => 'required',
             'numberApplications'      => 'required',
             'note'                    => 'required',
-      //      'image'                   => 'required',
+ //           'image'                   => 'required',
             'in_use'                  => 'required',
     
        ]);
