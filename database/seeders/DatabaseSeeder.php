@@ -32,7 +32,7 @@ class DatabaseSeeder extends Seeder
 
 //===============   principal ========
         $this->call(UserSeeder::class); 
-        $this->call(CeasaProductSeeder::class);
+/*        $this->call(CeasaProductSeeder::class);
         $this->call(CropSeeder::class);
         $this->call(CropVarietySeeder::class);
         $this->call(DiseaseSeeder::class);
@@ -51,6 +51,6 @@ class DatabaseSeeder extends Seeder
          $this->call(ModeOperationSeeder::class); 
          $this->call(ActuationMechanismSeeder::class);             
          $this->call(ModoAtuacaoSeeder::class);
-  
+ */ 
     }
 }

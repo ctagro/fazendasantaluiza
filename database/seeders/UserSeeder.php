@@ -49,5 +49,16 @@ class UserSeeder extends Seeder
             'remember_token' => (Str::random(10)),
         ]);
 
+        \App\Models\User::create([
+            'name' => 'Lucas Vale',
+            'first_name' => 'Lucas',
+            'last_name' => 'Vale',
+            'phone_number' => '21 99976-7106',
+            'email' => 'lucasalvale@gmail.com',
+            'email_verified_at' => now(),
+            'password' => bcrypt('lucas123'), // password
+            'remember_token' => (Str::random(10)),
+        ]);
+
     }
 }
