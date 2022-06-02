@@ -52,7 +52,7 @@
                                 <?php $index = 0   ?>    
                                 @foreach($crops as $crop)
                                     <?php $index++   ?> 
-                                    <div class="col">   
+                                    <div class="col-6">   
                                         <div class="form-check form-group">
                                             <a href= "{{ route('crop.show' ,[ 'crop' => $crop->id  ])}}" class="form-check-label" for="validationFormCheck1">{{$crop->name}}</a>
                                         </div>

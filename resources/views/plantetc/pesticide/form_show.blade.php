@@ -86,7 +86,7 @@
                             <?php $index = 0   ?>    
                             @foreach($crops as $crop)
                                 <?php $index++   ?> 
-                                <div class="col">   
+                                <div class="col-6">   
                                     <div class="form-check form-group">
                                         <a href= "{{ route('crop.show' ,[ 'crop' => $crop->id  ])}}" class="form-check-label" for="validationFormCheck1">{{$crop->name}}</a>
                                     </div>
@@ -99,7 +99,7 @@
                             <?php $index = 0   ?>    
                             @foreach($diseases as $disease)
                                 <?php $index++   ?> 
-                                <div class="col">   
+                                <div class="col-6">   
                                     <div class="form-check form-group">
                                         <a href= "{{ route('disease.show' ,[ 'disease' => $disease->id  ])}}" class="form-check-label" for="validationFormCheck1">{{$disease->name}}</a>
                                     </div>
@@ -112,7 +112,7 @@
                             <?php $index = 0   ?>    
                             @foreach($active_principles as $active_principle)
                                 <?php $index++   ?> 
-                                <div class="col">   
+                                <div class="col-6">   
                                     <div class="form-check form-group">
                                         <a href= "{{ route('activePrinciple.show' ,[ 'activePrinciple' => $active_principle->id  ])}}" class="form-check-label" for="validationFormCheck1">{{$active_principle->name}}</a>
                                     </div>
