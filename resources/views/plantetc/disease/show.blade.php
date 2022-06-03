@@ -46,7 +46,7 @@
  
                       <a class="btn btn-primary" href="{{route('disease.index')}}" class="btn btn-danger">Voltar</a>
 
-        <!--              <a class="btn btn-primary" href="{route('disease.variety',[ 'disease' => $crop->id ])}}">Variedades</a>
+        <!--              <a class="btn btn-primary" href="{route('disease.variety',[ 'disease' => $active_principle->id ])}}">Variedades</a>
         -->
                      
                   </form>

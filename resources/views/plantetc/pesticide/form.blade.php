@@ -215,7 +215,7 @@
                                  @endforeach
                              </div>
 
-                             <label class="form-label" for="name">Selecione as culturas relacionadas:</label>
+                             <label class="form-label" for="name">Selecione os principios ativos:</label>
                              <div class="row">
                                  <?php $index = 0   ?> 
                                  @foreach($active_principles as $active_principle)

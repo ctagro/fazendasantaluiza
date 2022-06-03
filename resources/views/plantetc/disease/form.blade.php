@@ -51,15 +51,15 @@
                             </div>    
         
 
-                            <label class="form-label" for="name">Selecione as culturas relacionadas:</label>
+                            <label class="form-label" for="name">Selecione os principios ativos relacionadas:</label>
                             <div class="row">
                                 <?php $index = 0   ?> 
-                                @foreach($crops as $crop)
+                                @foreach($active_principles as $active_principle)
                                     <?php $index++   ?> 
-                                    <div class="col">   
+                                    <div class="col-6">   
                                         <div class="form-check form-group">
-                                            <input type="radio" name="crop_id[{{$index}}]" value={{$crop->id}} class="form-check-input" id="validationFormCheck1" >
-                                            <label class="form-check-label" for="crop_id[{{$index}}]">{{$crop->name}}</label>
+                                            <input type="radio" name="active_principle_id[{{$index}}]" value={{$active_principle->id}} class="form-check-input" id="validationFormCheck1" >
+                                            <label class="form-check-label" for="active_principle_id[{{$index}}]">{{$active_principle->name}}</label>
                                             <div class="invalid-feedback">Example invalid feedback text</div>  
                                         </div>
                                     </div>

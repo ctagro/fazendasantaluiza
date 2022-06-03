@@ -9,6 +9,7 @@ use Carbon\Carbon;
 use DB;
 use App\User;
 use App\Models\Pesticide;
+use App\Models\Disease;
 use App\Models\Auxiliaries\AgronomicClass;
 
 class ActivePrinciple extends Model
@@ -90,11 +91,19 @@ public function storeActivePrinciple(array $data): Array
             return $this->belongsToMany(Pesticide::class);
         }
 
+    public function diseases()
+        {
+            return $this->belongsToMany(Disease::class);
+        }
+
         public static function boot() {
             parent::boot();
             self::deleting(function($ActivePrinciple) { // before delete() method call this
                  $ActivePrinciple->pesticides()->detach(); // <-- direct deletion
                  });
+            self::deleting(function($ActivePrinciple) { // before delete() method call this
+                $ActivePrinciple->diseases()->detach(); // <-- direct deletion
+                });
                  // do the rest of the cleanup...
         }
 /*

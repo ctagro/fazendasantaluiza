@@ -7,9 +7,8 @@ use Illuminate\Http\Request;
 
 use DB;
 use App\Models\User; 
-Use App\Models\Crop;
+use App\Models\ActivePrinciple;
 Use App\Models\Disease;
-Use App\Models\Crop_disease;
 use Database\Seeders\DiseaseSeeder;
 use Redirect;
 
@@ -41,9 +40,9 @@ class DiseaseController extends Controller
         $user = auth()->user();
         $disease= new \App\Models\Disease([ 
         ]);
-        $crops = Crop::all();
-        $count = count($crops);
-      return view('plantetc.disease.create',compact('disease','crops','count')); //teste       
+        $active_principles = ActivePrinciple::all();
+        $count = count($active_principles);
+      return view('plantetc.disease.create',compact('disease','active_principles','count')); //teste       
     }
 
 
@@ -74,25 +73,25 @@ class DiseaseController extends Controller
             ->with('error',  'A Praga / Doença '. $data['name'].' ja foi cadastrada');
         }
 
-        // Gravando os dados da disease sem as crop relacionadas
+        // Gravando os dados da disease sem as active_principle relacionadas
         $disease = new disease();
         $response = $disease->storeDisease($data);
         $disease_id = $response['new_disease'];
         $disease = Disease::find($disease_id);
 
-      // Capturando os dados das crops relacionadas 
-        $crops= $request;
+      // Capturando os dados das active_principles relacionadas 
+        $active_principles= $request;
  
-      // Testando se não houve crop relacionada      
-        if($crops['crop_id'] != null)
+      // Testando se não houve active_principle relacionada      
+        if($active_principles['active_principle_id'] != null)
         {
-        // transformando os dados das crops relacionada em Array
-            $crops_id = array($crops['crop_id']);
+        // transformando os dados das active_principles relacionada em Array
+            $active_principles_id = array($active_principles['active_principle_id']);
         
-        // Gravando a relação no arquivo intermediarios crop_disease
-            foreach($crops_id as $crop_id)
+        // Gravando a relação no arquivo intermediarios active_principle_disease
+            foreach($active_principles_id as $active_principle_id)
                 {    
-                    $disease->crops()->attach($crop_id); //==>mudar
+                    $disease->active_principles()->attach($active_principle_id); //==>mudar
                 }
         }
       // verificando se o regidtro no BD foi bem sucedido  
@@ -120,11 +119,12 @@ class DiseaseController extends Controller
     {
           $disease = Disease::find($disease_id);
           $user = auth()->user();
+        //  dd($disease);
           $disease_name = $disease->name;
-          $count = count($disease->crops);
-          $crops = $disease->crops;
+          $count = count($disease->active_principles);
+          $active_principles = $disease->active_principles;
 
-        return view('plantetc.disease.show', compact('crops','disease' ));
+        return view('plantetc.disease.show', compact('active_principles','disease' ));
     }
 
     /**
@@ -139,12 +139,12 @@ class DiseaseController extends Controller
         $user = auth()->user();
         $disease_id = $disease->id;
 
- // Para listar todas as crop com os dados completos
-      $relation0_ids = Crop::all(); // =======> trocar
+ // Para listar todas as active_principle com os dados completos
+      $relation0_ids = ActivePrinciple::all(); // =======> trocar
 
 
  // para listar as disease relacionadas à cultura com todos os dados
-       $relation0_lists = $disease->crops; // =======> trocar
+       $relation0_lists = $disease->active_principles; // =======> trocar
 
 
        $i = 0;
@@ -222,7 +222,7 @@ class DiseaseController extends Controller
  // Gravar a atualizacões
        $update = $disease->update($data);
  
- //-----------------  Atualizar Relacionamentos Crop->Diseases----------------//
+ //-----------------  Atualizar Relacionamentos ActivitePrinciple->Diseases----------------//
        $list_ids = $request; 
    //  Passo1 : Apagar os registros antigo das relações com as doenças
    // Verificar se houve atualizaçao de relacionamentos 
@@ -233,7 +233,7 @@ class DiseaseController extends Controller
            $befores_id = array($list_ids['before_id']); 
            // Eliminar os relacionamentos antigos     
            foreach($befores_id as $before_id){
-             $disease->crops()->detach($before_id);} // =======> trocar     
+             $disease->active_principles()->detach($before_id);} // =======> trocar     
          }
        //Passo 2 : Ler os relacionamentos atualizados
        // Verificar se houve solicitacao de limpar todos relacionamentos
@@ -244,7 +244,7 @@ class DiseaseController extends Controller
       //     dd($request,$afters_id,$disease);
          // Gravar a atualizacao dos relacionamentos  
            foreach($afters_id as $after_id)
-             {  $disease->crops()->attach($after_id);} // =======> trocar         
+             {  $disease->active_principles()->attach($after_id);} // =======> trocar         
        }
      }
  //-----------------  Fim de Atualizar Relacionamentos --------------------//

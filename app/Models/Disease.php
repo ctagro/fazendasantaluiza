@@ -10,6 +10,7 @@ use DB;
 use App\User;
 use App\Models\Crop;
 use App\Models\Pesticide;
+use App\Models\ActivePrinciple;
 
 
 class Disease extends Model
@@ -96,13 +97,18 @@ class Disease extends Model
             return $this->belongsToMany(Pesticide::class);
         }
 
+    public function active_principles()
+        {
+            return $this->belongsToMany(ActivePrinciple::class);
+        }
+
         public static function boot() {
             parent::boot();
             self::deleting(function($disease) { // before delete() method call this
-                 $disease->crops()->detach(); // <-- direct deletion
-                 });
+                $disease->crops()->detach(); // <-- direct deletion
+                });
             self::deleting(function($disease) { // before delete() method call this
-                $disease->pesticides()->detach(); // <-- direct deletion
+                $disease->active_principles()->detach(); // <-- direct deletion
                 });
             }
 
