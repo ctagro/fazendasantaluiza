@@ -203,6 +203,14 @@ Route::get('actuationMechanism/{actuationMechanism}/edit', [App\Http\Controllers
 Route::patch('actuationMechanism/{actuationMechanism}', [App\Http\Controllers\Auxiliaries\ActuationMechanismController::class,'update'])->name('actuationMechanism.update');
 Route::delete('actuationMechanism/{actuationMechanism}', [App\Http\Controllers\Auxiliaries\ActuationMechanismController::class,'destroy'])->name('actuationMechanism.destroy');
 
+Route::get('control/create', [App\Http\Controllers\Auxiliaries\ControlController::class,'create'])->name('control.create'); 
+Route::post('control/store', [App\Http\Controllers\Auxiliaries\ControlController::class, 'store'])->name('control.store');
+Route::get('control/index', [App\Http\Controllers\Auxiliaries\ControlController::class, 'index'])->name('control.index');
+Route::get('control/{control}', [App\Http\Controllers\Auxiliaries\ControlController::class,'show'])->name('control.show');
+Route::get('control/{control}/edit', [App\Http\Controllers\Auxiliaries\ControlController::class,'edit'])->name('control.edit');
+Route::patch('control/{control}', [App\Http\Controllers\Auxiliaries\ControlController::class,'update'])->name('control.update');
+Route::delete('control/{control}', [App\Http\Controllers\Auxiliaries\ControlController::class,'destroy'])->name('control.destroy');
+
 
 Route::get('locate_cropsASdisease/{disease_id}', [App\Http\Controllers\Join\JoinController::class, 'locate_cropsASdisease'])->name('locate_cropsASdisease');
 

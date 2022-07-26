@@ -35,12 +35,25 @@
                             </div>  
                             
                             <div class="form-group">
-                                <label class="form-label" for="colFormLabelSm">Sintonas</label>
+                                <label class="form-label" for="colFormLabelSm">Sintonas e danos</label>
                                 <input type="text" name="symptoms" value="{{old('symptoms') ?? $disease->symptoms }}" class="form-control form-control-sm" placeholder="Sintomas">
                                 @if($errors->has('symptoms'))
                                         <h6 class="text-danger" >Digite os sintomas</h6> 
                                 @endif
-                            </div>  
+                            </div> 
+                            
+                            <div class="form-group col-sm-6"> 
+                                <label for="colFormLabelSm" class="form-label">Tipo de controle</label>
+                                <select name="control_id" class="form-select form-select-sm mb-3" id="control_id" aria-label=".form-select-lg example" required>
+                                   <option selected disabled value="">Selecione a Tipo de controle</option>
+                                   @foreach($controls as $control)    
+                                            <option value="{{$control->id}}">{{$control->name}} </option>                  
+                                        @endforeach
+                                </select> 
+                                @if($errors->has('control_id'))    
+                                    <h6 class="text-danger" >Selecione</h6> 
+                                @endif 
+                             </div>
                             
                             <div class="form-group">
                                 <label class="form-label" for="colFormLabelSm">Controles</label>

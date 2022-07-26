@@ -30,7 +30,7 @@
                     </div> 
                     
                     <div class="form-group">
-                        <label class="form-label" for="colFormLabelSm">Sintonas</label>
+                        <label class="form-label" for="colFormLabelSm">Sintonas e danos</label>
                         <input type="text" name="symptoms" value="{{old('symptoms') ?? $disease->symptoms }}" class="form-control form-control-sm" placeholder="Sintomas">
                         @if($errors->has('symptoms'))
                                 <h6 class="text-danger" >Digite os sintomas</h6> 

@@ -28,38 +28,46 @@
                           </div>
                           <br> 
                           <div class="row">
-                            <div class="bolder">Sintomas:</div>
+                            <div class="bolder">Sintomas e danos:</div>
                           </div>
                           <div class="row">
                             <div class="form-control form-control-sm">{{ $disease->symptoms}}</div>
                           </div>
                           <br> 
                           <div class="row">
+                            <div class="bolder">Tipo de controle:</div>
+                          </div>
+                          <div class="row">
+                            <div class="form-control form-control-sm">{{ $disease->control->name}}</div>
+                          </div>
+                          <br>   
+                          <div class="row">
                             <div class="bolder">Controles:</div>
                           </div>
                           <div class="row">
                             <div class="form-control form-control-sm">{{ $disease->control}}</div>
                           </div>
+                          <br>
+                          <label class="form-label" for="">Principios ativos que combatem a doença/praga:</label>
+                          <div class="row">
+                              <?php $index = 0   ?>    
+                              @foreach($active_principles as $active_principle)
+                                  <?php $index++   ?> 
+                                  <div class="col-6">   
+                                      <div class="form-check form-group">
+                                          <a href= "{{ route('activePrinciple.show' ,[ 'activePrinciple' => $active_principle->id  ])}}" class="form-check-label" for="validationFormCheck1">{{$active_principle->name}}</a>
+                                      </div>
+                                  </div>               
+                               @endforeach
+                          </div>
                           <br> 
                           <div class="row">
                             <div class="bolder">Nota:</div>
                           </div>
+                        
                           <div class="row">
                             <div class="form-control form-control-sm">{{ $disease->note}}</div>                        
-    
-                            <label class="form-label" for="email">Culturas relacionadas:</label>
-                            <div class="row">
-                                <?php $index = 0   ?>    
-                                @foreach($active_principles as $active_principle)
-                                    <?php $index++   ?> 
-                                    <div class="col-6">   
-                                        <div class="form-check form-group">
-                                            <a href= "{{ route('activePrinciple.show' ,[ 'activePrinciple' => $active_principle->id  ])}}" class="form-check-label" for="validationFormCheck1">{{$active_principle->name}}</a>
-                                        </div>
-                                    </div>               
-                                 @endforeach
-                            </div>
-
+                            <br> 
                     </div>
                 </div>        
             </div>

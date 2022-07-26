@@ -1,4 +1,3 @@
-
 <x-app-layout>
 
     <br>
@@ -29,30 +28,32 @@
                 <div class="card">
                     <div class="card-header d-flex justify-content-between">
                         <div class="header-title">
-                            <h4 class="card-title">Cadastro de defensivo</h4>
+                            <h4 class="card-title">Editar Tipo de controle</h4>
                         </div>
                     </div>
 
                     <div class="card-body">
                 
-                        <form  action="{{ route('pesticide.store') }}" method="POST" enctype="multipart/form-data" class="col-12 was-validated">
-                                @method('POST')
-                                @csrf
-                                
-                                @include('plantetc/pesticide/form')
+                        <form action="{{route('control.update' ,[ 'control' => $control->id ])}}" method="POST"  enctype="multipart/form-data">
+                            @method('PATCH')
+                            @csrf
 
-                                <button type="submit" class="btn btn-primary">Cadastrar</button>
+                            @include('auxiliaries.control.form')
+                   
+                            <button type="submit" class="btn btn-primary">Salvar</button>
 
-                                <a class="btn btn-primary" href="{{route('pesticide.index')}}" class="btn btn-danger">Voltar</a>
-    
-                                <a class="btn btn-danger" href="{{route('pesticide.create')}}" class="btn btn-danger">Cancelar</a>
+                            <a class="btn btn-primary" href="{{route('control.index')}}" class="btn btn-danger">Voltar</a>
 
-                            </form>
+                            <a class="btn btn-danger" href="{{route('control.create')}}" class="btn btn-danger">Cancelar</a>
                         </form>
                     </div>
                 </div>
             </div>
         </div>
-    </div> 
-      
+    </div>
+ 
 </x-app-layout>
+
+<script src="{{asset('js/select-btn.js') }}"></script>
+
+

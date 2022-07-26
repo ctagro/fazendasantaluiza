@@ -11,6 +11,8 @@ use App\User;
 use App\Models\Crop;
 use App\Models\Pesticide;
 use App\Models\ActivePrinciple;
+use App\Models\Auxiliaries\Control;
+
 
 
 class Disease extends Model
@@ -23,6 +25,7 @@ class Disease extends Model
         'scientific_name',
         'description',
         'symptoms',
+        'control_id',
         'control',
         'note',
         'in_use'
@@ -50,6 +53,7 @@ class Disease extends Model
                 'scientific_name'   => $data['scientific_name'],
                 'description'       => $data['description'],
                 'symptoms'          => $data[ 'symptoms'],
+                'control_id'        => $data[ 'control_id'],
                 'control'           => $data[ 'control'],
                 'note'              => $data['note'],
                 'in_use'            => $data['in_use'],
@@ -100,6 +104,11 @@ class Disease extends Model
     public function active_principles()
         {
             return $this->belongsToMany(ActivePrinciple::class);
+        }
+
+        public function control()
+        {
+            return $this->belongsTo(Control::class,'control_id');
         }
 
         public static function boot() {
