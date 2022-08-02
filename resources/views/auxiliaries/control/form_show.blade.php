@@ -14,7 +14,7 @@
                                 <div class="form-control form-control-sm">{{ $control->name}}</div>
                               </div>
                               <br>                     
-                              <div class="row">
+                              <div class= "row">
                                 <div class="bolder">Descrição:</div>
                               </div>
                               <div class="row">
