@@ -321,7 +321,7 @@
                 </svg>
             </i>
         <i class="sidenav-mini-icon"> H </i>
-        <span class="item-name">Modo de Atuação</span>
+        <span class="item-name">Modo de Atuação</span> 
         </a>
     </li>
 
@@ -340,7 +340,7 @@
     </li>
     
     <li class="nav-item ">
-        <a class="nav-link" href="{{route('control.index')}}">
+        <a class="nav-link" href="{{route('controlType.index')}}">
         <i class="icon">
                 <svg xmlns="http://www.w3.org/2000/svg" width="10" viewBox="0 0 24 24" fill="currentColor">
                     <g>

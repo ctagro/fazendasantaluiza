@@ -26,7 +26,7 @@ class AuthenticatedSessionController extends Controller
          // dd('nulo');
         } 
         else{
-            dd($user);
+            dd($user,"....");
         }
 
         return view('auth.login');

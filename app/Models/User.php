@@ -20,7 +20,7 @@ use App\Models\Auxiliaries\ActionSite;
 use App\Models\Auxiliaries\ModeOperation;
 use App\Models\Auxiliaries\ActuationMechanism;
 use App\Models\Auxiliaries\Grupo_quimico;
-use App\Models\Auxiliaries\Control;
+use App\Models\Auxiliaries\controlType;
 
 class User extends Authenticatable
 {
@@ -130,9 +130,9 @@ class User extends Authenticatable
         return $this->hasMany(Grupo_quimico::class);
     }
 
-    public function control()
+    public function controlType()
     {
-        return $this->hasMany(Control::class);
+        return $this->hasMany(ControlType::class);
     }
 
 

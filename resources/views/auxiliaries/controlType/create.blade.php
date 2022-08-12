@@ -1,3 +1,4 @@
+
 <x-app-layout>
 
     <br>
@@ -28,23 +29,24 @@
                 <div class="card">
                     <div class="card-header d-flex justify-content-between">
                         <div class="header-title">
-                            <h4 class="card-title">Editar Tipo de controle</h4>
+                            <h4 class="card-title">Cadastro de Tipo de controle</h4>
                         </div>
                     </div>
 
                     <div class="card-body">
                 
-                        <form action="{{route('control.update' ,[ 'control' => $control->id ])}}" method="POST"  enctype="multipart/form-data">
-                            @method('PATCH')
+                        <form  action="{{ route('controlType.store') }}" method="POST" enctype="multipart/form-data" class="col-12 was-validated">
+                            @method('POST')
                             @csrf
+                 
+                            @include('auxiliaries/controlType/form')
 
-                            @include('auxiliaries.control.form')
-                   
-                            <button type="submit" class="btn btn-primary">Salvar</button>
+                            <button type="submit" class="btn btn-primary">Cadastrar</button>
 
-                            <a class="btn btn-primary" href="{{route('control.index')}}" class="btn btn-danger">Voltar</a>
+                            <a class="btn btn-primary" href="{{route('controlType.index')}}" class="btn btn-danger">Voltar</a>
 
-                            <a class="btn btn-danger" href="{{route('control.create')}}" class="btn btn-danger">Cancelar</a>
+                            <a class="btn btn-danger" href="{{route('controlType.create')}}" class="btn btn-danger">Cancelar</a>
+
                         </form>
                     </div>
                 </div>
@@ -52,8 +54,6 @@
         </div>
     </div>
  
+    
+    
 </x-app-layout>
-
-<script src="{{asset('js/select-btn.js') }}"></script>
-
-

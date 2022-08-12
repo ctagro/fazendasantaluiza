@@ -33,7 +33,7 @@
               <h4 class="card-title">Tipo de controles</h4>
               
            </div>
-           <a class="float-right" href="{{url('control/create')}}">Cadastrar</a>
+           <a class="float-right" href="{{url('controlType/create')}}">Cadastrar</a>
         </div>
         <div class="card-body">
 
@@ -48,16 +48,16 @@
                     </tr>
                  </thead>
                  <tbody>
-                  @foreach($controles as $control)
+                  @foreach($controlTypes as $controlType)
                   <tr class="h6">
                       <td>  
-                      <a href= "{{ route('control.show' ,[ 'control' => $control->id  ])}}" >{{ $control->name}}</a>
+                      <a href= "{{ route('controlType.show' ,[ 'controlType' => $controlType->id  ])}}" >{{ $controlType->name}}</a>
                       </td>
                       <td>  
-                        <a href= "{{ route('control.show' ,[ 'control' => $control->id  ])}}" >{{ $control->description}}</a>
+                        <a href= "{{ route('controlType.show' ,[ 'controlType' => $controlType->id  ])}}" >{{ $controlType->description}}</a>
                         </td>
                       <td>  
-                        <a href= "{{ route('control.show' ,[ 'control' => $control->id  ])}}" >{{ $control->note}}</a>
+                        <a href= "{{ route('controlType.show' ,[ 'controlType' => $controlType->id  ])}}" >{{ $controlType->note}}</a>
                       </td> 
  
                 </tr>

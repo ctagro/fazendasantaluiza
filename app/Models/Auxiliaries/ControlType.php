@@ -7,11 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 
 use DB;
 use App\User;
-use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Control extends Model
+class ControlType extends Model
 {
-    use SoftDeletes;
 
     protected $fillable = [
         'user_id',
@@ -22,23 +20,23 @@ class Control extends Model
     
 ];
 
-public function storecontrol(array $data): Array
+public function storecontrolType(array $data): Array
     {
 
-        //dd($data);
+      //  dd($data);
 
-            $control = auth()->user()->Control ()->create([         
+            $controlType = auth()->user()->ControlType()->create([         
                 
             
                 'name'              => $data['name'],
-                'description'        => $data['description'],
+                'description'       => $data['description'],
                 'note'              => $data['note'],
                 'in_use'            => $data['in_use']
 
             ]);
 
  
-       if($control){
+       if($controlType){
 
             DB::commit();
 

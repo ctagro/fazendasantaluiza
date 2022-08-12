@@ -22,6 +22,7 @@ class DiseaseSeeder extends Seeder
             'scientific_name'   => 'Oidium',
             'description'       => 'Oídio é o nome genérico dado a um numeroso conjunto de espécies de fungos unicelulares pertencentes à família dos Erysiphacea. ',
             'symptoms'          => 'Oidium',
+            'controlType_id'    => 1,
             'control'           => 'Oidium',
             'note'              => 'As espécies são originárias das Américas Central e do Sul; 
                                     sua utilização como alimentos teve origem no México,[3] espalhando-se 
@@ -37,6 +38,7 @@ class DiseaseSeeder extends Seeder
             'scientific_name'   => 'Bemisia tabaci',
             'description'       => 'A mosca-branca é uma das várias espécies de mosca-branca que atualmente são importantes pragas agrícolas.',
             'symptoms'          => 'Mosca Branca',
+            'controlType_id'        => 1,
             'control'           => 'Mosca Branca',
             'note'              => 'As espécies são originárias das Américas Central e do Sul; 
                                     sua utilização como alimentos teve origem no México,[3] espalhando-se 
@@ -53,6 +55,7 @@ class DiseaseSeeder extends Seeder
                 'scientific_name'   => 'Polyphagotarsonemus latus',
                 'description'       => 'O ácaro largo, Polyphagotarsonemus latus',
                 'symptoms'          => 'Ácaro Branco',
+                'controlType_id'        => 2,
                 'control'           => 'Ácaro Branco',
                 'note'              => 'O ácaro largo, Polyphagotarsonemus latus, é uma espécie microscópica de ácaro encontrada em muitas espécies de plantas, incluindo espécies agrícolas importantes, como uvas, maçãs e outras frutas. ',
                 'in_use'            => 'S',
@@ -66,6 +69,7 @@ class DiseaseSeeder extends Seeder
             'scientific_name'   => 'Thysanoptera',
             'description'       => 'A mosca-branca é uma das várias espécies de mosca-branca que atualmente são importantes pragas agrícolas.Os insetos da ordem Thysanoptera são popularmente conhecidos como tripes, que significa “verme da madeira”, ',
             'symptoms'          => 'Tripes',
+            'controlType_id'        => 3,
             'control'           => 'Tripes',
             'note'              => 'Os insetos da ordem Thysanoptera são popularmente conhecidos como tripes, que significa “verme da madeira”,  ',
             'in_use'            => 'S',

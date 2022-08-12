@@ -3,9 +3,9 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
-use App\Models\Auxiliaries\Control;
+use App\Models\Auxiliaries\ControlType;
 
-class ControlSeeder extends Seeder
+class ControlTypeSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -14,7 +14,7 @@ class ControlSeeder extends Seeder
      */
     public function run()
     {
-        Control ::create([
+        ControlType ::create([
                         
             'user_id'       => 1,
             'name'          => 'Contato', 
@@ -23,7 +23,7 @@ class ControlSeeder extends Seeder
             'in_use'        => 'S' 
           
         ]);
-        Control ::create([
+        ControlType ::create([
                         
             'user_id'       => 1,
             'name'          => 'Sistemico', 
@@ -33,7 +33,7 @@ class ControlSeeder extends Seeder
           
         ]);
 
-        Control ::create([
+        ControlType ::create([
                         
             'user_id'       => 1,
             'name'          => 'Outro', 
@@ -42,5 +42,6 @@ class ControlSeeder extends Seeder
             'in_use'        => 'S' 
           
         ]);
+    
     }
 }

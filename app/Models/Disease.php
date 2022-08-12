@@ -11,7 +11,8 @@ use App\User;
 use App\Models\Crop;
 use App\Models\Pesticide;
 use App\Models\ActivePrinciple;
-use App\Models\Auxiliaries\Control;
+use App\Models\Auxiliaries\ControlType;
+
 
 
 
@@ -25,7 +26,7 @@ class Disease extends Model
         'scientific_name',
         'description',
         'symptoms',
-        'control_id',
+        'controlType_id',
         'control',
         'note',
         'in_use'
@@ -53,7 +54,7 @@ class Disease extends Model
                 'scientific_name'   => $data['scientific_name'],
                 'description'       => $data['description'],
                 'symptoms'          => $data[ 'symptoms'],
-                'control_id'        => $data[ 'control_id'],
+                'controlType_id'    => $data[ 'controlType_id'],
                 'control'           => $data[ 'control'],
                 'note'              => $data['note'],
                 'in_use'            => $data['in_use'],
@@ -106,10 +107,6 @@ class Disease extends Model
             return $this->belongsToMany(ActivePrinciple::class);
         }
 
-        public function control()
-        {
-            return $this->belongsTo(Control::class,'control_id');
-        }
 
         public static function boot() {
             parent::boot();
@@ -119,7 +116,10 @@ class Disease extends Model
             self::deleting(function($disease) { // before delete() method call this
                 $disease->active_principles()->detach(); // <-- direct deletion
                 });
+            }  
+                        
+            public function controlType()
+            {
+                return $this->belongsTo(ControlType::class,'controlType_id');
             }
-
-
 }

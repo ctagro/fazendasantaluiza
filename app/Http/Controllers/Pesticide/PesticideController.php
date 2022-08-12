@@ -222,8 +222,8 @@ class PesticideController extends Controller
       $active_principles        = ActivePrinciple::all();
 
 
-        $pesticide = Pesticide::find($pesticide_id);
-        
+        $pesticide = Pesticide::find($pesticide_id); 
+
         $user = auth()->user();
         $pesticide_name = $pesticide->name;
         $crops = $pesticide->crops;

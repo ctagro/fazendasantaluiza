@@ -16,7 +16,7 @@ class UserSeeder extends Seeder
     public function run()
     {
        // \App\Models\User::factory(1000)->create();
- /*       \App\Models\User::create([
+        \App\Models\User::create([
             'name' => 'João Procópio',
             'first_name' => 'System',
             'last_name' => 'Admin',
@@ -48,7 +48,7 @@ class UserSeeder extends Seeder
             'password' => bcrypt('wemerson123'), // password
             'remember_token' => (Str::random(10)),
         ]);
-*/
+
         \App\Models\User::create([
             'name' => 'Lucas Vale',
             'first_name' => 'Lucas',

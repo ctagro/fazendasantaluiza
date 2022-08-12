@@ -9,7 +9,7 @@ use DB;
 use App\Models\User; 
 use App\Models\ActivePrinciple;
 Use App\Models\Disease;
-use App\Models\Auxiliaries\Control;
+use App\Models\Auxiliaries\ControlType;
 use Redirect;
 
 class DiseaseController extends Controller
@@ -41,9 +41,9 @@ class DiseaseController extends Controller
         $disease= new \App\Models\Disease([ 
         ]);
         $active_principles = ActivePrinciple::all();
-        $controls = Control::all();
+        $controlTypes = ControlType::all();
         $count = count($active_principles);
-      return view('plantetc.disease.create',compact('disease','active_principles','controls','count')); //teste       
+      return view('plantetc.disease.create',compact('disease','active_principles','controlTypes','count')); //teste       
     }
 
 
@@ -119,15 +119,17 @@ class DiseaseController extends Controller
     public function show($disease_id)
     {
 
-          $controls = Control::all();
+          $controlTypes = ControlType::all();
+
           $disease = Disease::find($disease_id);
           $user = auth()->user();
         //  dd($disease);
           $disease_name = $disease->name;
           $count = count($disease->active_principles);
           $active_principles = $disease->active_principles;
+     //     dd($disease->controlType->name);
 
-        return view('plantetc.disease.show', compact('active_principles','disease','controls' ));
+        return view('plantetc.disease.show', compact('active_principles','disease','controlTypes'));
     }
 
     /**
@@ -139,7 +141,7 @@ class DiseaseController extends Controller
     public function edit(Disease $disease) {
 
 
-        $controls = Control::all();
+        $controlTypes = ControlType::all();
         $user = auth()->user();
         $disease_id = $disease->id;
 
@@ -195,7 +197,7 @@ class DiseaseController extends Controller
   //   dd($relation_ids,$relation_lists,$relation0_ids);
 
 
-        return view('plantetc.disease.edit',compact('disease','relation_ids','relation_lists','relation0_ids'));
+        return view('plantetc.disease.edit',compact('disease','relation_ids','relation_lists','relation0_ids','controlTypes'));
     }
 
     /**
@@ -219,8 +221,8 @@ class DiseaseController extends Controller
        $data['scientific_name']= $dataRequest['scientific_name'];
        $data['description']    = $dataRequest['description'];
        $data['symptoms']       = $dataRequest['symptoms'];
-       $data['control_id']     = $dataRequest['control'];
-       $data['control']         = $dataRequest['control'];
+       $data['controlType_id'] = $dataRequest['controlType_id'];
+       $data['control']        = $dataRequest['control'];
        $data['in_use']         = $dataRequest['in_use'];  
        $data['note']           = $dataRequest['note'];
 
@@ -299,7 +301,7 @@ class DiseaseController extends Controller
             'scientific_name' => 'required',
             'description'     => 'required',
             'symptoms'        => 'required',
-            'control_id'      => 'required',
+            'controlType_id'  => 'required',
             'control'         => 'required',
             'note'            => 'required',
             'in_use'          => 'required',

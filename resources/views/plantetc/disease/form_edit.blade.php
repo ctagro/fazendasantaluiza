@@ -35,10 +35,24 @@
                         @if($errors->has('symptoms'))
                                 <h6 class="text-danger" >Digite os sintomas</h6> 
                         @endif
-                    </div>  
+                    </div>
+                    
+                    <div class="form-group col-sm-6"> 
+                        <label for="colFormLabelSm" class="form-label">Tipo de controle</label>
+                        <select name="controlType_id" class="form-select form-select-sm mb-3" id="controlType_id" aria-label=".form-select-lg example" required>
+                           <option selected disabled value="">Selecione a Tipo de controlTypee</option>
+                           @foreach($controlTypes as $controlType)    
+                
+                                    <option value="{{$controlType->id}}" {{ $controlType->id == $disease->controlType_id ? 'selected' : ''}}>{{$controlType->name}} </option>                 
+                                @endforeach
+                        </select> 
+                        @if($errors->has('controlType_id'))    
+                            <h6 class="text-danger" >Selecione</h6> 
+                        @endif 
+                     </div>
                     
                     <div class="form-group">
-                        <label class="form-label" for="colFormLabelSm">Controles</label>
+                        <label class="form-label" for="colFormLabelSm">Informações sobre controle</label>
                         <input type="text" name="control" value="{{old('control') ?? $disease->control }}" class="form-control form-control-sm" placeholder="Controles">
                         @if($errors->has('control'))
                                 <h6 class="text-danger" >Digite os controles</h6> 

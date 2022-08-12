@@ -203,13 +203,13 @@ Route::get('actuationMechanism/{actuationMechanism}/edit', [App\Http\Controllers
 Route::patch('actuationMechanism/{actuationMechanism}', [App\Http\Controllers\Auxiliaries\ActuationMechanismController::class,'update'])->name('actuationMechanism.update');
 Route::delete('actuationMechanism/{actuationMechanism}', [App\Http\Controllers\Auxiliaries\ActuationMechanismController::class,'destroy'])->name('actuationMechanism.destroy');
 
-Route::get('control/create', [App\Http\Controllers\Auxiliaries\ControlController::class,'create'])->name('control.create'); 
-Route::post('control/store', [App\Http\Controllers\Auxiliaries\ControlController::class, 'store'])->name('control.store');
-Route::get('control/index', [App\Http\Controllers\Auxiliaries\ControlController::class, 'index'])->name('control.index');
-Route::get('control/{control}', [App\Http\Controllers\Auxiliaries\ControlController::class,'show'])->name('control.show');
-Route::get('control/{control}/edit', [App\Http\Controllers\Auxiliaries\ControlController::class,'edit'])->name('control.edit');
-Route::patch('control/{control}', [App\Http\Controllers\Auxiliaries\ControlController::class,'update'])->name('control.update');
-Route::delete('control/{control}', [App\Http\Controllers\Auxiliaries\ControlController::class,'destroy'])->name('control.destroy');
+Route::get('controlType/create', [App\Http\Controllers\Auxiliaries\ControlTypeController::class,'create'])->name('controlType.create'); 
+Route::post('controlType/store', [App\Http\Controllers\Auxiliaries\ControlTypeController::class, 'store'])->name('controlType.store');
+Route::get('controlType/index', [App\Http\Controllers\Auxiliaries\ControlTypeController::class, 'index'])->name('controlType.index');
+Route::get('controlType/{controlType}', [App\Http\Controllers\Auxiliaries\ControlTypeController::class,'show'])->name('controlType.show');
+Route::get('controlType/{controlType}/edit', [App\Http\Controllers\Auxiliaries\ControlTypeController::class,'edit'])->name('controlType.edit');
+Route::patch('controlType/{controlType}', [App\Http\Controllers\Auxiliaries\ControlTypeController::class,'update'])->name('controlType.update');
+Route::delete('controlType/{controlType}', [App\Http\Controllers\Auxiliaries\ControlTypeController::class,'destroy'])->name('controlType.destroy');
 
 
 Route::get('locate_cropsASdisease/{disease_id}', [App\Http\Controllers\Join\JoinController::class, 'locate_cropsASdisease'])->name('locate_cropsASdisease');

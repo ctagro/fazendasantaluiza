@@ -33,17 +33,17 @@
                   </div>
                   <div class="card-body">
 
-                      <form  id="delete-form" method="POST"  action="{{ route('control.destroy',[ 'control' => $control->id ])}}" enctype="multipart/form-data" class="col-12 was-validated">
+                      <form  id="delete-form" method="POST"  action="{{ route('controlType.destroy',[ 'controlType' => $controlType->id ])}}" enctype="multipart/form-data" class="col-12 was-validated">
                         @method('DELETE')
                         @csrf
                
-                        @include('auxiliaries/control/form_show')
+                        @include('auxiliaries/controlType/form_show')
 
                       <button type="submit" class="btn btn-danger">Deletar</button>
 
-                      <a class="btn btn-primary" href="{{route('control.edit',[ 'control' => $control->id ])}}" class="btn btn-danger">editar</a>
+                      <a class="btn btn-primary" href="{{route('controlType.edit',[ 'controlType' => $controlType->id ])}}" class="btn btn-danger">editar</a>
  
-                      <a class="btn btn-primary" href="{{route('control.index')}}" class="btn btn-danger">Voltar</a>
+                      <a class="btn btn-primary" href="{{route('controlType.index')}}" class="btn btn-danger">Voltar</a>
 
                      
                   </form>

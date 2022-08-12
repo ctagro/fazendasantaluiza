@@ -38,14 +38,14 @@
                             <div class="bolder">Tipo de controle:</div>
                           </div>
                           <div class="row">
-                            <div class="form-control form-control-sm">{{ $disease->control->name}}</div>
+                            <div class="form-control form-control-sm">{{ $disease->controlType->name}}</div>
                           </div>
                           <br>   
                           <div class="row">
-                            <div class="bolder">Controles:</div>
+                            <div class="bolder">Informações sobre controle</div>
                           </div>
                           <div class="row">
-                            <div class="form-control form-control-sm">{{ $disease->control}}</div>
+                            <div class="form-control form-control-sm">{{ $disease->name}}</div>
                           </div>
                           <br>
                           <label class="form-label" for="">Principios ativos que combatem a doença/praga:</label>

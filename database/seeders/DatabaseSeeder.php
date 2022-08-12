@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Auxiliaries\Control;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Str;
 
@@ -32,10 +33,10 @@ class DatabaseSeeder extends Seeder
 
 //===============   principal ========
         $this->call(UserSeeder::class); 
-/*        $this->call(CeasaProductSeeder::class);
+        $this->call(CeasaProductSeeder::class);
         $this->call(CropSeeder::class);
         $this->call(CropVarietySeeder::class);
-        $this->call(DiseaseSeeder::class);
+  //      $this->call(DiseaseSeeder::class);
         $this->call(Price_ceasa_bhSeeder::class);
         $this->call(PesticideSeeder::class);
         $this->call(ActivePrincipleSeeder::class);
@@ -50,7 +51,7 @@ class DatabaseSeeder extends Seeder
          $this->call(ActionSiteSeeder::class);  
          $this->call(ModeOperationSeeder::class); 
          $this->call(ActuationMechanismSeeder::class);             
-         $this->call(ModoAtuacaoSeeder::class);
- */ 
+    //     $this->call(ControlTypeSeeder::class);
+ 
     }
 }

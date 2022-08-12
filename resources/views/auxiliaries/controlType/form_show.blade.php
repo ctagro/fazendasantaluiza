@@ -11,21 +11,21 @@
                                 <div class="bolder">Tipo de controle</div>
                               </div>    
                               <div class="row">
-                                <div class="form-control form-control-sm">{{ $control->name}}</div>
+                                <div class="form-control form-control-sm">{{ $controlType->name}}</div>
                               </div>
                               <br>                     
                               <div class= "row">
                                 <div class="bolder">Descrição:</div>
                               </div>
                               <div class="row">
-                                <div class="form-control form-control-sm">{{ $control->description}}</div>
+                                <div class="form-control form-control-sm">{{ $controlType->description}}</div>
                               </div>
                               <br>                     
                               <div class="row">
                                 <div class="bolder">Nota:</div>
                               </div>
                               <div class="row">
-                                <div class="form-control form-control-sm">{{ $control->note}}</div>
+                                <div class="form-control form-control-sm">{{ $controlType->note}}</div>
 
                               </div>
             

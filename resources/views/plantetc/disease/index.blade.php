@@ -45,7 +45,7 @@
                         <th><small>Nome científico<xl-small></th>
                         <th><small>Descrição<xl-small></th>
                         <th><small>Sintomas<xl-small></th>
-                         <th><small>Controle<xl-small></th>
+                         <th><small>Tipo de Controle<xl-small></th>
                            
     
                    </tr>
@@ -67,7 +67,7 @@
                         <a href= "{{ route('disease.show' , $disease->id  )}}" >{{ $disease->symptoms}}</a>
                      </td>
                      <td>  
-                        <a href= "{{ route('disease.show' , $disease->id  )}}" >{{ $disease->control}}</a>
+                        <a href= "{{ route('disease.show' , $disease->id  )}}" >{{ $disease->controlType->name}}</a>
                      </td>
 
                   </tr>

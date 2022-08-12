@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddControlIdTableDiseases extends Migration
+class AddControlTypeIdTableDiseases extends Migration
 {
     /**
      * Run the migrations.
@@ -14,7 +14,7 @@ class AddControlIdTableDiseases extends Migration
     public function up()
     {
         Schema::table('diseases', function (Blueprint $table) {
-            $table->unsignedBigInteger('control_id')->nullable() // Tipo de controle
+            $table->unsignedBigInteger('controlType_id')->nullable() // Tipo de controle
             ->after('symptoms'); // Ordenado após a coluna "user_id"
         });
     }
@@ -27,7 +27,7 @@ class AddControlIdTableDiseases extends Migration
     public function down()
     {
         Schema::table('diseases', function (Blueprint $table) {
-            $table->dropColumn('control_id');
+            $table->dropColumn('controlType_id');
         });
     }
 }

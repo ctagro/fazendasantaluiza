@@ -7,9 +7,10 @@ use Illuminate\Http\Request;
 use App\User;
 use Illuminate\Support\Facades\DB;
 use Redirect;
-use App\Models\Auxiliaries\Control;
+use App\Models\Auxiliaries\ControlType;
+use Database\Seeders\ControlTypeSeeder;
 
-class ControlController extends Controller
+class ControlTypeController extends Controller
 {
     public function __construct()
     {
@@ -24,9 +25,11 @@ class ControlController extends Controller
     public function index()
     {
 
-   $controles = Control::get();
+   $controlTypes = ControlType::get();
+
+  // dd($controlTypes);
   
-        return view('auxiliaries.control.index', ['controles' => $controles]);
+        return view('auxiliaries.controlType.index', ['controlTypes' => $controlTypes]);
     }
 
     /**
@@ -41,12 +44,12 @@ class ControlController extends Controller
         $user = auth()->user();
        
 
-        $control= new \App\Models\Auxiliaries\Control ([
+        $controlType= new \App\Models\Auxiliaries\ControlType ([
 
 
         ]);
 
-        return view('auxiliaries.control.create',compact('control'));
+        return view('auxiliaries.controlType.create',compact('controlType'));
        
     }
 
@@ -57,7 +60,7 @@ class ControlController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request, Control  $control)
+    public function store(Request $request, ControlTypeSeeder  $controlType)
     {
         if ($request['note'] == null){
             $request['note'] = ".";
@@ -70,17 +73,17 @@ class ControlController extends Controller
         $data = $this->validateRequest();
 
      
-        $control= new control();
+        $controlType= new controlType();
 
         // Chamando a objeto a funcao do model  e passando o array 
         // capiturado no formulario da view 
 
-        $response = $control->storecontrol($data);
+        $response = $controlType->storecontrolType($data);
 
         if ($response)
 
         return redirect()
-                        ->route('control.create')
+                        ->route('controlType.create')
                         ->with('sucess', 'Cadastro realizado com sucesso');
                     
 
@@ -97,10 +100,10 @@ class ControlController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(control$control)
+    public function show(controlType$controlType)
     {
 
-        return view('auxiliaries.control.show', compact('control' ));
+        return view('auxiliaries.controlType.show', compact('controlType' ));
 
     }
 
@@ -110,13 +113,13 @@ class ControlController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(control$control) {
+    public function edit(controlType$controlType) {
 
 
         $user = auth()->user();
 
 
-        return view('auxiliaries.control.edit',['control' => $control]);
+        return view('auxiliaries.controlType.edit',['controlType' => $controlType]);
     }
 
     /**
@@ -126,7 +129,7 @@ class ControlController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Control  $control)
+    public function update(Request $request, ControlType  $controlType)
     {
 
        $dataRequest = $request; 
@@ -139,12 +142,12 @@ class ControlController extends Controller
   
     //dd($data);
 
-      $update  = $control-> update($data);
+      $update  = $controlType-> update($data);
 
       if ($update){
 
         return redirect()
-                        ->route('control.edit' ,[ 'control' => $control->id ])
+                        ->route('controlType.edit' ,[ 'controlType' => $controlType->id ])
                         ->with('sucess', 'Sucesso ao atualizar');
       }     
     
@@ -160,18 +163,18 @@ class ControlController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Control  $control)
+    public function destroy(ControlType  $controlType)
     {
   
-        $destroy = $control->delete();
+        $destroy = $controlType->delete();
       
 
         if ($destroy)
         {
           //  dd($destroy);
               return redirect()
-                              ->route('control.index')
-                              ->with('sucess', 'A variedade '. $control->name . ' foi deletada com sucesso');
+                              ->route('controlType.index')
+                              ->with('sucess', 'A variedade '. $controlType->name . ' foi deletada com sucesso');
                       
   
               return redirect()

@@ -13,7 +13,7 @@
 
                             <div class="form-group">
                                 <label class="form-label" for="colFormLabelSm">Tipo de controle</label>
-                                <input type="text" name="name" value="{{old('name') ?? $control->name }}" class="form-control form-control-sm" placeholder="Nome">
+                                <input type="text" name="name" value="{{old('name') ?? $controlType->name }}" class="form-control form-control-sm" placeholder="Nome">
                                 @if($errors->has('name'))
                                         <h6 class="text-danger" >Digite o nome</h6> 
                                 @endif
@@ -21,7 +21,7 @@
 
                             <div class="form-group">
                                 <label class="form-label" for="colFormLabelSm">Descrição</label>
-                                <input type="text" name="description" value="{{old('name') ?? $control->description }}" class="form-control form-control-sm" placeholder="Descrição">
+                                <input type="text" name="description" value="{{old('name') ?? $controlType->description }}" class="form-control form-control-sm" placeholder="Descrição">
                                 @if($errors->has('name'))
                                         <h6 class="text-danger" >Digite a descrição</h6> 
                                 @endif
@@ -29,7 +29,7 @@
 
                             <div class="form-group">
                                 <label class="form-label" for="colFormLabelSm">Nota</label>
-                                <input type="text" name="note" value="{{old('note') ?? $control->note }}" class="form-control form-control-sm" placeholder="Nota">
+                                <input type="text" name="note" value="{{old('note') ?? $controlType->note }}" class="form-control form-control-sm" placeholder="Nota">
                             </div>
 
                             
@@ -38,7 +38,7 @@
                                     <input type="hidden" name="in_use" value="S" class="form-control form-control-sm py-3">
                                 @else
                                     <div class="form-group">
-                                        <label>Ativo: {{$control->in_use}} </label>
+                                        <label>Ativo: {{$controlType->in_use}} </label>
                                         <select name="in_use"  id="in_use" class="form-select" required aria-label="select example">>
                                             <option value="S">Sim</option>
                                             <option value="N">Não</option>
