@@ -29,6 +29,7 @@ class PriceCeasaController extends Controller
     {
        
         $this->priceCeasa_import = $priceCeasa_import;
+     
 
     }
 
@@ -58,7 +59,7 @@ class PriceCeasaController extends Controller
 
         $cotacoes = Price_ceasa_bh::where('date', '=', $date)->orderBy('date')->get();           
        
-        //dd($cotacoes);
+       // dd($cotacoes);
 
         
       //  return redirect()->route('ceasa.index',[$date]);  
@@ -69,7 +70,7 @@ class PriceCeasaController extends Controller
     {
         
 
-    //   dd($date);
+      // dd($date);
     
         $cotacoes = Price_ceasa_bh::whereRaw('date = $date')->orderBy('date')->get();           
        

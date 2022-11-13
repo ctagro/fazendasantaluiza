@@ -1,7 +1,7 @@
 
 
 <ul class="navbar-nav iq-main-menu"  id="sidebar">
-<!--
+
     <li class="nav-item static-item">
         <a class="nav-link static-item disabled" href="#" tabindex="-1">
             <span class="default-icon">Home</span>
@@ -19,8 +19,8 @@
             <span class="item-name">Home</span>
         </a>
     </li>
--->
-<!---------------------------
+
+
     <ul class="navbar-nav iq-main-menu"  id="sidebar">
         <li class="nav-item static-item">
             <a class="nav-link static-item disabled" href="#" tabindex="-1">
@@ -29,7 +29,7 @@
             </a>
         </li>
     -->
-        <!--
+     
  
  <li class="nav-item">
     <a class="nav-link" data-bs-toggle="collapse" href="#horizontal-menu" role="button" aria-expanded="false" aria-controls="horizontal-menu">
@@ -50,7 +50,7 @@
     </a>
     <ul class="sub-nav collapse" id="horizontal-menu" data-bs-parent="#sidebar">
         <li class="nav-item ">
-            <a class="nav-link" href="{route('ceasa.import')}}">
+            <a class="nav-link" href="{{route('ceasa.import')}}">
               <i class="icon">
                     <svg xmlns="http://www.w3.org/2000/svg" width="10" viewBox="0 0 24 24" fill="currentColor">
                         <g>
@@ -59,11 +59,11 @@
                     </svg>
                 </i>
               <i class="sidenav-mini-icon"> H </i>
-              <span class="item-name"> Importar </span>
+              <span class="item-name"> Importar111 </span>
             </a>
         </li>
         <li class=" nav-item ">
-            <a class="nav-link " href="{route('ceasa_research.consult')}}">
+            <a class="nav-link " href="{{route('ceasa_research.consult')}}">
                 <i class="icon">
                     <svg xmlns="http://www.w3.org/2000/svg" width="10" viewBox="0 0 24 24" fill="currentColor">
                         <g>
@@ -76,7 +76,7 @@
             </a>
         </li>
         <li class=" nav-item ">
-            <a class="nav-link" href="{route('ceasa_charts_research.consult')}}">
+            <a class="nav-link" href="{{route('ceasa_charts_research.consult')}}">
                 <i class="icon svg-icon">
                     <svg xmlns="http://www.w3.org/2000/svg" width="10" viewBox="0 0 24 24" fill="currentColor">
                         <g>
