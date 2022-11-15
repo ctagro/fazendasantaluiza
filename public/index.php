@@ -55,21 +55,12 @@ $app = require_once __DIR__.'/../bootstrap/app.php';
 // permitindo que você "toque" na coleção em um ponto específico e faça 
 // algo com os itens, sem afetar a coleção em si.
 
-
 $kernel = $app->make(Kernel::class); // resolução dos problemas via classe e instancia as classes principais
-
-$response = $kernel->handle(
-    $request = Illuminate\Http\Request::capture()
-);
-
-$response->send();
-
-/*
 
 $response = tap($kernel->handle(
     $request = Request::capture()
 ))->send();
 // dd($request,$response,'aqui');
-*/
+
 
 $kernel->terminate($request, $response);
